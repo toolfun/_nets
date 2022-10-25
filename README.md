@@ -1,2 +1,2 @@
 # nets
-Testnets & Mainnets. Pre-alpha
+(Testnets & Mainnets) * Carelessness
