@@ -170,8 +170,12 @@ curl -d '{"address":"$MANDE_WALLET_ADDRESS"}' -H 'Content-Type: application/json
 ```
 mande-chaind status | jq .SyncInfo
 ```
-`true` means still syncing
-`false` means synced, you can create validator
+> `cathing_up: true` means still syncing    
+> `false` means synced, you can create validator    
+
+> this timestamp, as shown, means that your node is unable to start syncing. Add actual peers to config.toml or repalce addrbook    
+
+![](https://github.com/toolfun/pics/blob/main/1970sync.jpg)
 
 ### create validator (after syncing)
 ```
