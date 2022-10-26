@@ -168,7 +168,8 @@ okp4d keys show $OKP4_WALLET --bech -a
 ```
 
 ### faucet
-https://faucet.okp4.network
+https://faucet.okp4.network    
+https://discord.com/channels/946759919678406696/1034483599996620820
     
 ### create validator
 ```
