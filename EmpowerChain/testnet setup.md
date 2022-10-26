@@ -168,6 +168,12 @@ sudo systemctl restart empowerd && sudo journalctl -u empowerd -f -o cat
 ```
 empowerd status 2>&1 | jq .SyncInfo
 ```
+> `cathing_up: true` means still syncing    
+> `false` means synced, you can create validator    
+
+> this timestamp, as shown, means that your node is unable to start syncing. Add actual peers to config.toml or repalce addrbook    
+
+![](https://github.com/toolfun/pics/blob/main/1970sync.jpg)
 
 ### Add `wallet`
 ```
