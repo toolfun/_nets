@@ -37,14 +37,12 @@ fi
 go version
 ```
 
-### set variables
+### set variables, set yours
 ```
-OKP4_NODENAME=xAlex
-OKP4_WALLET=wAlex
+OKP4_NODENAME=oneliner
+OKP4_WALLET=oneliner
 OKP4_PORT=24
 OKP4_CHAIN_ID=okp4-nemeton
-OKP4_WALLET_ADDRESS=
-OKP4_VALOPER=
 ```
 ```
 echo "export OKP4_NODENAME=$OKP4_NODENAME" >> $HOME/.bash_profile
@@ -143,15 +141,28 @@ sudo systemctl restart okp4d
 sudo journalctl -u okp4d -f -o cat
 ```
 
+### sync status
+```
+okp4d status | jq .SyncInfo
+```
+> `cathing_up: true` means still syncing    
+> `false` means synced, you can create validator    
+
+> this timestamp, as shown, means that your node is unable to start syncing. Add actual peers to config.toml or repalce addrbook    
+
+![](https://github.com/toolfun/pics/blob/main/1970sync.jpg)
+
 ### wallet add
 ```
 okp4d keys add $OKP4_WALLET
 ```
 
 #### addresses
+valoper's
 ```
 okp4d keys show $OKP4_WALLET --bech val -a
 ```
+wallet's
 ```
 okp4d keys show $OKP4_WALLET --bech -a
 ```
@@ -173,14 +184,23 @@ okp4d tx staking create-validator \
 --from=$OKP4_WALLET \
 -y
 ```
+____
 
 ### some comands
 #### status
 ```
 curl localhost:24657/status | jq
 ```
+
+#### add adresses as variables
 ```
-curl localhost:24657/status | jq .result.sync_info
+OKP4_WALLET_ADDRESS=$(okp4dd keys show $WALLET -a)
+OKP4_VALOPER=$(okp4dd keys show $WALLET --bech val -a)
+```
+```
+echo 'export OKP4_WALLET_ADDRESS='${OKP4_WALLET_ADDRESS} >> $HOME/.bash_profile
+echo 'export OKP4_VALOPER='${OKP4_VALOPER} >> $HOME/.bash_profile
+source $HOME/.bash_profile
 ```
 
 #### delegate
