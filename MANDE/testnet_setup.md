@@ -1,4 +1,10 @@
-# MANDE Chain setup
+# MANDE Chain setup. Testnet-1
+
+## links
+- site https://www.mande.network/
+- github https://github.com/mande-labs/testnet-1
+- discord https://discord.gg/zbDMQEcp
+- explorer https://explorer.stavr.tech/mande-chain
 
 ### general
 ```
@@ -189,7 +195,8 @@ mande-chaind tx staking create-validator \
 ```
 
 ## DELEGATING
-### bond
+> ### Using web interface
+### cast via web UI
 This is not the usual delegation process called **Voting**. Thus, you delegate your tokens    
 - Go to http://35.224.207.121/    
 - Connect Keplr    
@@ -202,10 +209,26 @@ This is not the usual delegation process called **Voting**. Thus, you delegate y
 > You can find more explanation in that Discord post
 https://discord.com/channels/953348696098103366/1030760553683099648/1030794179997077565
 
-### unbond
+### uncast via web UI
 You can redeem your votes from the selected validator by switching to `Uncast`    
 ![vote](https://github.com/toolfun/pics/blob/main/mande-vote-3.jpg)
 
+> ### Using command line interface
+### cast uncast vote via commant line:
+```
+mande-chaind --from {{KEY_NAME}} --chain-id mande-testnet-1 tx voting create-vote [validator_address_to_vote] [amount] [mode]
+```
+> `amount` can be positive or negative (make sure the amount is between -1000000000 and 1000000000)    
+> `mode` - 1 for cast, 0 for uncast
+
+- Cast example: 
+```
+mande-chaind --from {{KEY_NAME}} --chain-id mande-testnet-1 tx voting create-vote mande... 10000000 1
+```
+- Uncast example: 
+```
+- mande-chaind --from {{KEY_NAME}} --chain-id mande-testnet-1 tx voting create-vote mande... 10000000 0
+```
 ____
     
 ## ADDITIONAL
