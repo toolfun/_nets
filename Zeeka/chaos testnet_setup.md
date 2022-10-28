@@ -1,6 +1,9 @@
-# 🛑 guide is not complete 🛑
-____
+# 🛑 guide is not complete
 
+> ❣️ *The first phase of the Chaos Testnet finished 28.10.2022, gracefully terminated at block 5000*    
+> ❣️ *The next phase of our testnet will start soon, and we'll be announcing more info in a few days*    
+    
+    
 ## Zeeka Miner Setup
 
 > *The height limit is currently set to: 5000 blocks.* Chaos Testnet started on 20.10.2022
