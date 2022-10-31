@@ -1,4 +1,4 @@
-# 🛑 guide is not complete 🛑
+# 🛑 guide is not complete
 ____
 
 ## Okp4 Setup
