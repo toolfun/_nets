@@ -241,12 +241,37 @@ echo "$(mande-chaind tendermint show-node-id)@$(curl ifconfig.me):${MANDE_PORT}6
 ```
 
 ### state sync
+#####    
 #### 2 options. If one does not work try another one    
 
-1. :point_right:  state sync opt1 thanks to STAVR. Link how to start from state sync:
-https://github.com/obajay/nodes-Guides/tree/main/Mande%20Chain#statesync    
+**1.** :point_right:  **state sync opt1** thanks to [STAVR](https://github.com/obajay/)
+```
+SNAP_RPC=https://mande-testnet-rpc.jambulmerah.dev:443
+```
+```
+peers="a3e3e20528604b26b792055be84e3fd4de70533b@38.242.199.93:24656" 
+sed -i.bak -e "s/^seeds *=.*/seeds = \"$SEEDS\"/; s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.mande-chain/config/config.toml
+```
+```
+LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height); \
+BLOCK_HEIGHT=$((LATEST_HEIGHT - 500)); \
+TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
 
-2. :point_down: state sync opt2 down below. Thanks to [SECARD](http://secard.info/)
+echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
+```
+```
+sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
+s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
+s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
+s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"| ; \
+s|^(seeds[[:space:]]+=[[:space:]]+).*$|\1\"\"|" $HOME/.mande-chain/config/config.toml
+```
+```
+mande-chaind tendermint unsafe-reset-all --home /root/.mande-chain --keep-addr-book
+sudo systemctl restart mande-chaind && journalctl -u mande-chaind -f -o cat
+```
+#####    
+**2.** :point_down: **state sync opt2** down below. Thanks to [SECARD](http://secard.info/)
 ```
 SNAP_RPC=http://209.182.239.169:28657
 ```
