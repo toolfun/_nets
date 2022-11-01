@@ -1,4 +1,7 @@
-# MANDE Chain setup. Testnet-1
+### MANDE Chain setup. Testnet-1
+____
+
+# ⚠️ I mark it as a scam. Proof link: [Mande team announcement](https://discord.com/channels/953348696098103366/1031290123033251930/1037014456191963156)
 
 ## links
 - site https://www.mande.network/
