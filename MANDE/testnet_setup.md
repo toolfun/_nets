@@ -171,6 +171,7 @@ source $HOME/.bash_profile
 ```
 curl -d '{"address":"$MANDE_WALLET_ADDRESS"}' -H 'Content-Type: application/json' http://35.224.207.121:8080/request
 ```
+   [discord faucet](https://discord.com/channels/953348696098103366/1033430536129101904/)    
 
 ### sync status
 ```
@@ -179,7 +180,7 @@ mande-chaind status | jq .SyncInfo
 > `cathing_up: true` means still syncing    
 > `false` means synced, you can create validator    
 
-> this timestamp, as shown, means that your node is unable to start syncing. Add actual peers to config.toml or repalce addrbook    
+> this timestamp, as shown, means that your node is unable to start syncing. Add actual peers to config.toml or repalce addrbook.json file with actual peers    
 
 ![](https://github.com/toolfun/pics/blob/main/1970sync.jpg)
 
