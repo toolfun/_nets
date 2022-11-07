@@ -1,4 +1,26 @@
-## 🚧🚧 under construction
+## 🚧🚧🚧under construction
+____
+
+> ### 🧰 aid tools    
+>- 📖 [addrbook.json](https://github.com/toolfun/nets/blob/main/NIBIRU/addrbook.json)    
+>- 🚅 team peer `fbae8695e3fe191063b0b11e1a50f569e645acb2@34.139.206.22:26656`
+____
+
+### Links
+- [Website](https://nibiru.fi/)
+- [Twitter](https://twitter.com/NibiruChain)
+- [Discord](https://discord.gg/nibiru)
+- [Blog](https://blog.nibiru.fi/)
+- [Docs](https://docs.nibiru.fi/)
+- [Explorer1](https://testnet-1.nibiru.fi/)
+- [Explorer2](https://nibiru.explorers.guru/)
+
+### Minimum hardware requirements
+- 2CPU
+- 4GB RAM
+- 100GB of disk space (SSD)
+____
+
 ### Set variables
 
 ```
