@@ -1,6 +1,8 @@
+### 🎗️ Empowerchain testnet v0.0.2 upgrade [section](https://github.com/toolfun/nets/edit/main/EmpowerChain/testnet%20setup.md#updating-on-block-580000) The upgrade is scheduled for block 580000
+
 # EmpowerChain testnet. Install guide
 
-## Links
+### Links
 
 > <a href=https://www.empowerchain.io/>site</a>
 > 
@@ -241,3 +243,27 @@ empowerd status 2>&1 | jq .SyncInfo.latest_block_height
 empowerd status 2>&1 | jq .SyncInfo.catching_up
 ```
 > `false` = synced, `true` = still syncing
+____
+
+## Updating on block 580000
+#### ❗ You can update the node before it reaches the block 580000, but restart ONLY when the block is reached and the chain is halted!
+Install new version
+```
+cd empowerchain
+git pull
+git checkout v0.0.2
+cd chain && make build
+```
+```
+cp $HOME/empowerchain/build/empowerd $(which empowerd)
+```
+    
+> Check version. Should be `0.0.2` And the commit is `6e69cef55c3678c9588da805cf1fc840d15faa10`
+```
+empowerd version --long | head
+```
+
+#### Restart ONLY when the 580000 block is reached
+```
+sudo systemctl restart empowerd.service
+```
