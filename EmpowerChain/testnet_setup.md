@@ -1,5 +1,6 @@
 ### 🎗️ Jump to the v0.0.2 upgrade section [here](https://github.com/toolfun/nets/edit/main/EmpowerChain/testnet%20setup.md#updating-on-block-580000). The upgrade is scheduled for block 580000 🎗️
-# 
+#### ⏰ Countdown https://empower.explorers.guru/block/580000 ↗️
+____
 
 # EmpowerChain testnet. Install guide
 
