@@ -1,4 +1,5 @@
-### 🎗️ Empowerchain testnet v0.0.2 upgrade [section](https://github.com/toolfun/nets/edit/main/EmpowerChain/testnet%20setup.md#updating-on-block-580000) The upgrade is scheduled for block 580000
+### 🎗️ Jump to the v0.0.2 upgrade section [here](https://github.com/toolfun/nets/edit/main/EmpowerChain/testnet%20setup.md#updating-on-block-580000). The upgrade is scheduled for block 580000 🎗️
+# 
 
 # EmpowerChain testnet. Install guide
 
