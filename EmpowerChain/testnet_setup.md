@@ -1,5 +1,8 @@
+> ### ⏰v0.0.3 software upgrade on the way 
+> ### 📏 upgrade height 779400 
+> ### [⏱ countdown](https://empower.explorers.guru/block/779400)
+> ### [📑 upgrade guide](https://github.com/toolfun/nets/edit/main/EmpowerChain/testnet_setup.md#upgrade-to-v003)
 # EmpowerChain testnet. Install guide
-____
 
 ### Links
 
@@ -243,4 +246,28 @@ empowerd status 2>&1 | jq .SyncInfo.latest_block_height
 empowerd status 2>&1 | jq .SyncInfo.catching_up
 ```
 > `false` = synced, `true` = still syncing
+____
 
+## Upgrade to v0.0.3
+## Do NOT upgrade before the chain reaches the height 779400 and is stuck
+### `Build` empowerd binarie
+```
+cd empowerchain
+git reset --hard
+git pull
+git checkout v0.0.3
+cd chain
+make build
+```
+> ##### Check version. Should be 0.0.3
+> `empowerd version`    
+
+### `Replace` empowerd binarie
+```
+sudo systemctl stop empowerd.service
+sudo cp $HOME/empowerchain/chain/build/empowerd $(which empowerd)
+```
+### `Restart` and take care
+```
+sudo systemctl restart empowerd && sudo journalctl -u empowerd -f -o cat
+```
