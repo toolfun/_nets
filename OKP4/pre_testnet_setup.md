@@ -1,7 +1,7 @@
 ## 🚧🚧 guide is under construction
 ____
 
-## Okp4 Setup
+## OKP4 Setup
 
 ### links
 - **website**    
