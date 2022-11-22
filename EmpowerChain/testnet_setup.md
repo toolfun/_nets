@@ -1,6 +1,6 @@
-> ### ⏰v0.0.3 software upgrade on the way 
+> ### ☂ v0.0.3 software upgrade on the way
 > ### 📏 upgrade height 779400 
-> ### [⏱ countdown](https://empower.explorers.guru/block/779400)
+> ### [⏱ countdown](https://empower.explorers.guru/block/779400) 25.11.2022 estimated date
 > ### [📑 upgrade guide](https://github.com/toolfun/nets/edit/main/EmpowerChain/testnet_setup.md#upgrade-to-v003)
 # EmpowerChain testnet. Install guide
 
