@@ -248,8 +248,8 @@ empowerd status 2>&1 | jq .SyncInfo.catching_up
 > `false` = synced, `true` = still syncing
 ____
 
-## Upgrade to v0.0.3
-## Do NOT upgrade before the chain reaches the height 779400 and is stuck
+## 📑 Upgrade to v0.0.3
+### 🚩 Do NOT upgrade before the chain reaches the height 779400 and is stuck
 ### `Build` empowerd binarie
 ```
 cd empowerchain
