@@ -1,4 +1,4 @@
-# TESTNET now for the 150 "druids". Guide no more relevant
+# 25 okt 2022. TESTNET now for the 150 "druids". Guide no more relevant
 ## 🚧🚧 guide is under construction
 ____
 
