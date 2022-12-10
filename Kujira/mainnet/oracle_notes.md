@@ -62,3 +62,30 @@ providers = [
 ]
 quote = "USD"
 ```
+#
+### Deviation thresholds
+```
+[[deviation_thresholds]]
+base = "USDT"
+threshold = "2"
+
+[[deviation_thresholds]]
+base = "ATOM"
+threshold = "2"
+
+[[deviation_thresholds]]
+base = "BTC"
+threshold = "2"
+
+[[deviation_thresholds]]
+base = "ETH"
+threshold = "2"
+
+[[deviation_thresholds]]
+base = "DOT"
+threshold = "2"
+
+[[deviation_thresholds]]
+base = "BNB"
+threshold = "2"
+```
