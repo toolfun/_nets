@@ -20,6 +20,7 @@ quote = "USD"
 [[currency_pairs]]
 base = "BNB"
 providers = [
+  "huobi",
   "mexc",
 ]
 quote = "USDT"
