@@ -25,16 +25,22 @@ if ! [ -x "$(command -v go)" ]; then
 fi
 ```
 
-###
+### Install
 
 ```
-
+cd $HOME
+git clone https://github.com/haqq-network/haqq
+cd haqq
+git checkout v1.3.0
+make install 
 ```
 
 
-###
-```
-
+### Check version
+```bash
+haqqd version --long | head
+# version: '"v1.3.0"'
+# commit: 39b4dcb706e72c187fc23ec6dddcfed20c79bc9d
 ```
 
 ###
