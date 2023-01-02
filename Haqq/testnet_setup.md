@@ -34,13 +34,11 @@ cd haqq
 git checkout v1.3.0
 make install 
 ```
-
-
-### Check version
-```bash
+> **Check version**    
+> version: '"v1.3.0"'    
+> commit: 39b4dcb706e72c187fc23ec6dddcfed20c79bc9d
+```
 haqqd version --long | head
-# version: '"v1.3.0"'
-# commit: 39b4dcb706e72c187fc23ec6dddcfed20c79bc9d
 ```
 
 ###
