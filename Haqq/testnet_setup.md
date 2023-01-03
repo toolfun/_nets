@@ -131,9 +131,9 @@ WantedBy=multi-user.target
 EOF
 ```
 
-### Address book
+### Download and replace address book
 ```
-
+rm $HOME/.haqqd/config/addrbook.json && wget -qO $HOME/.haqqd/config/addrbook.json "https://raw.githubusercontent.com/toolfun/_nets/main/Haqq/addrbook.json"
 ```
 
 ### Choose one option how to start. Start with *state sync* `OR` *snapshot*. We will use [kjnodes](https://services.kjnodes.com/home/testnet/haqq/state-sync) service
