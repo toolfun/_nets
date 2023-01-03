@@ -76,7 +76,7 @@ sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.
 sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${HAQQ_PORT}317\"%; s%^address = \":8080\"%address = \":${HAQQ_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${HAQQ_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${HAQQ_PORT}091\"%" $HOME/.haqqd/config/app.toml
 ```
 
-### Prining
+### Pruning
 ```
 pruning="custom"
 pruning_keep_recent="100"
@@ -104,7 +104,7 @@ sed -i -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0aISLM\"/" $HOME/.h
 haqqd tendermint unsafe-reset-all --home $HOME/.haqqd
 ```
 
-### Create service fo haqqd
+### Create service for haqqd
 ```
 sudo tee /etc/systemd/system/haqqd.service > /dev/null <<EOF
 [Unit]
@@ -128,28 +128,60 @@ EOF
 
 ```
 
-### Chose one option how to start. Start with 1. state sync ❗OR 2. snapshot
-- 1. State sync    
+### Choose one option how to start. Start with *state sync* `OR` *snapshot*. We will use [kjnodes](https://services.kjnodes.com/home/testnet/haqq/state-sync) service
+> 1. State sync
+```bash
+# Prepare
+sudo systemctl stop haqqd
+cp $HOME/.haqqd/data/priv_validator_state.json $HOME/.haqqd/priv_validator_state.json.backup
+haqqd tendermint unsafe-reset-all --home $HOME/.haqqd
 ```
+```bash
+# State sync options
+STATE_SYNC_RPC=https://haqq-testnet.rpc.kjnodes.com:443
+STATE_SYNC_PEER=d5519e378247dfb61dfe90652d1fe3e2b3005a5b@haqq-testnet.rpc.kjnodes.com:35656
+LATEST_HEIGHT=$(curl -s $STATE_SYNC_RPC/block | jq -r .result.block.header.height)
+SYNC_BLOCK_HEIGHT=$(($LATEST_HEIGHT - 2000))
+SYNC_BLOCK_HASH=$(curl -s "$STATE_SYNC_RPC/block?height=$SYNC_BLOCK_HEIGHT" | jq -r .result.block_id.hash)
 
+sed -i.bak -e "s|^enable *=.*|enable = true|" $HOME/.haqqd/config/config.toml
+sed -i.bak -e "s|^rpc_servers *=.*|rpc_servers = \"$STATE_SYNC_RPC,$STATE_SYNC_RPC\"|" \
+  $HOME/.haqqd/config/config.toml
+sed -i.bak -e "s|^trust_height *=.*|trust_height = $SYNC_BLOCK_HEIGHT|" \
+  $HOME/.haqqd/config/config.toml
+sed -i.bak -e "s|^trust_hash *=.*|trust_hash = \"$SYNC_BLOCK_HASH\"|" \
+  $HOME/.haqqd/config/config.toml
+sed -i.bak -e "s|^persistent_peers *=.*|persistent_peers = \"$STATE_SYNC_PEER\"|" \
+  $HOME/.haqqd/config/config.toml
+mv $HOME/.haqqd/priv_validator_state.json.backup $HOME/.haqqd/data/priv_validator_state.json
 ```
-```
+```bash 
+# Enable service and (re)start
 sudo systemctl daemon-reload
 sudo systemctl enable haqqd
 sudo systemctl restart haqqd && sudo journalctl -u haqqd -f -o cat
 ```
-- 2. Snapshot    
-```
 
+> 2. Snapshot    
+```bash
+# Prepare
+sudo systemctl stop haqqd
+cp $HOME/.haqqd/data/priv_validator_state.json $HOME/.haqqd/priv_validator_state.json.backup
+rm -rf $HOME/.haqqd/data
 ```
+```bash
+# Download snapshot
+curl -L https://snapshots.kjnodes.com/haqq-testnet/snapshot_latest.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.haqqd
+mv $HOME/.haqqd/priv_validator_state.json.backup $HOME/.haqqd/data/priv_validator_state.json
 ```
+```bash
+# Enable service and (re)start
 sudo systemctl daemon-reload
 sudo systemctl enable haqqd
 sudo systemctl restart haqqd && sudo journalctl -u haqqd -f -o cat
 ```
 
-
-### Add OR recover wallet
+### Add `OR` recover wallet
 - Add    
 ```
 haqqd keys add $HAQQ_WALLET
@@ -159,14 +191,30 @@ haqqd keys add $HAQQ_WALLET
 haqqd keys add $HAQQ_WALLET --recover
 ```
 
-###
+### Get tokens for creating validator
+##### 1. You need private key of the wallet
 ```
-
+haqqd keys export $HAQQ_WALLET --unarmored-hex --unsafe
 ```
+##### 2. Import private key to the Metamask
+##### 3. Connect your Metamask to the faucet https://testedge2.haqq.network/
+##### 4. Login with your github account 
+##### 5. Claim tokens
 
-###
+### Create validator
 ```
-
+haqqd tx staking create-validator \
+--chain-id haqq_54211-3 \
+--amount 1000000000000000000aISLM \
+--pubkey $(haqqd tendermint show-validator) \
+--commission-rate 0.05 \
+--commission-max-rate 0.2 \
+--commission-max-change-rate 0.1 \
+--min-self-delegation "1000000" \
+--moniker "<YOURMONIKER>" \
+--from <YOURWALLET> \
+--gas=auto \
+--fees 500aISLM
 ```
 
 ###
