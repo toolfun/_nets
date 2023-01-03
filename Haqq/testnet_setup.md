@@ -7,7 +7,7 @@ sudo apt update && sudo apt upgrade -y
 ```
 ```
 sudo apt update && sudo apt upgrade -y && \
-sudo apt install curl tar wget clang pkg-config libssl-dev build-essential jq git make ncdu gcc chrony screen tmux htop -y
+sudo apt install curl tar wget clang pkg-config libssl-dev build-essential jq git make ncdu gcc chrony screen htop -y
 ```
 
 ### Install Go
