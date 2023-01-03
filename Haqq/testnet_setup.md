@@ -1,4 +1,5 @@
-## Setup v1.3.0 
+### 03.01.2022
+## Setup haqqd v1.3.0. This is a guide for a new setup of latest version of Haqq
 
 ### Update system
 
