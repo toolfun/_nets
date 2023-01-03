@@ -2,7 +2,6 @@
 ## Setup haqqd v1.3.0. This is a guide for a new setup of latest version of Haqq
 
 ### Update system
-
 ```
 sudo apt update && sudo apt upgrade -y
 ```
@@ -11,7 +10,7 @@ sudo apt update && sudo apt upgrade -y && \
 sudo apt install curl tar wget clang pkg-config libssl-dev build-essential jq git make ncdu gcc chrony screen tmux htop -y
 ```
 
-### Go
+### Install Go
 
 ```
 if ! [ -x "$(command -v go)" ]; then
@@ -26,17 +25,24 @@ if ! [ -x "$(command -v go)" ]; then
 fi
 ```
 
-### Variables
+### Set custom variables, e.g. `HAQQ_NODENAME=JhonDoe`
+```bash
+HAQQ_NODENAME=
+HAQQ_WALLET=
+HAQQ_PORT=
 ```
-export HAQQ_NODENAME=
-export HAQQ_WALLET=
-export HAQQ_CHAIN_ID=haqq_54211-3
-export HAQQ_PORT=33
-export HAQQ_WALLET_ADDRESS=
-export HAQQ_VALOPER=
+##### Set current chain ID 
+```
+HAQQ_CHAIN_ID=haqq_54211-3
 ```
 ```
-. ~/.bash_profile
+echo "export HAQQ_NODENAME=$HAQQ_NODENAME" >> $HOME/.bash_profile
+echo "export HAQQ_WALLET=$HAQQ_WALLET" >> $HOME/.bash_profile
+echo "export HAQQ_CHAIN_ID=$HAQQ_CHAIN_ID" >> $HOME/.bash_profile
+echo "export HAQQ_PORT=$HAQQ_PORT" >> $HOME/.bash_profile
+```
+```
+source ~/.bash_profile
 ```
 
 ### Install
@@ -205,22 +211,25 @@ haqqd keys export $HAQQ_WALLET --unarmored-hex --unsafe
 ### Create validator
 ```
 haqqd tx staking create-validator \
---chain-id haqq_54211-3 \
 --amount 1000000000000000000aISLM \
 --pubkey $(haqqd tendermint show-validator) \
---commission-rate 0.05 \
---commission-max-rate 0.2 \
---commission-max-change-rate 0.1 \
+--commission-rate 0.07 \
+--commission-max-rate 0.25 \
+--commission-max-change-rate 0.05 \
 --min-self-delegation "1000000" \
---moniker "<YOURMONIKER>" \
---from <YOURWALLET> \
+--moniker $HAQQ_NODENAME \
+--from $HAQQ_WALLET \
 --gas=auto \
 --fees 500aISLM
 ```
 
-###
+### Set variables with your wallet and valoper addresses
 ```
-
+HAQQ_WALLET_ADDRESS=$(haqqd keys show $HAQQ_WALLET -a)
+HAQQ_VALOPER=$(haqqd keys show $HAQQ_WALLET --bech val -a)
+echo 'export HAQQ_WALLET_ADDRESS='${HAQQ_WALLET_ADDRESS} >> $HOME/.bash_profile
+echo 'export HAQQ_VALOPER_ADDRESS='${HAQQ_VALOPER} >> $HOME/.bash_profile
+source $HOME/.bash_profile
 ```
 
 ###
