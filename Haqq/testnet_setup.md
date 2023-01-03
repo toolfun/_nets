@@ -1,12 +1,13 @@
-### 03.01.2022
-## Setup haqqd v1.3.0. This is a guide for a new setup of latest version of Haqq
+###  This is a guide for a new setup of latest version of Haqq
+- #### haqqd v1.3.0
+- #### chain ID: haqq_54211-3
+#
 
-### Update system
+### Update system and install some tools
 ```
 sudo apt update && sudo apt upgrade -y
 ```
 ```
-sudo apt update && sudo apt upgrade -y && \
 sudo apt install curl tar wget clang pkg-config libssl-dev build-essential jq git make ncdu gcc chrony screen htop -y
 ```
 
