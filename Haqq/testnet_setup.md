@@ -229,7 +229,7 @@ haqqd tx staking create-validator \
 HAQQ_WALLET_ADDRESS=$(haqqd keys show $HAQQ_WALLET -a)
 HAQQ_VALOPER=$(haqqd keys show $HAQQ_WALLET --bech val -a)
 echo 'export HAQQ_WALLET_ADDRESS='${HAQQ_WALLET_ADDRESS} >> $HOME/.bash_profile
-echo 'export HAQQ_VALOPER_ADDRESS='${HAQQ_VALOPER} >> $HOME/.bash_profile
+echo 'export HAQQ_VALOPER='${HAQQ_VALOPER} >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
 
