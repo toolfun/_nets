@@ -216,7 +216,7 @@ marsd tx distribution withdraw-all-rewards --from $MARS_WALLET -y
 ```
 marsd tx distribution withdraw-rewards <specific validator address> --commission --from $MARS_WALLET -y
 ```
-#### check balance on your wallet
+#### check balance of your wallet
 ```
 marsd q bank balances $MARS_WALLET_ADDRESS
 ```
