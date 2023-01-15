@@ -172,7 +172,7 @@ marsd tx staking create-validator \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.03 \
 --min-self-delegation=1 \
---from="$MARS_NODENAME"
+--from="$MARS_WALLET"
 -y
 ```
 
