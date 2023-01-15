@@ -7,12 +7,34 @@
 - Faucet: https://faucet.marsprotocol.io/
 #
 
+### prepare server
+```
+sudo apt update && sudo apt upgrade -y
+```
+```
+sudo apt install curl tar wget clang pkg-config libssl-dev build-essential jq git make ncdu gcc chrony screen htop lz4 -y
+```
+
+### go
+```
+if ! [ -x "$(command -v go)" ]; then
+  ver="1.19.4"
+  cd $HOME
+  wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
+  sudo rm -rf /usr/local/go
+  sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
+  sudo rm "go$ver.linux-amd64.tar.gz"
+  echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
+  source ~/.bash_profile
+fi
+```
+
 ### set your variables e.g. MARS_PORT=23 MARS_WALLET=anyname
-```
-MARS_NODENAME=
-MARS_PORT=
-MARS_WALLET=
-```
+
+`MARS_NODENAME=`    
+`MARS_PORT=`    
+`MARS_WALLET=`
+
 ```
 echo "export MARS_NODENAME=$MARS_NODENAME" >> $HOME/.bash_profile
 echo "export MARS_WALLET=$MARS_WALLET" >> $HOME/.bash_profile
@@ -100,12 +122,24 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable marsd
 ```
-
-marsd tendermint unsafe-reset-all --home $HOME/.mars
-
-### adrrbook (kjnodes)
 ```
-curl -Ls https://snapshots.kjnodes.com/mars-testnet/addrbook.json > $HOME/.mars/config/addrbook.json
+marsd tendermint unsafe-reset-all --home $HOME/.mars
+```
+
+### snapshot (kjnodes)
+```
+sudo systemctl stop marsd
+cp $HOME/.mars/data/priv_validator_state.json $HOME/.mars/priv_validator_state.json.backup
+rm -rf $HOME/.mars/data
+```
+```
+curl -L https://snapshots.kjnodes.com/mars-testnet/snapshot_latest.tar.lz4 | tar -Ilz4 -xf - -C $HOME/.mars
+mv $HOME/.mars/priv_validator_state.json.backup $HOME/.mars/data/priv_validator_state.json
+```
+
+### adrrbook
+```
+wget -O $HOME/.mars/config/addrbook.json https://raw.githubusercontent.com/toolfun/_nets/main/Mars/addrbook.json
 ```
 
 ### start node
@@ -148,4 +182,44 @@ echo 'export MARS_WALLET_ADDRESS='${MARS_WALLET_ADDRESS} >> $HOME/.bash_profile
 echo 'export MARS_VALOPER='${HAQQ_VALOPER} >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
+#
+### `a few commands`
+###
+#### logs
+```
+sudo journalctl -u marsd -f --no-hostname -o cat
+```
 
+#### node sync status
+```
+marsd status 2>&1 | jq .SyncInfo
+```
+
+#### delegate 1 MARS (1000000 umars) to your validator
+```
+marsd tx staking delegate $MARS_VALOPER 1000000umars --from $MARS_WALLET -y
+```
+
+#### delegate 1 MARS (1000000 umars) to any validator
+```
+marsd tx staking delegate <validator operator address> 1000000umars --from $MARS_WALLET -y
+```
+
+#### collect rewards from all validators
+```
+marsd tx distribution withdraw-all-rewards --from $MARS_WALLET -y
+```
+
+#### collect rewards from a specific validator (remove <>)
+```
+marsd tx distribution withdraw-rewards <specific validator address> --commission --from $MARS_WALLET -y
+```
+#### check balance on your wallet
+```
+marsd q bank balances $MARS_WALLET_ADDRESS
+```
+  
+#### check balance of a particular wallet (remove <>)
+```
+marsd q bank balances <particular wallet address>
+```
