@@ -1,9 +1,10 @@
 
-# Lava. Peer-to-peer RPC network.
-### Install guide
+# Lava. p2p RPC network
 
-#### Network Chain ID: lava-testnet-1
+### Install guide
 #
+
+- #### Network Chain ID: `lava-testnet-1`
 - #### Website https://lavanet.xyz/
 - #### Twitter https://twitter.com/lavanetxyz
 - #### Discord https://discord.gg/5VcqgwMmkA
