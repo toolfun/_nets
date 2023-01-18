@@ -1,7 +1,23 @@
 
+# Lava. Peer-to-peer RPC network.
+### Install guide
 
-##### Network Chain ID: lava-testnet-1
+#### Network Chain ID: lava-testnet-1
+#
+- #### Website https://lavanet.xyz/
+- #### Twitter https://twitter.com/lavanetxyz
+- #### Discord https://discord.gg/5VcqgwMmkA
+- #### Explorer https://bd.lavanet.xyz/
+- #### Explorer NG https://lava.explorers.guru/
+- #### Address book
+> #### toolfun
+> `wget -O $HOME/.lava/config/addrbook.json "https://raw.githubusercontent.com/toolfun/_nets/main/Lava/addrbook.json"`
+> #### lesnik
+> `wget -O $HOME/.lava/config/addrbook.json "https://share2.utsa.tech/lava/addrbook.json"`
+> #### nodejumper
+> `curl -s https://snapshots1-testnet.nodejumper.io/lava-testnet/addrbook.json > $HOME/.lava/config/addrbook.json`
 
+#
 
 ### Update system and install tools
 ```
