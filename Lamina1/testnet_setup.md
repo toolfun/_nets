@@ -1,9 +1,14 @@
-### Lamina1
-> ### You'll need Ubuntu 22.
-## 🚧🚧🚧 under construction
+### Lamina1. Validator setup
+> #### You'll need Ubuntu 22.
+### 🚧🚧🚧 under construction
+
+#
+### Links
+- #### Testnet Hub: wallet, faucet, docs https://testnet.lamina1.network/
+- #### Crew3: https://crew3.xyz/c/lamina1/questboard
 #
 
-### Download the latest release
+### Download the latest release 
 ```
 https://lamina1.github.io/lamina1/lamina1.latest.ubuntu-latest.tar.gz
 tar -xvzf lamina1.latest.ubuntu-latest.tar.gz
@@ -39,8 +44,11 @@ cd $HOME/lamina1 && ./check-bootstrap.sh; cd
 - Using the Web Wallet, check to make sure you have at least **2000** L1 tokens on the **P-Chain**. You can
 use the "cross chain" function to transfer your C-Chain or X-Chain tokens to the P chain. If you’d like to
 get enough testnet tokens to run a node, please contact us on Discord.    
-- Get your node-id by running ./get_my_nodeid.sh in the terminal within the lamina1/ directory
-where you ran your node from.    
+- Get your node-id
+```bash
+# within the lamina1/ directory where you ran your node from
+./get_my_nodeid.sh 
+```
 - Use the Web Wallet to stake your tokens on that node ID, under the "Earn" option from the dropdown
 menu on the upper right
 
