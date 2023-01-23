@@ -60,12 +60,21 @@ get enough testnet tokens to run a node, please contact the team on Discord.
 - Use the Web Wallet to stake your tokens on that node ID, under the "Earn" option from the dropdown
 menu on the upper right
 
-
-
-
-
-
-
+#
+### Delete lamina node
+#### Terminate lamina1 screen
+> #### Attach screen
+> ```
+> screen -dr lamina1
+> ```
+> #### Type `exit` **in a screen**
+> ```
+> exit
+> ```
+#### Remove Lamina1 directories
+> ```
+> rm -r $HOME/lamina1 $HOME/.lamina1
+> ```
 
 
 
@@ -81,14 +90,14 @@ screen -S lamina1
 ### Detach from the screen
 > Ctrl-A, D
 
-### Attach to a screen *lamina1*
+### Attach to a screen lamina1
 ```
 screen -r lamina1
 ```
 
 ### Exit (terminate) screen
 ```bash
-# in the attached screen type <exit>
+# in the (!)attached screen type <exit>
 exit
 ```
 
