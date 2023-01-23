@@ -18,7 +18,7 @@ sudo apt install curl tar wget clang pkg-config libssl-dev build-essential jq gi
 
 ### Download the latest release 
 ```
-https://lamina1.github.io/lamina1/lamina1.latest.ubuntu-latest.tar.gz
+wget https://lamina1.github.io/lamina1/lamina1.latest.ubuntu-latest.tar.gz
 tar -xvzf lamina1.latest.ubuntu-latest.tar.gz
 ```
 
