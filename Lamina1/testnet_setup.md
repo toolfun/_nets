@@ -28,27 +28,27 @@ sudo apt update && sudo apt install screen -y &&\
 screen -S lamina1
 ```
 ```
-./lamina1-node  --config-file configs/testnet/default.json
+cd $HOME/lamina1 && ./lamina1-node  --config-file configs/testnet/default.json
 ```
 
 ### Checking logs about node bootstrapping for each chain
 ```
 cd $HOME/lamina1 && ./check-bootstrap.sh; cd
 ```
-> The output is **true** if bootstrapped. *Your node is running and connected now*    
-> The output is **API call rejected** if not
+> The output is *"true"* if bootstrapped: **Your node is running and connected now.**    
+> The output is *"API call rejected"* if not.
 
 
-### Generate a wallet address with Lamina1 web wallet
-- https://wallet-test.lamina1.network
-- Using the Web Wallet, check to make sure you have at least **2000** L1 tokens on the **P-Chain**. You can
+### If you want to add your node as a validator
+- #### Generate a wallet address https://wallet-test.lamina1.network
+- #### 2000 tokens.
+> Using the Web Wallet, check to make sure you have at least **2000** L1 tokens on the **P-Chain**. You can
 use the "cross chain" function to transfer your C-Chain or X-Chain tokens to the P chain. If you’d like to
-get enough testnet tokens to run a node, please contact us on Discord.    
+get enough testnet tokens to run a node, please contact the team on Discord.    
 - Get your node-id
-```bash
-# within the lamina1/ directory where you ran your node from
-./get_my_nodeid.sh 
-```
+> ```bash
+> cd $HOME/lamina1/ && ./get_my_nodeid.sh; cd 
+> ```
 - Use the Web Wallet to stake your tokens on that node ID, under the "Earn" option from the dropdown
 menu on the upper right
 
