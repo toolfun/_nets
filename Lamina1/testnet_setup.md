@@ -8,6 +8,14 @@
 - #### Crew3: https://crew3.xyz/c/lamina1/questboard
 #
 
+### Update && upgrade
+```
+sudo apt update && sudo apt upgrade -y
+```
+```
+sudo apt install curl tar wget clang pkg-config libssl-dev build-essential jq git make ncdu gcc chrony screen htop ncdu -y
+```
+
 ### Download the latest release 
 ```
 https://lamina1.github.io/lamina1/lamina1.latest.ubuntu-latest.tar.gz
