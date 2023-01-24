@@ -79,11 +79,9 @@ get enough testnet tokens to run a node, please contact the team on Discord.
 > rm -r $HOME/lamina1 $HOME/.lamina1
 > ```
 
-
-
-
 #
-## Usefull commands
+
+### Usefull commands
 ### Create screen
 ```bash
 # Create screen with a name lamina1
@@ -104,9 +102,12 @@ screen -r lamina1
 exit
 ```
 
+### Check logs
+```
+tail -f -n 50 ~/.lamina1/238426347/default/logs/C.log
+```
 
-
-
+____
 
 
 
