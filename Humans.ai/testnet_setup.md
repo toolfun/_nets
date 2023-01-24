@@ -1,24 +1,53 @@
 ## 🚧🚧 under construction 
 
-### Server prepare
-#### Updating
+### Update and upgrade
 ```
-sudo apt update && upt upgrade
+sudo apt update && upt upgrade -y
 ```
-#### Instal packages
+#### Instal tools
 ```
-sudo apt install curl wget git jq lz4 build-essential unzip tmux htop ncdu snapd -y
-```
-
-### Set variables, replace with your values
-```
-export HUMANS_NODENAME=YOUR's
-export HUMANS_PORT=18
-export HUMANS_WALLET=YOUR's
-export HUMANS_CHAIN_ID=testnet-1
+sudo apt install curl tar wget clang pkg-config libssl-dev build-essential bsdmainutils jq git make ncdu gcc chrony screen htop -y
 ```
 
-#### Install (compile the source code)
+### Set custom variables
+- #### e.g. HUMANS_NODENAME=JhonDoe
+
+```
+export HUMANS_NODENAME=
+export HUMANS_PORT=
+export HUMANS_WALLET=
+```
+- #### Chain
+```
+HUMANS_CHAIN_ID=testnet-1
+```
+- #### Environment
+```
+echo "export HUMANS_NODENAME=$HUMANS_NODENAME" >> $HOME/.bash_profile
+echo "export HUMANS_WALLET=$HUMANS_WALLET" >> $HOME/.bash_profile
+echo "export HUMANS_CHAIN_ID=$HUMANS_CHAIN_ID" >> $HOME/.bash_profile
+echo "export HUMANS_PORT=$HUMANS_PORT" >> $HOME/.bash_profile
+```
+- #### Load
+```
+source ~/.bash_profile
+```
+
+### Install go
+```
+if ! [ -x "$(command -v go)" ]; then
+  ver="1.19.4"
+  cd $HOME
+  wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
+  sudo rm -rf /usr/local/go
+  sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
+  sudo rm "go$ver.linux-amd64.tar.gz"
+  echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
+  source ~/.bash_profile
+fi
+```
+
+### Build binary
 ```
 rm -rf humans
 cd $HOME
@@ -27,13 +56,17 @@ cd humans
 git checkout v1.0.0
 go build -o humansd cmd/humansd/main.go
 ```
-```bash
-# After build, copy directly to a /usr/local/bin folder
-sudo cp humansd /usr/local/bin/humansd
 ```
+mv humansd $HOME/go/bin/humansd
+```
+
+### Config app
 ```
 humansd config keyring-backend test
-humansd config chain-id $HUMANS_CHAIN_ID
+```
+
+### Init
+```
 humansd init $HUMANS_NODENAME --chain-id $HUMANS_CHAIN_ID
 ```
 
@@ -51,11 +84,12 @@ sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.025uheart"|g' $HOME/.
 ```
 
 ### Set seeds and/or peers
+
+### Download address book
 ```
-seeds=""
-peers="e4234a5fba85b2c3d2ad157b6961ac3d115f4c49@humans-testnet.nodejumper.io:28656,1df6735ac39c8f07ae5db31923a0d38ec6d1372b@45.136.40.6:26656,9726b7ba17ee87006055a9b7a45293bfd7b7f0fc@45.136.40.16:26656,6e84cde074d4af8a9df59d125db3bf8d6722a787@45.136.40.18:26656,eda3e2255f3c88f97673d61d6f37b243de34e9d9@45.136.40.13:26656,4de8c8acccecc8e0bed4a218c2ef235ab68b5cf2@45.136.40.12:26656"
-sed -i -e 's|^seeds *=.*|seeds = "'$seeds'"|; s|^persistent_peers *=.*|persistent_peers = "'$peers'"|' $HOME/.humans/config/config.toml
+
 ```
+
 ### Set custom timeouts
 ```
 sed -i 's|^timeout_propose =.*$|timeout_propose = "100ms"|' $HOME/.humans/config/config.toml
@@ -75,11 +109,11 @@ sed -i 's|pruning-keep-recent = "0"|pruning-keep-recent = "100"|g' $HOME/.humans
 sed -i 's|pruning-interval = "0"|pruning-interval = "17"|g' $HOME/.humans/config/app.toml
 ```
 
-### Create service for node
+### Create service for a node
 ```
 sudo tee /etc/systemd/system/humansd.service > /dev/null << EOF
 [Unit]
-Description=Humans.ai node
+Description=Humans.ai Node
 After=network-online.target
 [Service]
 User=$USER
@@ -97,19 +131,24 @@ EOF
 humansd tendermint unsafe-reset-all --home $HOME/.humans --keep-addr-book
 ```
 
-### Download snapshot
+### Download snapshot (nodejumper)
 ```
 SNAP_NAME=$(curl -s https://snapshots4-testnet.nodejumper.io/humans-testnet/ | egrep -o ">testnet-1.*\.tar.lz4" | tr -d ">")
 curl https://snapshots4-testnet.nodejumper.io/humans-testnet/${SNAP_NAME} | lz4 -dc - | tar -xf -
 ```
+
 #### Restart from snapshot
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable humansd
 sudo systemctl restart humansd
 ```
+
+### Logs
 ```
 sudo journalctl -u humansd -f --no-hostname -o cat
 ```
+
+
 
 
