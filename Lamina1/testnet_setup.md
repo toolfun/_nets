@@ -22,11 +22,9 @@ wget https://lamina1.github.io/lamina1/lamina1.latest.ubuntu-latest.tar.gz
 tar -xvzf lamina1.latest.ubuntu-latest.tar.gz
 ```
 
-> We have lamina1 directory
-
 ### Download config
 ```
-cd lamina1
+cd $HOME/lamina1
 curl https://lamina1.github.io/lamina1/config.testnet.tar | tar xf -
 ```
 
@@ -38,8 +36,12 @@ screen -S lamina1
 ```
 cd $HOME/lamina1 && ./lamina1-node  --config-file configs/testnet/default.json
 ```
+> #### Detach screen
+> ```
+> Ctrl+A, D
+> ```
 
-### Checking logs about node bootstrapping for each chain
+### Bootstrap status for each chain
 ```
 cd $HOME/lamina1 && ./check-bootstrap.sh; cd
 ```
@@ -53,15 +55,14 @@ cd $HOME/lamina1 && ./check-bootstrap.sh; cd
 > Using the Web Wallet, check to make sure you have at least **2000** L1 tokens on the **P-Chain**. You can
 use the "cross chain" function to transfer your C-Chain or X-Chain tokens to the P chain. If you’d like to
 get enough testnet tokens to run a node, please contact the team on Discord.    
-- Get your node-id
+- #### Get your node-id
 > ```bash
 > cd $HOME/lamina1/ && ./get_my_nodeid.sh; cd 
 > ```
-- Use the Web Wallet to stake your tokens on that node ID, under the "Earn" option from the dropdown
-menu on the upper right
+- #### Use the Web Wallet to stake your tokens on that node ID, under the "Earn" option.
 
 #
-### Delete lamina node
+### Delete lamina1 node
 #### Terminate lamina1 screen
 > #### Attach screen
 > ```
