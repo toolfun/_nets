@@ -9,7 +9,7 @@
 > 
 > Hardware spec, minimum: 4CPU / 8GB RAM / 100GB SSD
 
-#
+____
 
 ### Update and upgrade
 ```
@@ -80,9 +80,6 @@ humansd config keyring-backend test
 ```
 humansd init $HUMANS_NODENAME --chain-id $HUMANS_CHAIN_ID
 ```
-
-#
-____
 
 ### Download genesis
 ```
