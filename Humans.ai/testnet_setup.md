@@ -1,4 +1,15 @@
-## 🚧🚧 under construction 
+### Humans.ai
+#### *A human behind every AI decision*
+### Validator install guide
+
+#
+
+> - site: https://humans.ai/proof-of-human
+> - explorer: https://explorer.humans.zone/humans-testnet
+> 
+> Hardware spec, minimum: 4CPU / 8GB RAM / 100GB SSD
+
+#
 
 ### Update and upgrade
 ```
@@ -83,11 +94,11 @@ sha256sum $HOME/.humans/config/genesis.json # f5fef1b574a07965c005b3d7ad013b27db
 sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.025uheart"|g' $HOME/.humans/config/app.toml
 ```
 
-### Set seeds and/or peers
+### ~Set seeds and/or peers~
 
 ### Download address book
 ```
-
+wget -O $HOME/.humans/config/addrbook.json https://raw.githubusercontent.com/toolfun/_nets/main/Humans.ai/addrbook.json
 ```
 
 ### Set custom timeouts
@@ -102,11 +113,17 @@ sed -i 's|^timeout_commit =.*$|timeout_commit = "1s"|' $HOME/.humans/config/conf
 sed -i 's|^skip_timeout_commit =.*$|skip_timeout_commit = false|' $HOME/.humans/config/config.toml
 ```
 
-### Configure pruning
+### Configure pruning (not mandatory)
 ```
 sed -i 's|pruning = "default"|pruning = "custom"|g' $HOME/.humans/config/app.toml
 sed -i 's|pruning-keep-recent = "0"|pruning-keep-recent = "100"|g' $HOME/.humans/config/app.toml
-sed -i 's|pruning-interval = "0"|pruning-interval = "17"|g' $HOME/.humans/config/app.toml
+sed -i 's|pruning-interval = "0"|pruning-interval = "10"|g' $HOME/.humans/config/app.toml
+```
+
+### Disable indexing (not mandatory)
+```
+indexer="null"
+sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/.humans/config/config.toml
 ```
 
 ### Create service for a node
@@ -149,6 +166,6 @@ sudo systemctl restart humansd
 sudo journalctl -u humansd -f --no-hostname -o cat
 ```
 
-
+# All set!
 
 
