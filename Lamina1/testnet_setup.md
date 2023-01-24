@@ -1,8 +1,10 @@
-### Lamina1. Validator setup
-> #### You'll need Ubuntu 22.
-### 🚧🚧🚧 under construction
+### Lamina1. Guide to node setup.
+____
+
+#### You'll need Ubuntu 22.
 
 #
+
 ### Links
 - #### Testnet Hub: wallet, faucet, docs https://testnet.lamina1.network/
 - #### Crew3: https://crew3.xyz/c/lamina1/questboard
