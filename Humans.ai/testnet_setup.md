@@ -15,18 +15,19 @@ ____
 ```
 sudo apt update && upt upgrade -y
 ```
-#### Instal tools
+
+### Instal tools
 ```
 sudo apt install curl tar wget clang pkg-config libssl-dev build-essential bsdmainutils jq git make ncdu gcc chrony screen htop -y
 ```
 
 ### Set custom variables
-- #### e.g. HUMANS_NODENAME=JhonDoe
+- #### e.g. `HUMANS_NODENAME=JhonDoe`
 
 ```
-export HUMANS_NODENAME=
-export HUMANS_PORT=
-export HUMANS_WALLET=
+HUMANS_NODENAME=
+HUMANS_PORT=
+HUMANS_WALLET=
 ```
 - #### Chain
 ```
@@ -163,6 +164,8 @@ sudo systemctl restart humansd
 sudo journalctl -u humansd -f --no-hostname -o cat
 ```
 
-# All set!
+#
+
+### All set!
 
 
