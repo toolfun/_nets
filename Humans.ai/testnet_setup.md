@@ -1,3 +1,5 @@
+![](https://github.com/toolfun/_pics/blob/main/logoprfhmn222fr4f.jpg)
+
 ### Humans.ai
 #### *A human behind every AI decision*
 ### Validator install guide
@@ -7,7 +9,10 @@
 > - site: https://humans.ai/proof-of-human
 > - explorer: https://explorer.humans.zone/humans-testnet
 > 
-> Hardware spec, minimum: 4CPU / 8GB RAM / 100GB SSD
+> Hardware spec, minimum: **4CPU / 8GB RAM / 100GB SSD**
+>
+> Chain chain-id: **testnet-1**
+
 
 ____
 
