@@ -1,4 +1,4 @@
-![](https://github.com/toolfun/_pics/blob/main/logoprfhmn222fr4f.jpg)
+[![](https://github.com/toolfun/_pics/blob/main/logoprfhmn222fr4f.jpg)](https://humans.ai/proof-of-human)
 
 ### Humans.ai
 #### *A human behind every AI decision*
