@@ -7,7 +7,14 @@
 - Explorer official: https://testnet-explorer.marsprotocol.io/
 - Explorer NG: https://mars.explorers.guru/
 - Faucet: https://faucet.marsprotocol.io/
-#
+
+
+ #### 📌 Mainnet: January 31, 2023
+ #### 📌 Genesis set of 16 validators with team delegation is filled
+ #### 📌 After the first red block, anyone can launch a Mars Hub validator with their own or delegeted MARS tokens
+#### 📌 Max active set: 50 validators
+
+# 
 
 ### prepare server
 ```
