@@ -1,21 +1,24 @@
 
-# Lava. p2p RPC network
+## Lava. p2p RPC network. Install guide
 
-### Install guide
-#
+#### *Links*
+> - Website: https://lavanet.xyz/
+> - Docs https://docs.lavanet.xyz/
+> - Discord https://discord.gg/lavanetxyz
+> - Explorer https://bd.lavanet.xyz/
+> - Explorer NG https://lava.explorers.guru/
 
-- #### Network Chain ID: `lava-testnet-1`
-- #### Website https://lavanet.xyz/
-- #### Twitter https://twitter.com/lavanetxyz
-- #### Discord https://discord.gg/5VcqgwMmkA
-- #### Explorer https://bd.lavanet.xyz/
-- #### Explorer NG https://lava.explorers.guru/
-- #### Address book
-> #### toolfun
-> `wget -O $HOME/.lava/config/addrbook.json "https://raw.githubusercontent.com/toolfun/_nets/main/Lava/addrbook.json"`
-> #### lesnik
-> `wget -O $HOME/.lava/config/addrbook.json "https://share2.utsa.tech/lava/addrbook.json"`
-> #### nodejumper
+#### *Current version*
+> Network Chain ID: `lava-testnet-1`    
+> version: 0.4.4    
+> commit: bcb202dca4c7fbc1ee0be8b7f4ff066718d99553    
+
+#### *Address books (first install node)*
+> xalex    
+> `wget -O $HOME/.lava/config/addrbook.json "https://raw.githubusercontent.com/toolfun/_nets/main/Lava/addrbook.json"`    
+> lesnik    
+> `wget -O $HOME/.lava/config/addrbook.json "https://share2.utsa.tech/lava/addrbook.json"`    
+> nodejumper    
 > `curl -s https://snapshots1-testnet.nodejumper.io/lava-testnet/addrbook.json > $HOME/.lava/config/addrbook.json`
 
 #
@@ -62,18 +65,19 @@ echo "export LAVA_PORT=$LAVA_PORT" >> $HOME/.bash_profile
 source ~/.bash_profile
 ```
 
-### Install
+### Download binary
 ```
 cd $HOME
 wget https://lava-binary-upgrades.s3.amazonaws.com/testnet/v0.4.0/lavad
 chmod +x lavad
 mv lavad /usr/local/bin/lavad
 ```
-> **Check version**    
+### Check version
 ```
-lavad version
+lavad version --long | head | grep -e version: -e commit
 ```
-> 0.4.0-rc2-e2c69db
+> version: 0.4.4    
+> commit: bcb202dca4c7fbc1ee0be8b7f4ff066718d99553    
 
 
 ### Configure
@@ -86,6 +90,22 @@ lavad config node tcp://localhost:${LAVA_PORT}657
 ### Init
 ```
 lavad init "$LAVA_NODENAME" --chain-id lava-testnet-1
+```
+
+### Set Lava-specific params
+
+> create_empty_blocks = true    
+> create_empty_blocks_interval = "60s"    
+> timeout_propose = "60s"    
+> timeout_commit = "60s"    
+> timeout_broadcast_tx_commit = "601s"    
+
+```
+sed -i 's/create_empty_blocks = .*/create_empty_blocks = true/g' ~/.lava/config/config.toml
+sed -i 's/create_empty_blocks_interval = ".*s"/create_empty_blocks_interval = "60s"/g' ~/.lava/config/config.toml
+sed -i 's/timeout_propose = ".*s"/timeout_propose = "60s"/g' ~/.lava/config/config.toml
+sed -i 's/timeout_commit = ".*s"/timeout_commit = "60s"/g' ~/.lava/config/config.toml
+sed -i 's/timeout_broadcast_tx_commit = ".*s"/timeout_broadcast_tx_commit = "601s"/g' ~/.lava/config/config.toml
 ```
 
 ### Download genesis
@@ -144,6 +164,10 @@ EOF
 
 ### Download one of address books. 
 ##### If node can't start syncing, download other one
+> xalex addrbook
+```
+wget -O $HOME/.lava/config/addrbook.json "https://raw.githubusercontent.com/toolfun/_nets/main/Lava/addrbook.json"
+```
 > lesnik addrbook
 ```
 wget -O $HOME/.lava/config/addrbook.json "https://share2.utsa.tech/lava/addrbook.json"
@@ -192,8 +216,9 @@ echo 'export LAVA_VALOPER_ADDRESS='${LAVA_VALOPER} >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
 
-### Get tokens
-##### Web faucet
+### Get tokens 
+> ## Tokens are currently for those only who have Discord early-lava role
+##### Web faucet ❗ Not available at the moment
 > 1. Do
 ```
 echo $(lavad keys show $LAVA_WALLET -a)
@@ -203,7 +228,7 @@ echo $(lavad keys show $LAVA_WALLET -a)
 curl -X POST -d '{"address": "WALLET ADDRESS", "coins": ["500000000ulava"]}' https://faucet-api.lavanet.xyz/faucet/
 ```
 ##### Discord 
-`https://discord.gg/5VcqgwMmkA`
+`https://discord.gg/lavanetxyz` channel #faucet
 
 ### Query balance
 ```
@@ -220,10 +245,12 @@ lavad tx staking create-validator \
 --chain-id=lava-testnet-1 \
 --commission-rate=0.07 \
 --commission-max-rate=0.20 \
---commission-max-change-rate=0.05 \
+--commission-max-change-rate=0.02 \
 --min-self-delegation=1 \
 --fees=5000ulava \
 --from=$LAVA_WALLET\
 -y
 ```
+
+#
 
