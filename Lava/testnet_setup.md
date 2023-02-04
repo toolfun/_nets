@@ -72,13 +72,25 @@ wget https://lava-binary-upgrades.s3.amazonaws.com/testnet/v0.4.0/lavad
 chmod +x lavad
 mv lavad /usr/local/bin/lavad
 ```
+
+```bash
+cd $HOME
+rm -rf lava
+git clone https://github.com/lavanet/lava.git
+cd lava
+git checkout v0.4.4
+make install
+```
 ### Check version
 ```
 lavad version --long | head | grep -e version: -e commit
 ```
 > version: 0.4.4    
-> commit: bcb202dca4c7fbc1ee0be8b7f4ff066718d99553    
+> commit: bcb202dca4c7fbc1ee0be8b7f4ff066718d99553
 
+```
+sudo systemctl restart lavad && sudo journalctl -u lavad -f -o cat
+```
 
 ### Configure
 ```
