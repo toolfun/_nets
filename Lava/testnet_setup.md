@@ -1,5 +1,6 @@
 
 ## Lava. p2p RPC network. Install guide
+**Current version v0.4.4**
 
 #### *Links*
 > - Website: https://lavanet.xyz/
@@ -65,14 +66,7 @@ echo "export LAVA_PORT=$LAVA_PORT" >> $HOME/.bash_profile
 source ~/.bash_profile
 ```
 
-### Download binary
-```
-cd $HOME
-wget https://lava-binary-upgrades.s3.amazonaws.com/testnet/v0.4.0/lavad
-chmod +x lavad
-mv lavad /usr/local/bin/lavad
-```
-
+### Install
 ```bash
 cd $HOME
 rm -rf lava
@@ -87,10 +81,6 @@ lavad version --long | head | grep -e version: -e commit
 ```
 > version: 0.4.4    
 > commit: bcb202dca4c7fbc1ee0be8b7f4ff066718d99553
-
-```
-sudo systemctl restart lavad && sudo journalctl -u lavad -f -o cat
-```
 
 ### Configure
 ```
