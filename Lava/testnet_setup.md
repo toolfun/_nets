@@ -219,8 +219,9 @@ source $HOME/.bash_profile
 ```
 
 ### Get tokens 
-> ## Tokens are currently for those only who have Discord early-lava role
-##### Web faucet ❗ Not available at the moment
+> ### ❗ Tokens are currently for those only who have Discord early-lava role
+
+<!-- ##### Curl faucet ❗ Not available at the moment
 > 1. Do
 ```
 echo $(lavad keys show $LAVA_WALLET -a)
@@ -229,8 +230,11 @@ echo $(lavad keys show $LAVA_WALLET -a)
 ```
 curl -X POST -d '{"address": "WALLET ADDRESS", "coins": ["500000000ulava"]}' https://faucet-api.lavanet.xyz/faucet/
 ```
-##### Discord 
+##### Discord -->
+
 `https://discord.gg/lavanetxyz` channel #faucet
+
+
 
 ### Query balance
 ```
