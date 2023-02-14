@@ -1,6 +1,6 @@
 
 ## Lava. p2p RPC network. Install guide
-**Current version v0.4.4**
+**Current version v0.5.2**
 
 #### *Links*
 > - Website: https://lavanet.xyz/
@@ -11,8 +11,8 @@
 
 #### *Current version*
 > Network Chain ID: `lava-testnet-1`    
-> version: 0.4.4    
-> commit: bcb202dca4c7fbc1ee0be8b7f4ff066718d99553    
+> version: 0.5.2    
+> commit: 9940478c51aebbc0b86332dba681a1ce9e2c2506    
 
 #### *Address books (first install node)*
 > xalex    
@@ -72,15 +72,15 @@ cd $HOME
 rm -rf lava
 git clone https://github.com/lavanet/lava.git
 cd lava
-git checkout v0.4.4
+git checkout v0.5.2
 make install
 ```
 ### Check version
 ```
 lavad version --long | head | grep -e version: -e commit
 ```
-> version: 0.4.4    
-> commit: bcb202dca4c7fbc1ee0be8b7f4ff066718d99553
+> version: 0.5.2    
+> commit: 9940478c51aebbc0b86332dba681a1ce9e2c2506
 
 ### Configure
 ```
