@@ -193,7 +193,7 @@ curl https://snapshots1-testnet.nodejumper.io/lava-testnet/${SNAP_NAME} | lz4 -d
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable lavad
-sudo systemctl restart haqqd
+sudo systemctl restart lavad
 ```
 
 ### Check logs
