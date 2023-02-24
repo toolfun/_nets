@@ -1,5 +1,5 @@
 
-## Lava. p2p RPC network. Install guide
+## Lava. p2p RPC network. Install guide 
 **Current version v0.6.0**    
 **Upgrade block height: 82570**
 
@@ -246,8 +246,8 @@ echo $(lavad keys show $LAVA_WALLET -a)
 curl -X POST -d '{"address": "WALLET ADDRESS", "coins": ["500000000ulava"]}' https://faucet-api.lavanet.xyz/faucet/
 ```
 -->
-##### Discord 
-`https://discord.gg/lavanetxyz` channel #faucet
+> ##### Discord https://discord.gg/lavanetxyz
+> ##### channel `#faucet` https://discord.com/channels/963778337904427018/1059851367717556314
 
 
 
