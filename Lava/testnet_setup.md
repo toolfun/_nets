@@ -1,6 +1,7 @@
 
 ## Lava. p2p RPC network. Install guide
-**Current version v0.5.2**
+**Current version v0.6.0**    
+**Upgrade block height: 82570**
 
 #### *Links*
 > - Website: https://lavanet.xyz/
@@ -11,8 +12,8 @@
 
 #### *Current version*
 > Network Chain ID: `lava-testnet-1`    
-> version: 0.5.2    
-> commit: 9940478c51aebbc0b86332dba681a1ce9e2c2506    
+> version: 0.6.0    
+> commit: c7f7556cd1cb5bda4ae8a735beb55f82e38014dc    
 
 #### *Address books (first install node)*
 > xalex    
@@ -29,7 +30,7 @@
 sudo apt update && sudo apt upgrade -y
 ```
 ```
-sudo apt install curl tar wget clang pkg-config libssl-dev build-essential bsdmainutils jq git make ncdu gcc chrony screen htop -y
+sudo apt install curl tar wget clang pkg-config libssl-dev build-essential bsdmainutils jq git make gcc ncdu chrony screen htop lz4 -y
 ```
 
 ### Install Go
@@ -72,15 +73,15 @@ cd $HOME
 rm -rf lava
 git clone https://github.com/lavanet/lava.git
 cd lava
-git checkout v0.5.2
+git checkout v0.6.0
 make install
 ```
 ### Check version
 ```
 lavad version --long | head | grep -e version: -e commit
 ```
-> version: 0.5.2    
-> commit: 9940478c51aebbc0b86332dba681a1ce9e2c2506
+> version: 0.6.0    
+> commit: c7f7556cd1cb5bda4ae8a735beb55f82e38014dc
 
 ### Configure
 ```
@@ -91,7 +92,7 @@ lavad config node tcp://localhost:${LAVA_PORT}657
 
 ### Init
 ```
-lavad init "$LAVA_NODENAME" --chain-id lava-testnet-1
+lavad init "$LAVA_NODENAME" --chain-id $LAVA_CHAIN_ID
 ```
 
 ### Set Lava-specific params
@@ -160,7 +161,7 @@ User=$USER
 ExecStart=$(which lavad) start
 Restart=on-failure
 RestartSec=5
-LimitNOFILE=10000
+LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target
 EOF
@@ -185,15 +186,28 @@ curl -s https://snapshots1-testnet.nodejumper.io/lava-testnet/addrbook.json > $H
 curl -s https://snapshots1-testnet.nodejumper.io/lava-testnet/addrbook.json > $HOME/.lava/config/addrbook.json
 ```
 
-### Download snapshot and start. Thanks to [nodejumper](https://nodejumper.io/lava-testnet/sync)
-```
-SNAP_NAME=$(curl -s https://snapshots1-testnet.nodejumper.io/lava-testnet/ | egrep -o ">lava-testnet-1.*\.tar.lz4" | tr -d ">")
-curl https://snapshots1-testnet.nodejumper.io/lava-testnet/${SNAP_NAME} | lz4 -dc - | tar -xf - -C $HOME/.lava
+### Download snapshot and start. This part is correct even if already run a node. Thanks to [nodejumper](https://nodejumper.io/lava-testnet/sync)
+```bash
+# Service stop
+sudo systemctl stop lavad
+
+# Backup validator state file
+cp $HOME/.lava/data/priv_validator_state.json $HOME/.lava/priv_validator_state.json.backup 
+
+# Reset
+lavad tendermint unsafe-reset-all --home $HOME/.lava --keep-addr-book 
+
+# Download snapshot
+curl https://snapshots1-testnet.nodejumper.io/lava-testnet/lava-testnet-1_2023-02-23.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.lava
+
+# Restore validator state file
+mv $HOME/.lava/priv_validator_state.json.backup $HOME/.lava/data/priv_validator_state.json 
 ```
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable lavad
-sudo systemctl restart lavad
+sudo systemctl start lavad
+sudo journalctl -u lavad -f --no-hostname -o cat
 ```
 
 ### Check logs
@@ -221,7 +235,6 @@ source $HOME/.bash_profile
 ```
 
 ### Get tokens 
-> ### ❗ Tokens are currently for those only who have Discord early-lava role
 
 <!-- ##### Curl faucet ❗ Not available at the moment
 > 1. Do
@@ -232,8 +245,8 @@ echo $(lavad keys show $LAVA_WALLET -a)
 ```
 curl -X POST -d '{"address": "WALLET ADDRESS", "coins": ["500000000ulava"]}' https://faucet-api.lavanet.xyz/faucet/
 ```
-##### Discord -->
-
+-->
+##### Discord 
 `https://discord.gg/lavanetxyz` channel #faucet
 
 
@@ -262,3 +275,12 @@ lavad tx staking create-validator \
 
 #
 
+### Deleting
+```
+sudo systemctl disable --now lavad
+sudo systemctl daemon-reload
+cd $HOME
+sudo rm -rf lava .lava $(which lavad) /etc/systemd/system/lavad.service
+```
+
+____
