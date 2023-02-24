@@ -1,6 +1,7 @@
-###  This is a guide for a new setup of latest version of Haqq
-- #### haqqd v1.3.0
-- #### chain ID: haqq_54211-3
+### Haqq validator node install guide
+- haqqd **v1.3.1**    
+- chain ID: **haqq_54211-3**
+
 #
 
 ### Update system and install some tools
@@ -51,15 +52,15 @@ source ~/.bash_profile
 cd $HOME
 git clone https://github.com/haqq-network/haqq
 cd haqq
-git checkout v1.3.0
+git checkout v1.3.1
 make install 
 ```
 > **Check version**    
 ```
-haqqd version --long | head
+haqqd version --long | grep -e "version:" -e "commit"
 ```
-> version: '"v1.3.0"'    
-> commit: 39b4dcb706e72c187fc23ec6dddcfed20c79bc9d
+> version: '"v1.3.1"'    
+> commit: 877c235c1b86b0c734fb482fdebdec71bdc47b07
 
 ### Configure
 ```
@@ -236,4 +237,4 @@ echo 'export HAQQ_VALOPER='${HAQQ_VALOPER} >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
 
-#
+____
