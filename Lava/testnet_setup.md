@@ -13,7 +13,7 @@
 #### *Current version*
 > Network Chain ID: `lava-testnet-1`    
 > version: 0.7.0    
-> commit: c7f7556cd1cb5bda4ae8a735beb55f82e38014dc    
+> commit: 5eecc1a2eab6aeee60f328ef458e1a07d947f242    
 
 #### *Address books (first install node)*
 > xalex    
