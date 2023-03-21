@@ -198,7 +198,7 @@ cp $HOME/.lava/data/priv_validator_state.json $HOME/.lava/priv_validator_state.j
 lavad tendermint unsafe-reset-all --home $HOME/.lava --keep-addr-book 
 
 # Download snapshot
-curl https://snapshots1-testnet.nodejumper.io/lava-testnet/lava-testnet-1_2023-02-23.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.lava
+curl https://snapshots1-testnet.nodejumper.io/lava-testnet/lava-testnet-1_2023-03-21.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.lava
 
 # Restore validator state file
 mv $HOME/.lava/priv_validator_state.json.backup $HOME/.lava/data/priv_validator_state.json 
