@@ -71,4 +71,21 @@ XXXX replace with the `code_id`
 nibid query wasm code-info XXXX
 ```
 
+____
+
+## Instantiate a smart contract
+
+### 
+```
+
+```
+
+
+
+
+
+
+
+____
+
 ## Done
