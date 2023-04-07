@@ -1,0 +1,58 @@
+## Nibiru Incentivized Testnet Phase2
+#### Tutorial for the task: Deploy a smart contract on Nibiru
+Based on the official manual https://nibiru.fi/blog/posts/010-itn-2-cosmwasm-governance.html
+
+#
+
+#### 📌 This manual is for the case if you have not installed nibiru node or want to do the task on another server
+### Install the Nibiru binary
+```
+curl -s https://get.nibiru.fi/! | bash
+```
+
+### Config the app
+```
+nibid config node https://rpc.itn-1.nibiru.fi:443
+nibid config chain-id nibiru-itn-1
+nibid config broadcast-mode block
+```
+
+### Make a working  directory
+```
+mkdir ~/nibiru_contract
+cd ~/nibiru_contract
+```
+
+### Download a smart contract's .wasm binary: cw1_whitelist.wasm
+(Repository https://github.com/NibiruChain/cw-nibiru/tree/main/artifacts-cw-plus)
+```
+wget https://github.com/NibiruChain/cw-nibiru/raw/main/artifacts-cw-plus/cw1_whitelist.wasm
+```
+
+### Add your wallet, which you registered to participate in the testnet to make the task count
+add prefered name
+```
+KEY_NAME=
+```
+recover with seed phrase
+```
+nibid keys add $KEY_NAME --recover
+```
+
+### Make variable for the dowloaded contract file
+```
+CONTRACT_WASM=cw1_whitelist.wasm
+```
+
+### Deploy the contract
+```
+nibid tx wasm store $CONTRACT_WASM --from $KEY_NAME --gas=2000000 --fees=50000unibi
+```
+> Save the `txhash` and the `code_id` value. You will se it in the terminal's output at the very bottom    .
+For example:
+```
+{"key":"code_id","value":"825"}]}]}]'
+txhash: 939ABE3804AA78F987C90A34741C829FB88A216E6971D091875000682717F4FD
+```
+
+## Done
