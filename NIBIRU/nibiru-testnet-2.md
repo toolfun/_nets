@@ -1,4 +1,5 @@
-## Nibiru Testnet-2. 21.12.2022
+## Not relevant will be updated
+#### Nibiru Testnet-2. 21.12.2022
 ## 🚧🚧🚧under construction
 ____
 
