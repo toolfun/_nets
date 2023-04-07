@@ -34,7 +34,7 @@ add prefered name
 ```
 KEY_NAME=
 ```
-recover with seed phrase
+recover with a seed phrase
 ```
 nibid keys add $KEY_NAME --recover
 ```
@@ -46,13 +46,19 @@ CONTRACT_WASM=cw1_whitelist.wasm
 
 ### Deploy the contract
 ```
-nibid tx wasm store $CONTRACT_WASM --from $KEY_NAME --gas=2000000 --fees=50000unibi
+nibid tx wasm store $CONTRACT_WASM --from $KEY_NAME --gas=2000000 --fees=50000unibi -y > my_wasm_store.json
 ```
-> Save the `txhash` and the `code_id` value. You will se it in the terminal's output at the very bottom    .
-For example:
+
+### Get the txhash
 ```
-{"key":"code_id","value":"825"}]}]}]'
-txhash: 939ABE3804AA78F987C90A34741C829FB88A216E6971D091875000682717F4FD
+cat my_wasm_store.json | grep "txhash" | cut -d ':' -f2 | tr -d ' '
 ```
+
+### Get the code_id
+```
+hash=$(cat my_wasm_store.json | grep "txhash" | cut -d ':' -f2 | tr -d ' ')
+nibid q tx --type=hash $hash -oj | jq -r '.logs[].events[] | select(.type == "store_code") | .attributes[] | select(.key == "code_id") | .value'
+```
+
 
 ## Done
