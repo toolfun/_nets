@@ -1,4 +1,4 @@
-## Not relevant will be updated
+## Not relevant will be updated perhaps
 #### Nibiru Testnet-2. 21.12.2022
 ## 🚧🚧🚧under construction
 ____
