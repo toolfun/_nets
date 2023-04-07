@@ -49,16 +49,26 @@ CONTRACT_WASM=cw1_whitelist.wasm
 nibid tx wasm store $CONTRACT_WASM --from $KEY_NAME --gas=2000000 --fees=50000unibi -y > my_wasm_store.json
 ```
 
-### Get the txhash
+### Get the `txhash`
 ```
 cat my_wasm_store.json | grep "txhash" | cut -d ':' -f2 | tr -d ' '
 ```
 
-### Get the code_id
+### Get the `code_id`
+from the file
+```
+cat my_wasm_store.json | grep "code_id" | cut -d ':' -f17 | tr -d ' "|,}]' | sed 's/.$//' | sed '/^$/d'
+```
+OR from the chain:
 ```
 hash=$(cat my_wasm_store.json | grep "txhash" | cut -d ':' -f2 | tr -d ' ')
 nibid q tx --type=hash $hash -oj | jq -r '.logs[].events[] | select(.type == "store_code") | .attributes[] | select(.key == "code_id") | .value'
 ```
 
+### Query
+XXXX replace with the `code_id`
+```
+nibid query wasm code-info XXXX
+```
 
 ## Done
