@@ -80,10 +80,15 @@ hash=$(cat my_wasm_store.json | grep "txhash" | cut -d ':' -f2 | tr -d ' ')
 nibid q tx --type=hash $hash -oj | jq -r '.logs[].events[] | select(.type == "store_code") | .attributes[] | select(.key == "code_id") | .value'
 ```
 
-### Query
-XXXX replace with the `code_id`
+### Add code_id variable
+My code_id is 1968 so I input
 ```
-nibid query wasm code-info XXXX
+code=1968
+```
+
+### Query
+```
+nibid query wasm code-info $code
 ```
 
 ____
@@ -93,12 +98,6 @@ ____
 ### Adding wallet address to variable
 ```
 KEY_ADDRESS="$(nibid keys show $KEY_NAME -a)"
-```
-
-### Add code_id variable. Replace with your code_id
-My code_id is 1968 so I input
-```
-code=1968
 ```
 
 ### Make your own 
