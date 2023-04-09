@@ -103,13 +103,13 @@ code=1968
 
 ### Make your own 
 `name` value    
-`symbol` valie. Must be from 3 to 12 characters
+`symbol` value. Must be from 3 to 12 characters
 
 ```
 init='{"name":"xAlex","symbol":"xAlex","decimals":6,"initial_balances":[{"address":"$KEY_ADDRESS","amount":"2000000"}],"mint":{"minter":"$KEY_ADDRESS"},"marketing":{}}'
 ```
 
-### Make your own 
+### And make your own
 `--label` value 
 ```
 nibid tx wasm instantiate $code $init --from $KEY_NAME --label "xAlex cwbase" --gas-adjustment 1.2 --gas auto  --fees 10000unibi --no-admin
