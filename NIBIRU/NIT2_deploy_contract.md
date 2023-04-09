@@ -51,7 +51,7 @@ nibid tx wasm store $CONTRACT_WASM --from $KEY_NAME --gas=2000000 --fees=50000un
 
 ### Get the `txhash`
 from the output, at the very bottom:    
-![](https://github.com/toolfun/_pics/blob/main/nbtxhexmp.jpg)    
+![](https://github.com/toolfun/_pics/blob/main/nbtxhashexmp.jpg)    
 
 OR get it from the file:
 ```
@@ -59,7 +59,7 @@ cat my_wasm_store.json | grep "txhash" | cut -d ':' -f2 | tr -d ' '
 ```
 
 ### Get the `code_id`
-from the output, at the very bottom:    
+from the output, at the bottom:    
 ![](https://github.com/toolfun/_pics/blob/main/nbcodeexmp.jpg)
 
 from the file
