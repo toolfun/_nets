@@ -34,7 +34,7 @@ add prefered name
 ```
 KEY_NAME=
 ```
-recover with a seed phrase
+recover your wallet with a seed phrase
 ```
 nibid keys add $KEY_NAME --recover
 ```
@@ -82,15 +82,87 @@ ____
 
 ## Instantiate a smart contract
 
+### Adding wallet address to variable
+```
+KEY_ADDRESS="$(nibid keys show $KEY_NAME -a)"
+```
+
+### Add code_id variable. Replace with your code_id
+My code_id is 1968 so I input
+```
+code=1968
+```
+
+### Make your own 
+`name` value    
+`symbol` valie. Must be from 3 to 12 characters
+
+```
+init='{"name":"xAlex","symbol":"xAlex","decimals":6,"initial_balances":[{"address":"$KEY_ADDRESS","amount":"2000000"}],"mint":{"minter":"$KEY_ADDRESS"},"marketing":{}}'
+```
+
+### Make your own 
+`--label` value 
+```
+nibid tx wasm instantiate $code $init --from $KEY_NAME --label "xAlex cwbase" --gas-adjustment 1.2 --gas auto  --fees 10000unibi --no-admin
+```
+
+#### output:
+![](https://github.com/toolfun/_pics/blob/main/nbcntrexmp.jpg)
+
+
+### Add contract address in a variable
+```
+CONTRACT=$(nibid query wasm list-contract-by-code $code --output json | jq -r '.contracts[-1]')
+```
+
+#
+
+##  Successfully broadcast an ExecuteContract transaction
+
+### Enter any address to which you want to broadcast tokens
+I enter `recipient` nibi12su8wat7ks8yvfgqls6n9eyygjlx3r6d4ex9lq    
+The `amount` can be different than 10
+```
+TRANSFER='{"transfer":{"recipient":"nibi12su8wat7ks8yvfgqls6n9eyygjlx3r6d4ex9lq","amount":"10"}}'
+```
+
+### 
+```
+nibid tx wasm execute $CONTRACT $TRANSFER --from $KEY_NAME --gas 200000 --gas-adjustment 1.2 --fees 10000unibi
+```
+
+### Grab the txhash
+![](https://github.com/toolfun/_pics/raw/main/nbbrdcstexmp.jpg)
+
+### Check the recipient's balance after making a transfer
+replace nibi12su8wat7ks8yvfgqls6n9eyygjlx3r6d4ex9lq with your `recepient` adrerss
+```
+RECIPIENT_BALANCE='{"balance": {"address": "nibi12su8wat7ks8yvfgqls6n9eyygjlx3r6d4ex9lq"}}'
+```
+```
+nibid query wasm contract-state smart $CONTRACT "$RECIPIENT_BALANCE" --output json
+```
+
 ### 
 ```
 
 ```
 
+### 
+```
 
+```
 
+### 
+```
 
+```
 
+### 
+```
+
+```
 
 
 ____
