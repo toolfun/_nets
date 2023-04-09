@@ -1,10 +1,18 @@
 ## Nibiru Incentivized Testnet Phase2
-#### Tutorial for the task: Deploy a smart contract on Nibiru
+#### Manual for the tasks 1 - 3
+
+1. Deploy smart contract on Nibiru    
+2. Instantiate a smart contract    
+3. Successfully broadcast an ExecuteContract transaction    
+
 Based on the official manual https://nibiru.fi/blog/posts/010-itn-2-cosmwasm-governance.html
 
 #
 
 #### 📌 This manual is for the case if you have not installed nibiru node or want to do the task on another server
+
+## 1. Deploy smart contract on Nibiru
+
 ### Install the Nibiru binary
 ```
 curl -s https://get.nibiru.fi/! | bash
@@ -80,7 +88,7 @@ nibid query wasm code-info XXXX
 
 ____
 
-## Instantiate a smart contract
+## 2. Instantiate a smart contract
 
 ### Adding wallet address to variable
 ```
@@ -116,9 +124,9 @@ nibid tx wasm instantiate $code $init --from $KEY_NAME --label "xAlex cwbase" --
 CONTRACT=$(nibid query wasm list-contract-by-code $code --output json | jq -r '.contracts[-1]')
 ```
 
-#
+____
 
-##  Successfully broadcast an ExecuteContract transaction
+## 3. Successfully broadcast an ExecuteContract transaction
 
 ### Enter any address to which you want to broadcast tokens
 I enter `recipient` nibi12su8wat7ks8yvfgqls6n9eyygjlx3r6d4ex9lq    
@@ -136,6 +144,7 @@ nibid tx wasm execute $CONTRACT $TRANSFER --from $KEY_NAME --gas 200000 --gas-ad
 ![](https://github.com/toolfun/_pics/raw/main/nbbrdcstexmp.jpg)
 
 ### Check the recipient's balance after making a transfer
+It should increase with the `amount` value entered above    
 replace nibi12su8wat7ks8yvfgqls6n9eyygjlx3r6d4ex9lq with your `recepient` adrerss
 ```
 RECIPIENT_BALANCE='{"balance": {"address": "nibi12su8wat7ks8yvfgqls6n9eyygjlx3r6d4ex9lq"}}'
@@ -144,25 +153,6 @@ RECIPIENT_BALANCE='{"balance": {"address": "nibi12su8wat7ks8yvfgqls6n9eyygjlx3r6
 nibid query wasm contract-state smart $CONTRACT "$RECIPIENT_BALANCE" --output json
 ```
 
-### 
-```
-
-```
-
-### 
-```
-
-```
-
-### 
-```
-
-```
-
-### 
-```
-
-```
 
 
 ____
