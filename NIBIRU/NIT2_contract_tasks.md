@@ -1,15 +1,13 @@
-## Nibiru Incentivized Testnet Phase2
-#### Manual for the tasks 1 - 3
+## Nibiru Incentivized Testnet 
+
+#### Phase2. Manual for the tasks 1 - 3
 
 1. Deploy smart contract on Nibiru    
 2. Instantiate a smart contract    
 3. Successfully broadcast an ExecuteContract transaction    
 
-Based on the official manual https://nibiru.fi/blog/posts/010-itn-2-cosmwasm-governance.html
-
-#
-
 #### 📌 This manual is for the case if you have not installed nibiru node or want to do the task on another server
+---
 
 ## 1. Deploy smart contract on Nibiru
 
