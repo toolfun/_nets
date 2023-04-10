@@ -20,7 +20,7 @@ curl -s https://get.nibiru.fi/! | bash
 
 ### Config the app
 ```
-nibid config node https://rpc.itn-1.nibiru.fi:443
+nibid config node https://rpc.itn-1.nibiru.fi:443 # the rpc node "https://rpc.itn-1.nibiru.fi:443" might not work, find another RPC
 nibid config chain-id nibiru-itn-1
 nibid config broadcast-mode block
 ```
@@ -31,14 +31,14 @@ mkdir ~/nibiru_contract
 cd ~/nibiru_contract
 ```
 
-### Download a smart contract's .wasm binary: cw1_whitelist.wasm
+### Download a smart contract
 (Repository https://github.com/NibiruChain/cw-nibiru/tree/main/artifacts-cw-plus)
 ```
-wget https://github.com/NibiruChain/cw-nibiru/raw/main/artifacts-cw-plus/cw1_whitelist.wasm
+wget https://github.com/NibiruChain/cw-nibiru/raw/main/artifacts-cw-plus/cw20_base.wasm
 ```
 
 ### Add your wallet, which you registered to participate in the testnet to make the task count
-add prefered name
+add prefered name, e.g. KEY_NAME=mywallet
 ```
 KEY_NAME=
 ```
@@ -49,7 +49,7 @@ nibid keys add $KEY_NAME --recover
 
 ### Make variable for the dowloaded contract file
 ```
-CONTRACT_WASM=cw1_whitelist.wasm
+CONTRACT_WASM=cw20_base.wasm
 ```
 
 ### Deploy the contract
