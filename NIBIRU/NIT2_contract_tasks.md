@@ -142,7 +142,7 @@ nibid tx wasm execute $CONTRACT $TRANSFER --from $KEY_NAME --gas 200000 --gas-ad
 
 ### Check the recipient's balance after making a transfer
 It should increase with the `amount` value entered above    
-replace nibi12su8wat7ks8yvfgqls6n9eyygjlx3r6d4ex9lq with your `recepient` adrerss
+replace nibi12su8wat7ks8yvfgqls6n9eyygjlx3r6d4ex9lq with your `recepient` address. It can be any Nibiru address
 ```
 RECIPIENT_BALANCE='{"balance": {"address": "nibi12su8wat7ks8yvfgqls6n9eyygjlx3r6d4ex9lq"}}'
 ```
