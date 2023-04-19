@@ -6,7 +6,7 @@
 2. Instantiate a smart contract    
 3. Successfully broadcast an ExecuteContract transaction    
 
-#### 📌 This manual is for the case if you have not installed nibiru node or want to do the task on another server
+#### 📌 This manual is for the case if you have not installed nibiru node or want to do the task on a separate server
 ---
 
 ## 1. Deploy smart contract on Nibiru
