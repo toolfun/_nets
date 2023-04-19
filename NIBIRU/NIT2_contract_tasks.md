@@ -150,6 +150,7 @@ RECIPIENT_BALANCE='{"balance": {"address": "nibi12su8wat7ks8yvfgqls6n9eyygjlx3r6
 nibid query wasm contract-state smart $CONTRACT "$RECIPIENT_BALANCE" --output json
 ```
 
+![](https://raw.githubusercontent.com/toolfun/_pics/main/qwasmcontrstt.jpg)
 
 
 ____
