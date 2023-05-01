@@ -8,13 +8,15 @@ ____
 
 > ### 🧰 helpful    
 >- 📖 addressbook:    
->- `wget -O $HOME/.nibid/config/addrbook.json https://github.com/toolfun/nets/blob/main/NIBIRU/addrbook.json`    
->- 📖 OR addressbook:
->- `curl -Ls https://snapshots.kjnodes.com/nibiru-testnet/addrbook.json > $HOME/.nibid/config/addrbook.json`    
+>`wget -O $HOME/.nibid/config/addrbook.json https://raw.githubusercontent.com/toolfun/_nets/main/NIBIRU/addrbook.json`    
+>- 📖 OR addressbook:    
+>`curl -Ls https://snapshots.kjnodes.com/nibiru-testnet/addrbook.json > $HOME/.nibid/config/addrbook.json`    
 >- 💧  faucet:    
 `FAUCET_URL="https://faucet.testnet-2.nibiru.fi/"`    
 `ADDRESS=""` *(put your address in "")*    
 `curl -X POST -d '{"address": "'"$ADDRESS"'", "coins": ["110000000unibi","100000000unusd","100000000uusdt"]}' $FAUCET_URL`
+>
+>- [Useful stuff](https://github.com/toolfun/nets/blob/main/NIBIRU/nibiru-incentivized-testnet.md#useful-stuff)
 
 ____
 
@@ -269,7 +271,7 @@ sudo systemctl start nibid && journalctl -u nibid -f -o cat
 
 #
 
-## Delete nibiru
+### Delete nibiru
 ```
 cd $HOME
 systemctl disable --now nibid
