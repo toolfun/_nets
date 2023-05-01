@@ -6,7 +6,7 @@ NIT4 - Trading competition
 
 ____
 
-> ### 🧰 helpful    
+> ### 🧰 helps    
 >- 📖 addressbook:    
 >`wget -O $HOME/.nibid/config/addrbook.json https://raw.githubusercontent.com/toolfun/_nets/main/NIBIRU/addrbook.json`    
 >- 📖 OR addressbook:    
@@ -14,8 +14,9 @@ ____
 >- 💧  faucet:    
 `FAUCET_URL="https://faucet.testnet-2.nibiru.fi/"`    
 `ADDRESS=""` *(put your address in "")*    
-`curl -X POST -d '{"address": "'"$ADDRESS"'", "coins": ["110000000unibi","100000000unusd","100000000uusdt"]}' $FAUCET_URL`
+`curl -X POST -d '{"address": "'"$ADDRESS"'", "coins": ["110000000unibi","100000000unusd","100000000uusdt"]}' $FAUCET_URL`    
 >
+>      Discord faucet https://discord.com/channels/947911971515293759/984840062871175219    
 >- [Restart from snapshot](https://github.com/toolfun/nets/blob/main/NIBIRU/nibiru-incentivized-testnet.md#useful-stuff)
 >- [Delete the node](https://github.com/toolfun/_nets/blob/main/NIBIRU/node_setup.md#delete-nibiru)
 
