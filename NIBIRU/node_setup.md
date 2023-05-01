@@ -16,7 +16,8 @@ ____
 `ADDRESS=""` *(put your address in "")*    
 `curl -X POST -d '{"address": "'"$ADDRESS"'", "coins": ["110000000unibi","100000000unusd","100000000uusdt"]}' $FAUCET_URL`
 >
->- [Useful stuff](https://github.com/toolfun/nets/blob/main/NIBIRU/nibiru-incentivized-testnet.md#useful-stuff)
+>- [Restart from snapshot](https://github.com/toolfun/nets/blob/main/NIBIRU/nibiru-incentivized-testnet.md#useful-stuff)
+>- [Delete the node](https://github.com/toolfun/_nets/blob/main/NIBIRU/node_setup.md#delete-nibiru)
 
 ____
 
@@ -52,13 +53,6 @@ NIBIRU_PORT=17
 NIBIRU_CHAIN_ID=nibiru-itn-1
 ```
 
-<!-- 
-#### In case if you'll set password protect with keyring-backend and some tools
-```
-NIBIRU_PASSWORD=
-```
--->
-
 ```
 echo 'export NIBIRU_NODENAME='\"${NIBIRU_NODENAME}\" >> $HOME/.bash_profile
 echo 'export NIBIRU_PORT='\"${NIBIRU_PORT}\" >> $HOME/.bash_profile
@@ -83,12 +77,12 @@ echo 'export GOPATH=$HOME/go' >> $HOME/.bash_profile
 echo 'export GO111MODULE=on' >> $HOME/.bash_profile
 echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> $HOME/.bash_profile && . $HOME/.bash_profile
 ```
-#### check go
+#### Check
 ```
 go version
 ```
 
-### Download and install
+### Download and install nibiru
 ```bash
 cd $HOME
 git clone https://github.com/NibiruChain/nibiru
@@ -272,6 +266,10 @@ sudo systemctl start nibid && journalctl -u nibid -f -o cat
 #
 
 ### Delete nibiru
+📌 Make sure you have made backups:
+1. **wallet mnemonic**    
+2. **private validator key** which is `~/.nibid/config/priv_validator_key.json`    
+
 ```
 cd $HOME
 systemctl disable --now nibid
