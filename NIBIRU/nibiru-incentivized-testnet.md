@@ -226,11 +226,53 @@ nibid tx staking create-validator \
 --pubkey=$(nibid tendermint show-validator) \
 --moniker="$NIBIRU_NODENAME" \
 --chain-id=$NIBIRU_CHAIN_ID \
---commission-rate="0.06" \
---commission-max-rate="0.22" \
---commission-max-change-rate="0.05" \
+--commission-rate="0.07" \
+--commission-max-rate="0.20" \
+--commission-max-change-rate="0.02" \
 --min-self-delegation="1000000" \
 --from=$NIBIRU_WALLET \
 --fees=5000unibi \
 -y
+```
+
+____
+
+## Useful stuff
+### Restart from snapshot (by kjnodes)
+#### Install lz4
+```
+sudo apt update && sudo apt install lz4 -y
+```
+
+#### Disable state sync
+```
+sed -i 's/enable = true/enable = false/g' $HOME/.nibid/config/config.toml
+```
+
+#### Stop nibiru and clear old data
+```
+sudo systemctl stop nibid
+cp $HOME/.nibid/data/priv_validator_state.json $HOME/.nibid/priv_validator_state.json.backup
+rm -rf $HOME/.nibid/data
+```
+
+#### Download snapshot
+```
+curl -L https://snapshots.kjnodes.com/nibiru-testnet/snapshot_latest.tar.lz4 | tar -Ilz4 -xf - -C $HOME/.nibid
+mv $HOME/.nibid/priv_validator_state.json.backup $HOME/.nibid/data/priv_validator_state.json
+```
+
+#### Restart nibiru and check
+```
+sudo systemctl start nibid && journalctl -u nibid -f -o cat
+```
+
+#
+
+## Delete nibiru
+```
+cd $HOME
+systemctl disable --now nibid
+systemctl daemon-reload && \
+rm -rf /etc/systemd/system/nibid.service .nibid nibiru $(which nibid)
 ```
