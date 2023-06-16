@@ -207,7 +207,6 @@ mv $HOME/.lava/priv_validator_state.json.backup $HOME/.lava/data/priv_validator_
 sudo systemctl daemon-reload
 sudo systemctl enable lavad
 sudo systemctl start lavad
-sudo journalctl -u lavad -f --no-hostname -o cat
 ```
 
 ### Check logs
