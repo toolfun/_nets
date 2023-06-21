@@ -1,3 +1,8 @@
+#### https://twitter.com/i/spaces/1YpJkgNmPgYJj
+#### Jun 20, 38:46
+____
+
+
 ### Introduction
 The session begins with a warm welcome to all attendees and an outline of the agenda. The topics to be discussed include Empower and Empower Chain, updates on testnets, the roadmap, and various announcements.
 
