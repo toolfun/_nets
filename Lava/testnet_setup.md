@@ -186,7 +186,10 @@ curl -s https://snapshots1-testnet.nodejumper.io/lava-testnet/addrbook.json > $H
 curl -s https://snapshots1-testnet.nodejumper.io/lava-testnet/addrbook.json > $HOME/.lava/config/addrbook.json
 ```
 
-### Download snapshot and start. This part is correct even if already run a node. Thanks to [nodejumper](https://nodejumper.io/lava-testnet/sync)
+### Download snapshot and start. This part is correct even if already run a node. Thanks to [kjnodes](https://services.kjnodes.com/)
+```
+sudo apt install lz4
+```
 ```bash
 # Service stop
 sudo systemctl stop lavad
@@ -195,10 +198,10 @@ sudo systemctl stop lavad
 cp $HOME/.lava/data/priv_validator_state.json $HOME/.lava/priv_validator_state.json.backup 
 
 # Reset
-lavad tendermint unsafe-reset-all --home $HOME/.lava --keep-addr-book 
+rm -rf $HOME/.lava/data 
 
 # Download snapshot
-curl https://snapshots1-testnet.nodejumper.io/lava-testnet/lava-testnet-1_2023-03-21.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.lava
+curl -L https://snapshots.kjnodes.com/lava-testnet/snapshot_latest.tar.lz4 | tar -Ilz4 -xf - -C $HOME/.lava
 
 # Restore validator state file
 mv $HOME/.lava/priv_validator_state.json.backup $HOME/.lava/data/priv_validator_state.json 
