@@ -1,5 +1,5 @@
 
-## Lava. p2p RPC network. Install guide 
+## Lava. p2p RPC network. Install node guide 
 **lavad version v0.14.0**    
 **upgrade block height: 254645**
 
