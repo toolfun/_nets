@@ -1,3 +1,4 @@
+# 🚧 outdated
 ### Lamina1. Node setup giude.
 ____
 
