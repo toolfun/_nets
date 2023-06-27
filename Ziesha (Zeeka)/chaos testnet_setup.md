@@ -1,4 +1,4 @@
-# 🛑 guide is for old testnet and not relevant any more
+# 🚧 outdated
 
 > ❣️ *The first phase of the Chaos Testnet finished 28.10.2022, gracefully terminated at block 5000*    
 > ❣️ *The next phase of our testnet is scheduled to start on Monday 21st November*    
