@@ -48,7 +48,7 @@ Result:
 version: 1.0.0    
 commit: 5d80d3c26256d9809cbd0b4dacfd0a8dbcaacc95
 
-### Inint dir
+### Init dir
 ```
 empowerd init "$EMP_M" --chain-id $EMP_CHAIN
 ```
