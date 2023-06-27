@@ -1,5 +1,5 @@
 [![](https://github.com/toolfun/_pics/blob/main/logoprfhmn222fr4f.jpg)](https://humans.ai/proof-of-human)
-
+# 🚧 outdated
 ### Humans.ai
 #### *A human behind every AI decision*
 ### Validator install guide
