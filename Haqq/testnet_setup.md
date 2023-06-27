@@ -1,3 +1,4 @@
+# 🚧 outdated
 ### Haqq validator node install guide
 - haqqd **v1.3.1**    
 - chain ID: **haqq_54211-3**
