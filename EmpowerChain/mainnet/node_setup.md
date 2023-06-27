@@ -29,7 +29,7 @@ export EMP_K=
 export EMP_CHAIN=empowerchain-1
 export EMP_PORT=
 ```
-source ~/.bash_profile 
+source profile file
 
 ### Install empowerd
 ```
@@ -40,11 +40,10 @@ cd chain && \
 make install
 ```
 
-### Verify empowerd version
+- Verify empowerd version
 ```bash
 empowerd version --long | grep -e version -e commit
 ```
-Result:    
 version: 1.0.0    
 commit: 5d80d3c26256d9809cbd0b4dacfd0a8dbcaacc95
 
@@ -95,12 +94,26 @@ sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025umpwr\"/" 
 
 ### Reset chain
 ```
-
+empowerd tendermint unsafe-reset-all --home $HOME/.empowerchain --keep-addr-book
 ```
 
 ### Create service
 ```
+sudo tee /etc/systemd/system/empowerd.service > /dev/null << EOF
+[Unit]
+Description=Empower node
+After=network-online.target
 
+[Service]
+User=$USER
+ExecStart=$(which empowerd) start
+Restart=on-failure
+RestartSec=5
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
+EOF
 ```
 
 ### Address book, seeds, peers
