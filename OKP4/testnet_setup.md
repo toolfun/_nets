@@ -1,5 +1,5 @@
 ## TESTNET now for the 150 "druids". Guide is not relevant
-### 🚧🚧 Under construction 🚧🚧
+# 🚧 outdated
 ____
 
 ### ~~OKP4 Setup~~
