@@ -1,5 +1,6 @@
 
 ![](https://github.com/toolfun/_pics/blob/eaed8ab851a278e3bf5c59b0f38e09932dc10b1a/marsprotocol.jpg)
+# 🚧 outdated
 ### Mars testnet setup guide
 
 - Website: https://marsprotocol.io/
