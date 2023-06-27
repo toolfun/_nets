@@ -1,5 +1,5 @@
 ### Quasar node
-# 🚧🚧🚧 under construction
+# 🚧 outdated
 
 > - chain id: qsr-questnet-04    
 > - binary version: v0.0.2-alpha-11
