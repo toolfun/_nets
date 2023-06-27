@@ -1,4 +1,4 @@
-## 🚧🚧🚧 under construction
+# 🚧 outdated
 
 ### Clone repo & install
 ```
