@@ -92,7 +92,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.025umpwr\"/" $HOME/.empowerchain/config/app.toml
 ```
 
-### Reset chain
+### Reset state
 ```
 empowerd tendermint unsafe-reset-all --home $HOME/.empowerchain --keep-addr-book
 ```
