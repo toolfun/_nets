@@ -145,7 +145,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.025ulava"|g' $HOME/.lava/config/app.toml
 ```
 
-### Reset chain
+### Reset
 ```
 lavad tendermint unsafe-reset-all --home $HOME/.lava
 ```
