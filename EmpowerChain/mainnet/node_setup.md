@@ -69,7 +69,7 @@ empowerd init "$EMP_M" --chain-id $EMP_CHAIN
 
 ### Config app
 ```
-empowerd config keyring-backend test
+empowerd config keyring-backend file
 empowerd config chain-id $EMP_CHAIN
 empowerd config node tcp://localhost:${EMP_PORT}657
 ```
