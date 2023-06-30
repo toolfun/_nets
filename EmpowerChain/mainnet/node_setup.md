@@ -23,13 +23,28 @@ fi
 ```
 
 ### Add variables to env
-```
+```bash
+# any moniker
 export EMP_M=
+
+# any keyname
 export EMP_K=
+
+# chain-id is preset
 export EMP_CHAIN=empowerchain-1
+
+# customize ports, any 2 didgits
 export EMP_PORT=
 ```
-source profile file
+```
+echo "export EMP_M=$EMP_M" >> $HOME/.bash_profile
+echo "export EMP_K=$EMP_K" >> $HOME/.bash_profile
+echo "export EMP_CHAIN=$EMP_CHAIN" >> $HOME/.bash_profile
+echo "export EMP_PORT=$EMP_PORT" >> $HOME/.bash_profile
+```
+```
+source $HOME/.bash_profile
+```
 
 ### Install empowerd
 ```
@@ -50,6 +65,13 @@ commit: 5d80d3c26256d9809cbd0b4dacfd0a8dbcaacc95
 ### Init dir
 ```
 empowerd init "$EMP_M" --chain-id $EMP_CHAIN
+```
+
+### Config app
+```
+empowerd config keyring-backend test
+empowerd config chain-id $EMP_CHAIN
+empowerd config node tcp://localhost:${EMP_PORT}657
 ```
 
 ### Genesis
