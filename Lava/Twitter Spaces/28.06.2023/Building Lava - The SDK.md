@@ -23,7 +23,7 @@ The main challenges in building the SDK were:
 - Adapting the SDK to run in a browser in a single thread, given its high concurrency.
 
 ### Integration with Existing Libraries
-To make the transition to using the Lava SDK as smooth as possible, the team worked on integrating it with existing libraries like Etherjs. The goal is to provide an easy switch to the Lava SDK, where users can simply switch the provider and everything will work as before, but without using a centralized RPC.
+To make the transition to using the Lava SDK as smooth as possible, the team worked on integrating it with existing libraries like Ether.js. The goal is to provide an easy switch to the Lava SDK, where users can simply switch the provider and everything will work as before, but without using a centralized RPC.
 
 ### Future Functionalities and Improvements
 The team is working on several functionalities and improvements for the SDK, including a provider picker for performance tracking and optimization, session handling for reducing overhead on the provider side, WebSocket subscriptions, and integration with badges.
