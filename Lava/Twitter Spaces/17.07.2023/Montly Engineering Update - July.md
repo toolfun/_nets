@@ -1,5 +1,6 @@
 17.07.2023    
-Sum Twitter Spaces https://twitter.com/i/spaces/1OdKrzzknoQKX
+Twitter Spaces https://twitter.com/i/spaces/1OdKrzzknoQKX    
+`Summary`
 
 # Monthly Engineering Update - July
 
