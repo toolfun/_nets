@@ -1,6 +1,9 @@
 
-https://twitter.com/i/spaces/1YpJkgNmPgYJj    
-Jun 20, 2023. 38:46
+
+20.06.2023    
+Twitter Spaces https://twitter.com/i/spaces/1YpJkgNmPgYJj    
+`Summary`
+
 # EmpowerChain Community Call
 
 
