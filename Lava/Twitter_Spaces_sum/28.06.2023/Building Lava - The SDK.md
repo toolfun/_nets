@@ -6,7 +6,7 @@ Twitter Spaces https://twitter.com/i/spaces/1ZkJzXeLzgWKv?s=20
 
 
 ### Introduction to Lava and the SDK
-The conversation begins with an introduction to Lava, an open-source, community-led, decentralized RPC for all of Web Three. The focus of the discussion is the Lava SDK, which provides plug-and-play access to the public decentralized RPC from a browser or backend. The SDK is fully open-source and supports multiple protocols, including JSON, Rest, gRPC, and others. The SDK is also chain-agnostic, supporting any chains available on Lava.
+The conversation begins with an introduction to Lava, an open-source, community-led, decentralized RPC for all of Web3. The focus of the discussion is the Lava SDK, which provides plug-and-play access to the public decentralized RPC from a browser or backend. The SDK is fully open-source and supports multiple protocols, including JSON, Rest, gRPC, and others. The SDK is also chain-agnostic, supporting any chains available on Lava.
 
 ### Unique Features of Lava SDK
 The Lava SDK is distinguished by its peer-to-peer decentralized access, automated pairing functionality, multi-chain and multi-protocol support, built-in concurrency and subscriptions, and integrations with popular libraries. The peer-to-peer security feature allows decentralized access for RPC across different chains and architectures, enhancing reliability, privacy, and censorship resistance.
