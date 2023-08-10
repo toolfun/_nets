@@ -28,7 +28,7 @@ fi
 export EMP_M=
 
 # any keyname
-export EMP_K=
+export EMP_W=
 
 # chain-id is preset
 export EMP_CHAIN=empowerchain-1
@@ -38,7 +38,7 @@ export EMP_PORT=
 ```
 ```
 echo "export EMP_M=$EMP_M" >> $HOME/.bash_profile
-echo "export EMP_K=$EMP_K" >> $HOME/.bash_profile
+echo "export EMP_W=$EMP_W" >> $HOME/.bash_profile
 echo "export EMP_CHAIN=$EMP_CHAIN" >> $HOME/.bash_profile
 echo "export EMP_PORT=$EMP_PORT" >> $HOME/.bash_profile
 ```
