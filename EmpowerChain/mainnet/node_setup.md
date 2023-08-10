@@ -62,7 +62,7 @@ empowerd version --long | grep -e version -e commit
 version: 1.0.0    
 commit: 5d80d3c26256d9809cbd0b4dacfd0a8dbcaacc95
 
-### Init dir
+### Init
 ```
 empowerd init "$EMP_M" --chain-id $EMP_CHAIN
 ```
@@ -144,22 +144,19 @@ seeds="a1427b456513ab70967a2a5c618d347bc89e8848@seed.empowerchain.io:26656,6740f
 sed -i -e 's|^seeds *=.*|seeds = "'$seeds'"|' $HOME/.empowerchain/config/config.toml
 ```
 
-### (Snapshot) Start
-```
+### Snapshot
+https://polkachu.com/tendermint_snapshots/empower
 
-```
 
-### Add OR recover wallet
+### Add wallet (OR recover) 
 ```
-
+empowerd keys add $EMP_W
+```
+```
+empowerd keys add $EMP_W --recover
 ```
 
 ### Variables with your wallet and valoper addresses
-```
-
-```
-
-### Tokens 
 ```
 
 ```
