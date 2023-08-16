@@ -7,24 +7,23 @@
 <!-- **upgrade block height: 266490** -->
 
 #### *Links*
-> - Website: https://lavanet.xyz/
-> - Docs https://docs.lavanet.xyz/
-> - Discord https://discord.gg/lavanetxyz
-> - Explorer https://bd.lavanet.xyz/
-> - Explorer NG https://lava.explorers.guru/
+- Website: https://lavanet.xyz/
+- Docs https://docs.lavanet.xyz/
+- Discord https://discord.gg/lavanetxyz
+- Explorer https://lava.explorers.guru/
 
 #### *Current version*
-> Network Chain ID: `lava-testnet-2`    
-> version: v0.21.0    
-> commit: 95d4fddfa63c94c9a4d98ff1d6490cc899b6b86d    
+- Network Chain ID: `lava-testnet-2`    
+- version: v0.21.0    
+- commit: 95d4fddfa63c94c9a4d98ff1d6490cc899b6b86d    
 
 #### *Address books (first install a node)*
-> xalex    
-> `wget -O $HOME/.lava/config/addrbook.json "https://raw.githubusercontent.com/toolfun/_nets/main/Lava/addrbook.json"`    
-> lesnik    
-> `wget -O $HOME/.lava/config/addrbook.json "https://share2.utsa.tech/lava/addrbook.json"`    
-> nodejumper    
-> `curl -s https://snapshots1-testnet.nodejumper.io/lava-testnet/addrbook.json > $HOME/.lava/config/addrbook.json`
+- xalex    
+`wget -O $HOME/.lava/config/addrbook.json "https://raw.githubusercontent.com/toolfun/_nets/main/Lava/addrbook.json"`    
+- lesnik    
+`wget -O $HOME/.lava/config/addrbook.json "https://share2.utsa.tech/lava/addrbook.json"`    
+- nodejumper    
+`curl -s https://snapshots1-testnet.nodejumper.io/lava-testnet/addrbook.json > $HOME/.lava/config/addrbook.json`
 
 #
 
@@ -39,7 +38,7 @@ sudo apt install curl tar wget clang pkg-config libssl-dev build-essential bsdma
 ### Install Go
 ```
 if ! [ -x "$(command -v go)" ]; then
-  ver="1.20.5"
+  ver="1.20.7"
   cd $HOME
   wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
   sudo rm -rf /usr/local/go
