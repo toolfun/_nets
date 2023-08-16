@@ -38,7 +38,7 @@ sudo apt install curl tar wget clang pkg-config libssl-dev build-essential bsdma
 ### Install Go
 ```
 if ! [ -x "$(command -v go)" ]; then
-  ver="1.20.7"
+  ver="1.20.5"
   cd $HOME
   wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
   sudo rm -rf /usr/local/go
@@ -312,6 +312,20 @@ ____
 # Rejoin to Lava Testnet-2
 
 - Official docs fo setup & rejoin https://docs.lavanet.xyz/testnet    
+
+### Install Go v1.20.5
+```
+if ! [ -x "$(command -v go)" ]; then
+  ver="1.20.5"
+  cd $HOME
+  wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
+  sudo rm -rf /usr/local/go
+  sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
+  sudo rm "go$ver.linux-amd64.tar.gz"
+  echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
+  source ~/.bash_profile
+fi
+```
 
 ### Reset
 ```
