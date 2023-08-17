@@ -336,7 +336,7 @@ lavad tendermint unsafe-reset-all --home $HOME/.lava
 ### Install new binary
 ```
 cd
-rm -r $HOME/lava
+sudo rm -r $HOME/lava
 git clone https://github.com/lavanet/lava
 cd $HOME/lava
 git checkout v0.21.1.2
