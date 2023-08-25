@@ -5,23 +5,38 @@ ____
 
 ### Server update
 ```
-
+sudo apt update
+sudo apt install make gcc curl wget git jq lz4 build-essential screen nano ncdu -qy
+sudo apt upgrade
 ```
 
-
-### Go install
+### Increasing open files limit
+```
+sudo su -c "echo 'fs.file-max = 65536' >> /etc/sysctl.conf"
+sudo sysctl -p
 ```
 
+### Go installation
+https://go.dev/doc/install    
+You can change version under the `v` variable
+```
+sudo rm -rf /usr/local/go
+v="1.21.0"
+wget "https://golang.org/dl/go$v.linux-amd64.tar.gz"
+sudo tar -C /usr/local -xzf "go$v.linux-amd64.tar.gz"
+rm "go$v.linux-amd64.tar.gz"
+echo "export PATH=$PATH:/usr/local/go/bin:~/go/bin" >> ~/.bash_profile
+source $HOME/.bash_profile
 ```
 
 ### Variables
 ```
-ANDROMEDA_NODENAME=xAlex
-ANDROMEDA_WALLET=wAlex
-ANDROMEDA_PORT=13
+ANDROMEDA_M=xAlex
+ANDROMEDA_W=wAlex
+ANDROMEDA_PORT=15
 ```
 ```
-ANDROMEDA_CHAIN_ID=galileo-3
+ANDROMEDA_CHAIN=galileo-3
 ```
 ```
 echo "export ANDROMEDA_NODENAME=$ANDROMEDA_NODENAME" >> $HOME/.bash_profile
