@@ -1,4 +1,4 @@
-# Andromeda. Installation node guide
+# Andromeda. Installation guide
 - Docs: https://docs.andromedaprotocol.io/andromeda-chain/node-and-validator-setup
 - Explorer: https://explorer.kjnodes.com/andromeda-testnet
 - Explorer: https://andromeda.explorers.guru
