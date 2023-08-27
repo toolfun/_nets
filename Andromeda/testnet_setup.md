@@ -39,12 +39,12 @@ Think up and write a moniker (nodename), wallet name and change port
 moniker=
 wallet=
 port=15
-chain-id=galileo-3
+chain=galileo-3
 ```
 ```
-echo "export ANDROMEDA_N=$moniler" >> $HOME/.bash_profile
+echo "export ANDROMEDA_M=$moniker" >> $HOME/.bash_profile
 echo "export ANDROMEDA_W=$wallet" >> $HOME/.bash_profile
-echo "export ANDROMEDA_CHAIN=$chain-id" >> $HOME/.bash_profile
+echo "export ANDROMEDA_CHAIN=$chain" >> $HOME/.bash_profile
 echo "export ANDROMEDA_PORT=$port" >> $HOME/.bash_profile
 source ~/.bash_profile
 ```
@@ -57,37 +57,24 @@ cd andromedad
 git checkout galileo-3-v1.1.0-beta1 
 make install
 ```
+> version: galileo-3-v1.1.0-beta1    
+> commit: b3f8d880dfcdb3265d321e465b47b04071d9480f
 
-### Init
+### Init the node
 ```
 andromedad init "$ANDROMEDA_M" --chain-id $ANDROMEDA_CHAIN
 ```
 
-### Config
+### Node config
 ```
-andromedad config keyring-backend file
+andromedad config keyring-backend test
 andromedad config chain-id galileo-3
 andromedad config node tcp://localhost:${ANDROMEDA_PORT}657
 ```
 
-### Genesis
+### Download genesis
 ```
-wget -O $HOME/.andromedad/config/genesis.json "https://raw.githubusercontent.com/obajay/nodes-Guides/main/AndromedaProtocol/genesis.json"
-```
-
-### Wallet
-```
-andromedad keys add $ANDROMEDA_W
-```
-
-###
-```
-
-```
-
-###
-```
-
+wget -O $HOME/.andromedad/config/genesis.json "https://github.com/andromedaprotocol/testnets/raw/galileo-3/genesis.json"
 ```
 
 ### Config indexer (off) *optional*
@@ -118,12 +105,12 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0uandr\"/;" ~/.andromedad/config/app.toml
 ```
 
-### Addrbook
+### Addrbook (kjnodes)
 ```
-wget -O $HOME/.andromedad/config/addrbook.json "https://raw.githubusercontent.com/obajay/nodes-Guides/main/AndromedaProtocol/addrbook.json"
+curl -Ls https://snapshots.kjnodes.com/andromeda-testnet/addrbook.json > $HOME/.andromedad/config/addrbook.json
 ```
 
-### Service
+### Service file
 ```
 sudo tee /etc/systemd/system/andromedad.service > /dev/null <<EOF
 [Unit]
@@ -142,20 +129,24 @@ WantedBy=multi-user.target
 EOF
 ```
 
-### State sync / snapshot
+### Snapshot (kjnodes)
+```
+curl -L https://snapshots.kjnodes.com/andromeda-testnet/snapshot_latest.tar.lz4 | tar -Ilz4 -xf - -C $HOME/.andromedad
 ```
 
-```
-
-###
+### Starting
 ```
 sudo systemctl daemon-reload
-sudo systemctl enable andromedad
-sudo systemctl restart andromedad && sudo journalctl -u andromedad -f -o cat
+sudo systemctl enable --now andromedad && sudo journalctl -u andromedad -f -o cat
+```
+
+### Wallet
+```
+andromedad keys add $ANDROMEDA_W
 ```
 
 ### Faucet
-Discord
+Discord https://discord.gg/6UzCWn84cw
 
 
 ### Create validator
@@ -173,3 +164,12 @@ Discord
 
 ```
 
+###
+```
+
+```
+
+###
+```
+
+```
