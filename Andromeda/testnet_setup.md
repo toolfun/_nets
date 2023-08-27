@@ -140,9 +140,14 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now andromedad && sudo journalctl -u andromedad -f -o cat
 ```
 
-### Wallet
+### Add new or existing wallet
+New
 ```
 andromedad keys add $ANDROMEDA_W
+```
+Existing
+```
+andromedad keys add $ANDROMEDA_W --recover
 ```
 
 ### Faucet
@@ -151,7 +156,16 @@ Discord https://discord.gg/6UzCWn84cw
 
 ### Create validator
 ```
-
+andromedad tx staking create-validator \
+  --amount=1000000 uandr \
+  --pubkey=$(andromedad tendermint show-validator) \
+  --moniker="$ANDROMEDA_M" \
+  --commission-rate="0.05" \
+  --commission-max-rate="0.20" \
+  --commission-max-change-rate="0.01" \
+  --min-self-delegation="1" \
+  --gas="700000" \
+  --from=$ANDROMEDA_W
 ```
 
 ###
@@ -159,17 +173,3 @@ Discord https://discord.gg/6UzCWn84cw
 
 ```
 
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
