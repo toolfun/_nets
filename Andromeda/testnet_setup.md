@@ -34,9 +34,10 @@ source $HOME/.bash_profile
 ```
 
 ### Variables
+Choose your moniker (nodename) `ANDROMEDA_M` and wallet name `ANDROMEDA_W`
 ```
-ANDROMEDA_M=xAlex
-ANDROMEDA_W=wAlex
+ANDROMEDA_M=
+ANDROMEDA_W=
 ANDROMEDA_PORT=15
 ```
 ```
