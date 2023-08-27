@@ -1,5 +1,8 @@
-# Andromeda
-### 🚧🚧🚧 under construction
+# Andromeda. Installation node guide
+- Docs: https://docs.andromedaprotocol.io/andromeda-chain/node-and-validator-setup
+- Explorer: https://explorer.kjnodes.com/andromeda-testnet
+- Explorer: https://andromeda.explorers.guru
+- Discord https://discord.gg/6UzCWn84cw
 
 ____
 
