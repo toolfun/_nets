@@ -34,22 +34,18 @@ source $HOME/.bash_profile
 ```
 
 ### Variables
-Choose your moniker (nodename) `ANDROMEDA_M` and wallet name `ANDROMEDA_W`
+Think up and write a moniker (nodename), wallet name and change port
 ```
-ANDROMEDA_M=
-ANDROMEDA_W=
-ANDROMEDA_PORT=15
-```
-```
-ANDROMEDA_CHAIN=galileo-3
+moniker=
+wallet=
+port=15
+chain-id=galileo-3
 ```
 ```
-echo "export ANDROMEDA_NODENAME=$ANDROMEDA_NODENAME" >> $HOME/.bash_profile
-echo "export ANDROMEDA_WALLET=$ANDROMEDA_WALLET" >> $HOME/.bash_profile
-echo "export ANDROMEDA_CHAIN_ID=$ANDROMEDA_CHAIN_ID" >> $HOME/.bash_profile
-echo "export ANDROMEDA_PORT=$ANDROMEDA_PORT" >> $HOME/.bash_profile
-```
-```
+echo "export ANDROMEDA_N=$moniler" >> $HOME/.bash_profile
+echo "export ANDROMEDA_W=$wallet" >> $HOME/.bash_profile
+echo "export ANDROMEDA_CHAIN=$chain-id" >> $HOME/.bash_profile
+echo "export ANDROMEDA_PORT=$port" >> $HOME/.bash_profile
 source ~/.bash_profile
 ```
 
@@ -64,7 +60,7 @@ make install
 
 ### Init
 ```
-andromedad init "$ANDROMEDA_NODENAME" --chain-id $ANDROMEDA_CHAIN_ID
+andromedad init "$ANDROMEDA_M" --chain-id $ANDROMEDA_CHAIN
 ```
 
 ### Config
@@ -81,7 +77,7 @@ wget -O $HOME/.andromedad/config/genesis.json "https://raw.githubusercontent.com
 
 ### Wallet
 ```
-andromedad keys add $ANDROMEDA_WALLET
+andromedad keys add $ANDROMEDA_W
 ```
 
 ###
@@ -110,7 +106,7 @@ sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${A
 pruning="custom"
 pruning_keep_recent="100"
 pruning_keep_every="0"
-pruning_interval="49"
+pruning_interval="19"
 sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/.andromedad/config/app.toml
 sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/.andromedad/config/app.toml
 sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.andromedad/config/app.toml
