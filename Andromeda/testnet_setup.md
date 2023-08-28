@@ -37,7 +37,7 @@ source $HOME/.bash_profile
 ```
 
 ### Variables
-Think up and write a moniker (nodename), wallet name and change port
+Think up and write a `moniker` (nodename), name of the `wallet` and change `port` (you can put your own number). Keep the `chain` intact
 ```
 moniker=
 wallet=
