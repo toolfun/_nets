@@ -4,7 +4,7 @@
 - Docs: https://github.com/DecentralCardGame/Testnet
 - Explorer: https://explorer.stavr.tech/cardchain
 - Explorer: https://explorer.kjnodes.com/cardchain-testnet
-- Discord:https://discord.gg/xvuEfcaUd6
+- Discord: https://discord.gg/xvuEfcaUd6
 
 ____
 
@@ -88,14 +88,34 @@ sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.Cardchain/config/app.toml
 ```
 
-###
+### Snapshot or state sync
+Search in the Crowd Control Discord https://discord.gg/xvuEfcaUd6 or ask the community
+
+
+### Service file for Cardchaind
 ```
+sudo tee /etc/systemd/system/Cardchain.service > /dev/null <<EOF
+[Unit]
+Description=Cardchain_node
+After=network-online.target
+
+[Service]
+User=$USER
+ExecStart=$(which Cardchain) start
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
+EOF
 
 ```
 
-###
+### Start Cardchaind
 ```
-
+sudo systemctl daemon-reload
+sudo systemctl enable --now Cardnaind && sudo journalctl -u Cardnaind -f -o cat
 ```
 
 ###
