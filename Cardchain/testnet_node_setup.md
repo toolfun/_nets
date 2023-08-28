@@ -1,6 +1,5 @@
 ### DecentralCardGame - Crowd Control
-# 🚧🚧🚧 under construction
-<!-- # ############################################## Cardchain testnet node installation -->
+# Cardchain testnet node installation
 - Docs: https://github.com/DecentralCardGame/Testnet
 - Explorer: https://explorer.stavr.tech/cardchain
 - Explorer: https://explorer.kjnodes.com/cardchain-testnet
@@ -9,8 +8,9 @@
 ____
 
 
-### https://go.dev/doc/install
-You can change version under the v variable
+### Go installation
+Off. docs: https://go.dev/doc/install    
+You can change version under the `v` variable:
 ```
 sudo rm -rf /usr/local/go
 v="1.21.0"
