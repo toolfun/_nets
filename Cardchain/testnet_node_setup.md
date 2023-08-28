@@ -112,93 +112,50 @@ EOF
 
 ```
 
-### Start Cardchaind
+### Start Cardchain
 ```
 sudo systemctl daemon-reload
-sudo systemctl enable --now Cardnaind && sudo journalctl -u Cardnaind -f -o cat
+sudo systemctl enable --now Cardchaind && sudo journalctl -u Cardchaind -f -o cat
 ```
 
 ### Add new or existing wallet
 New
 ```
-Cardnaind keys add $CARDCHAIN_W
+Cardchaind keys add $CARDCHAIN_W
 ```
 Existing
 ```
-Cardnaind keys add $CARDCHAIN_W --recover
+Cardchaind keys add $CARDCHAIN_W --recover
 ```
 
-###
+### Create validator
+```
+Cardchain tx staking create-validator \
+  --from=$CARDCHAIN_W \
+  --amount=1000000ubpf \
+  --moniker=$CARDCHAIN_M \
+  --chain-id=$CARDCHAIN_CHAIN \
+  --commission-rate=0.1 \
+  --commission-max-rate=0.5 \
+  --commission-max-change-rate=0.1 \
+  --min-self-delegation=1 \
+  --pubkey=$(Cardchaind tendermint show-validator) \
+  --yes
 ```
 
+____
+
+
+### Delete Cardchain node
+```bash
+# Deleting service
+sudo systemctl stop Cardchaind
+sudo rm /etc/systemd/system/Cardchaind.service
+
+# Deleting work folder folder
+sudo rm -r $HOME/.Cardchain/
+
+# Deleting binary
+sudo rm /usr/local/bin/Cardchaind
 ```
 
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
