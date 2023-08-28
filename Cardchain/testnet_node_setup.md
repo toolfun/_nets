@@ -94,14 +94,14 @@ Search in the Crowd Control Discord https://discord.gg/xvuEfcaUd6 or ask the com
 
 ### Service file for Cardchaind
 ```
-sudo tee /etc/systemd/system/Cardchain.service > /dev/null <<EOF
+sudo tee /etc/systemd/system/Cardchaind.service > /dev/null <<EOF
 [Unit]
 Description=Cardchain_node
 After=network-online.target
 
 [Service]
 User=$USER
-ExecStart=$(which Cardchain) start
+ExecStart=$(which Cardchaind) start
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=65535
@@ -116,6 +116,16 @@ EOF
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable --now Cardnaind && sudo journalctl -u Cardnaind -f -o cat
+```
+
+### Add new or existing wallet
+New
+```
+Cardnaind keys add $CARDCHAIN_W
+```
+Existing
+```
+Cardnaind keys add $CARDCHAIN_W --recover
 ```
 
 ###
