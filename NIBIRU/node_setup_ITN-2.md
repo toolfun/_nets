@@ -1,4 +1,4 @@
-Testnet	nibiru-itn-2	Nibiru's final incentivized testnet
+Testnet	nibiru-itn-2.	Nibiru's final incentivized testnet
 # NIBIRU ITN-2. Active
 
 ### This network `nibiru-itn-2` is for 4 phase
