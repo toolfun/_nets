@@ -1,12 +1,10 @@
-Testnet	nibiru-itn-2.	Nibiru's final incentivized testnet
-# NIBIRU ITN-2. Active
-
-### This network `nibiru-itn-2` is for 4 phase
-
+Nibiru Incentivized Testnet (NIT). 4 phases, March - Q4 2023
+# NIBIRU `nibiru-itn-2`. Active
+### Final 4th phase (NIT4)
 NIT1 - Oracles and Staking    
 NIT2 - Governance    
 NIT3 - Liquidity Applications Perps & Spot    
-NIT4 - Trading competition    
+👉 NIT4 - Trading competition    
 ____
 
 
