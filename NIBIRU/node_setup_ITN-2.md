@@ -1,6 +1,14 @@
 Testnet	nibiru-itn-2	Nibiru's final incentivized testnet
 # NIBIRU ITN-2. Active
 
+### This network `nibiru-itn-2` is for 4 phase
+
+NIT1 - Oracles and Staking    
+NIT2 - Governance    
+NIT3 - Liquidity Applications Perps & Spot    
+NIT4 - Trading competition    
+____
+
 
 ### Updating
 ```
