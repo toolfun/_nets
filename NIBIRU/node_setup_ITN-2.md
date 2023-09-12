@@ -113,7 +113,7 @@ After=network-online.target
 User=$USER
 ExecStart=$(which nibid) start --home $HOME/.nibid
 Restart=on-failure
-RestartSec=3
+RestartSec=5
 LimitNOFILE=65535
 
 [Install]
@@ -121,34 +121,52 @@ WantedBy=multi-user.target
 EOF
 ```
 
-###
+### Start the Nibiru node
+```
+sudo systemctl restart systemd-journald
+sudo systemctl daemon-reload
+sudo systemctl enable --now nibid
+journalctl -u nibid -f -o cat
+```
+
+### Add new wallet
+```
+nibid keys add $NIBIRU_W
+```
+or recover wallet
+```
+nibid keys add $NIBIRU_W --recover
+```
+
+### Faucet
 ```
 
 ```
 
-###
+### Create validator
+```
+nibid tx staking create-validator \
+--amount=1000000unibi \
+--pubkey=$(nibid tendermint show-validator) \
+--moniker="$NIBIRU_M" \
+--commission-rate="0.05" \
+--commission-max-rate="0.20" \
+--commission-max-change-rate="0.1" \
+--min-self-delegation="1000000" \
+--from=$NIBIRU_W \
+--fees=5000unibi \
+-y
 ```
 
+### Add wallet and valoper addresses as variables
 ```
-
-###
+NIBIRU_WA=$(nibid keys show $NIBIRU_W -a)
+NIBIRU_V=$(nibid keys show $NIBIRU_W --bech val -a)
 ```
-
 ```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
+echo 'export NIBIRU_WA='\"${NIBIRU_WA}\" >> $HOME/.bash_profile
+echo 'export NIBIRU_V='\"${NIBIRU_V}\" >> $HOME/.bash_profile
+source $HOME/.bash_profile
 ```
 
 ###
