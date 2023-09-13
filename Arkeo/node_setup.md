@@ -111,9 +111,9 @@ sed -i 's|^seeds *=.*|seeds = "'$seeds'"|' $HOME/.arkeo/config/config.toml
 
 ```
 
-###
+### reset
 ```
-
+arkeod tendermint unsafe-reset-all --home $HOME/.arkeo --keep-addr-book
 ```
 
 ###
@@ -174,14 +174,24 @@ journalctl -u arkeod -f -o cat
 arkeod keys add $ARKEO_W
 ```
 
-###
+### faucet
 ```
 
 ```
 
-###
+### validator
 ```
-
+arkeod tx staking create-validator \
+--commission-rate 0.05 \
+--commission-max-rate 0.2 \
+--commission-max-change-rate 0.1 \
+--min-self-delegation "1" \
+--amount 1000000uarkeo \
+--pubkey $(arkeod tendermint show-validator) \
+--moniker "$ARKEO_M" \
+--from "$ARKEO_W" \
+--fees="5000uarkeo" \
+-y
 ```
 
 ###
