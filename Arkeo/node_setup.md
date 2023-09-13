@@ -30,8 +30,8 @@ moniker=
 wallet=
 chain=arkeo
 ```
-You can customize what ports will be used or do nothing to leave it by default.    
-I'm customizing like this
+You can customize which ports will be used, or do nothing and leave as default.    
+I configure as follows
 ```
 port=18
 ```
@@ -45,7 +45,7 @@ echo "export ARKEO_PORT=$port" >> $HOME/.bash_profile
 source ~/.bash_profile
 ```
 
-### insatlling Arkeo
+### installing Arkeo
 ```
 cd
 git clone https://github.com/arkeonetwork/arkeo
@@ -71,7 +71,7 @@ arkeod init ARKEO_M --chain-id $ARKEO_CHAIN
 curl -s http://seed.arkeo.network:26657/genesis | jq '.result.genesis' > ~/.arkeo/config/genesis.json
 ```
 
-### config in app.toml
+### config
 ```
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.001uarkeo\"/;" ~/.arkeo/config/app.toml
 ```
@@ -79,7 +79,7 @@ sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.001uarkeo\"/;
 ### ports (optional)
 ```
 sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${ARKEO_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${ARKEO_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${ARKEO_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${ARKEO_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${ARKEO_PORT}660\"%" $HOME/.arkeo/config/config.toml
-sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:${ARKEO_PORT}317\"%; s%^address = \":8080\"%address = \":${ARKEO_PORT}080\"%; s%^address = \"localhost:9090\"%address = \"localhost:${ARKEO_PORT}090\"%; s%^address = \"localhost:9091\"%address = \"localhost:${ARKEO_PORT}091\"%" $HOME/.arkeo/config/app.toml
+sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${ARKEO_PORT}317\"%; s%^address = \":8080\"%address = \":${ARKEO_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${ARKEO_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${ARKEO_PORT}091\"%" $HOME/.arkeo/config/app.toml
 ```
 
 ### customize pruning (optional)
