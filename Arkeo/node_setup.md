@@ -118,16 +118,6 @@ sed -i 's|^seeds *=.*|seeds = "'$seeds'"|' $HOME/.arkeo/config/config.toml
 arkeod tendermint unsafe-reset-all --home $HOME/.arkeo --keep-addr-book
 ```
 
-###
-```
-
-```
-
-###
-```
-
-```
-
 ### service arkeod
 ```
 sudo tee /etc/systemd/system/arkeod.service > /dev/null <<EOF
@@ -147,17 +137,6 @@ WantedBy=multi-user.target
 EOF
 ```
 
-
-###
-```
-
-```
-
-###
-```
-
-```
-
 ### start
 ```
 sudo systemctl restart systemd-journald
@@ -166,22 +145,16 @@ sudo systemctl enable --now arkeod
 journalctl -u arkeod -f -o cat
 ```
 
-###
-```
-
-```
-
 ### add account
 ```
 arkeod keys add $ARKEO_W
 ```
 
 ### faucet
-```
+> Ask in Arkeo [Discord](https://discord.gg/BfEHpm6uFc)
+> [form](https://docs.google.com/forms/d/e/1FAIpQLSeBNEWdmTRGG_UWMj5HxUeQB141rhW9T6teOTnzMP_6mXAzMA/viewform)
 
-```
-
-### validator
+### create validator
 ```
 arkeod tx staking create-validator \
 --commission-rate 0.05 \
@@ -196,9 +169,14 @@ arkeod tx staking create-validator \
 -y
 ```
 
-###
-```
-
+### edit validator
+> to add or remove description on your validator, for example adding website and your logo
+```bash
+arkeod tx staking edit-validator \
+--from=ARKEO_W \
+--website=<YOUR_LINK> \
+--identity=<KEYBASE FINGERPRINT> \
+-y
 ```
 
 ###
