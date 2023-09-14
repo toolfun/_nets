@@ -37,7 +37,7 @@ I configure as follows
 port=18
 ```
 
-# load variables
+### load variables
 ```
 echo "export ARKEO_M=$moniker" >> $HOME/.bash_profile
 echo "export ARKEO_W=$wallet" >> $HOME/.bash_profile
@@ -59,6 +59,7 @@ arkeod version
 ### config
 ```
 arkeod config chain-id $ARKEO_CHAIN
+arkeod config node tcp://localhost:${ARKEO_PORT}657
 arkeod config keyring-backend file
 ```
 
