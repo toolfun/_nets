@@ -169,29 +169,69 @@ echo 'export NIBIRU_V='\"${NIBIRU_V}\" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
 
-###
+
+____
+
+# Oracle price feeder
+
+### install price feeder
+```
+curl -s https://get.nibiru.fi/pricefeeder@v0.21.3! | bash
 ```
 
+### add new wallet for the price feeder
+```
+nibid keys add pf_wallet
 ```
 
-###
+### set variables
+```
+export GRPC_ENDPOINT="localhost:${NIBIRU_PORT}090"
+export WEBSOCKET_ENDPOINT="ws://localhost:${NIBIRU_PORT}657/websocket"
+export EXCHANGE_SYMBOLS_MAP='{"bitfinex":{"ubtc:unusd":"tBTCUSD","ubtc:uusd":"tBTCUSD","ueth:unusd":"tETHUSD","ueth:uusd":"tETHUSD","uusdc:uusd":"tUDCUSD","uusdc:unusd":"tUDCUSD"},"coingecko":{"ubtc:uusd":"bitcoin","ubtc:unusd":"bitcoin","ueth:uusd":"ethereum","ueth:unusd":"ethereum","uusdt:uusd":"tether","uusdt:unusd":"tether","uusdc:uusd":"usd-coin","uusdc:unusd":"usd-coin","uatom:uusd":"cosmos","uatom:unusd":"cosmos","ubnb:uusd":"binancecoin","ubnb:unusd":"binancecoin","uavax:uusd":"avalanche-2","uavax:unusd":"avalanche-2","usol:uusd":"solana","usol:unusd":"solana","uada:uusd":"cardano","uada:unusd":"cardano"}}'
+export FEEDER_MNEMONIC="<mnemonic of the added feeder wallet>"
+export VALIDATOR_ADDRESS="$NIBIRU_V"
 ```
 
+### service for the price feeder
+```
+sudo tee /etc/systemd/system/pricefeeder.service<<EOF
+[Unit]
+Description=Nibiru Pricefeeder
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=exec
+User=$USER
+ExecStart=/usr/local/bin/pricefeeder
+Restart=on-failure
+ExecReload=/bin/kill -HUP $MAINPID
+KillSignal=SIGTERM
+PermissionsStartOnly=true
+LimitNOFILE=65535
+Environment=CHAIN_ID='$NIBIRU_CHAIN'
+Environment=GRPC_ENDPOINT='$GRPC_ENDPOINT'
+Environment=WEBSOCKET_ENDPOINT='$WEBSOCKET_ENDPOINT'
+Environment=EXCHANGE_SYMBOLS_MAP='$EXCHANGE_SYMBOLS_MAP'
+Environment=FEEDER_MNEMONIC='$FEEDER_MNEMONIC'
+Environment=VALIDATOR_ADDRESS='$VALIDATOR_ADDRESS'
+
+[Install]
+WantedBy=multi-user.target
+EOF
 ```
 
-###
+### set price feeder wallet
+```
+nibid tx oracle set-feeder $(nibid keys show pf_wallet --bech -a) --from $NIBIRU_W --fees 5000unibi -y
 ```
 
+### start pricefeeder
 ```
-
-###
-```
-
-```
-
-###
-```
-
+sudo systemctl daemon-reload
+sudo systemctl enable --now pricefeeder
+journalctl -u pricefeeder -f -o cat
 ```
 
 ###
