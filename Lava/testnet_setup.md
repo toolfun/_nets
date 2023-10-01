@@ -14,8 +14,8 @@
 
 #### *Current version*
 - Network Chain ID: `lava-testnet-2`    
-- version: v0.21.1.2    
-- commit: 6bd13268bf70d1eda360bf8392edd5517b9cfbe1    
+- version: v0.23.5    
+- commit:     
 
 #### *Address books (first install a node)*
 - xalex    
@@ -75,15 +75,15 @@ cd $HOME
 rm -rf lava
 git clone https://github.com/lavanet/lava.git
 cd lava
-git checkout v0.21.1.2
+git checkout v0.23.5
 make install
 ```
 ### Check version
 ```
 lavad version --long | head | grep -e version: -e commit
 ```
-> version: 0.21.1.2    
-> commit: 6bd13268bf70d1eda360bf8392edd5517b9cfbe1
+> version: 0.23.5    
+> commit: 
 
 ### Configure
 ```
@@ -339,7 +339,7 @@ cd
 sudo rm -r $HOME/lava
 git clone https://github.com/lavanet/lava
 cd $HOME/lava
-git checkout v0.21.1.2
+git checkout v0.23.5
 make install
 ```
 
