@@ -76,6 +76,8 @@ rm -rf lava
 git clone https://github.com/lavanet/lava.git
 cd lava
 git checkout v0.23.5
+# The binary for a validator node
+export LAVA_BINARY=lavad
 make install
 ```
 ### Check version
