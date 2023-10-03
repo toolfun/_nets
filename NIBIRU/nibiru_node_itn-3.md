@@ -191,7 +191,7 @@ nibid keys add pf_wallet
 ```
 
 ### feeder wallet must have tokens to work
-Use faucet or send to feeder wallet address
+Use [faucet](https://github.com/toolfun/_nets/blob/main/NIBIRU/nibiru_node_itn-3.md#faucet) or send to feeder wallet address
 
 ### set variables
 ```bash
