@@ -190,6 +190,9 @@ curl -s https://get.nibiru.fi/pricefeeder@v0.21.6! | bash
 nibid keys add pf_wallet
 ```
 
+### feeder wallet must have tokens to work
+Use faucet or send to feeder wallet address
+
 ### set variables
 ```bash
 export GRPC_ENDPOINT="localhost:${NIBIRU_PORT}090"
