@@ -140,11 +140,6 @@ or recover wallet
 nibid keys add $NIBIRU_W --recover
 ```
 
-### Faucet
-```
-
-```
-
 ### Create validator
 ```
 nibid tx staking create-validator \
