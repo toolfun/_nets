@@ -146,8 +146,8 @@ nibid keys add $NIBIRU_W --recover
 ```
 
 ### Faucet
-Discord Nibiru #faucet
-app.nibiru.fi
+[Discord Nibiru](https://discord.gg/F38Q37Sj) #faucet       
+[app.nibiru.fi](https://app.nibiru.fi) 
 
 ### Create validator
 ```
@@ -233,7 +233,14 @@ EOF
 nibid tx oracle set-feeder $(nibid keys show pf_wallet --bech -a) --from $NIBIRU_W --fees 5000unibi -y
 ```
 
-### start pricefeeder
+### price feeder wallet must have tokens to work
+Get tokens via [faucet](https://github.com/toolfun/_nets/edit/main/NIBIRU/nibiru_node_itn-3.md#faucet) or send tokens to price feeder wallet address    
+Show the price feeder wallet address
+```
+nibid show pf_wallet --bech -a
+```
+
+### start price feeder
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable --now pricefeeder
