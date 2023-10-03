@@ -1,5 +1,7 @@
-Nibiru Incentivized Testnet (NIT). 4 phases, March - Q4 2023
-# NIBIRU `nibiru-itn-2`.  Deprecated. Active is nibiru_node_itn-3
+Nibiru Incentivized Testnet (NIT). 4 phases, March - Q4 2023    
+
+# ⚠ NIBIRU `nibiru-itn-2`.  Deactivated. Active is [nibiru_node_itn-3](https://github.com/toolfun/_nets/blob/main/NIBIRU/nibiru_node_itn-3.md)
+
 ### Final 4th phase (NIT4)
 NIT1 - Oracles and Staking    
 NIT2 - Governance    
