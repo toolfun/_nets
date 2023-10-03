@@ -1,4 +1,3 @@
-### 🚧🚧🚧 under construction
 # Arkeo
 
 ### updating
@@ -172,30 +171,6 @@ arkeod tx staking edit-validator \
 -y
 ```
 
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
 
 ###
 ```
