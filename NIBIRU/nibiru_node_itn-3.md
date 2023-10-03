@@ -39,7 +39,7 @@ Set variables `moniker` for your validator node, `wallet` name. The `port` can b
 moniker=
 wallet=
 port=17
-chain=nibiru-itn-2
+chain=nibiru-itn-3
 ```
 
 Load variables
@@ -53,7 +53,7 @@ source ~/.bash_profile
 
 ### Install the Nibiru binary
 ```
-curl -s https://get.nibiru.fi/@v0.21.9! | bash
+curl -s https://get.nibiru.fi/@v0.21.11! | bash
 ```
 
 ### Init the Nibiru chain
@@ -63,8 +63,7 @@ nibid init $NIBIRU_M --chain-id=$NIBIRU_CHAIN
 
 ### Download genesis
 ```
-NETWORK=nibiru-itn-2
-curl -s https://networks.itn2.nibiru.fi/$NETWORK/genesis > $HOME/.nibid/config/genesis.json
+curl -s https://rpc.itn-3.nibiru.fi/genesis | jq -r .result.genesis > $HOME/.nibid/config/genesis.json
 ```
 
 ### Config Nibiru
@@ -108,7 +107,7 @@ sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/.nibid/config/config.t
 ```
 sudo tee /etc/systemd/system/nibid.service > /dev/null <<EOF
 [Unit]
-Description=Nibiru_ITN-2_node
+Description=Nibiru_ITN-3
 After=network-online.target
 
 [Service]
@@ -121,6 +120,16 @@ LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target
 EOF
+```
+
+### Snapshot. Using kjnode's one
+```
+sudo systemctl stop nibid
+cp $HOME/.nibid/data/priv_validator_state.json $HOME/.nibid/priv_validator_state.json.backup
+rm -rf $HOME/.nibid/data
+curl -L https://snapshots.kjnodes.com/nibiru-testnet/snapshot_latest.tar.lz4 | tar -Ilz4 -xf - -C $HOME/.nibid
+mv $HOME/.nibid/priv_validator_state.json.backup $HOME/.nibid/data/priv_validator_state.json
+sudo systemctl start nibid && sudo journalctl -u nibid -f --no-hostname -o cat
 ```
 
 ### Start the Nibiru node
@@ -141,9 +150,8 @@ nibid keys add $NIBIRU_W --recover
 ```
 
 ### Faucet
-```
-
-```
+Discord Nibiru #faucet
+app.nibiru.fi
 
 ### Create validator
 ```
@@ -178,7 +186,7 @@ ____
 
 ### install price feeder
 ```
-curl -s https://get.nibiru.fi/pricefeeder@v0.21.3! | bash
+curl -s https://get.nibiru.fi/pricefeeder@v0.21.6! | bash
 ```
 
 ### add new wallet for the price feeder
@@ -187,7 +195,7 @@ nibid keys add pf_wallet
 ```
 
 ### set variables
-```
+```bash
 export GRPC_ENDPOINT="localhost:${NIBIRU_PORT}090"
 export WEBSOCKET_ENDPOINT="ws://localhost:${NIBIRU_PORT}657/websocket"
 export EXCHANGE_SYMBOLS_MAP='{"bitfinex":{"ubtc:unusd":"tBTCUSD","ubtc:uusd":"tBTCUSD","ueth:unusd":"tETHUSD","ueth:uusd":"tETHUSD","uusdc:uusd":"tUDCUSD","uusdc:unusd":"tUDCUSD"},"coingecko":{"ubtc:uusd":"bitcoin","ubtc:unusd":"bitcoin","ueth:uusd":"ethereum","ueth:unusd":"ethereum","uusdt:uusd":"tether","uusdt:unusd":"tether","uusdc:uusd":"usd-coin","uusdc:unusd":"usd-coin","uatom:uusd":"cosmos","uatom:unusd":"cosmos","ubnb:uusd":"binancecoin","ubnb:unusd":"binancecoin","uavax:uusd":"avalanche-2","uavax:unusd":"avalanche-2","usol:uusd":"solana","usol:unusd":"solana","uada:uusd":"cardano","uada:unusd":"cardano"}}'
