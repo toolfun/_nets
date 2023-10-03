@@ -7,6 +7,9 @@ NIT1 - Oracles and Staking
 NIT2 - Governance    
 NIT3 - Liquidity Applications Perps & Spot    
 👉 NIT4 - Trading competition    
+
+### ❗ for this phase is not nessesary to install a node, this phase is about trading competition
+https://nibiru.fi/blog/posts/024-itn-4.html
 ____
 
 
