@@ -8,14 +8,7 @@ sudo apt install make gcc curl wget git jq lz4 build-essential screen nano ncdu 
 sudo apt upgrade
 ```
 
-### create user file
-```
-[ ! -f ~/.bash_profile ] && touch ~/.bash_profile
-echo "export PATH=$PATH:/usr/local/go/bin:~/go/bin" >> ~/.bash_profile
-source $HOME/.bash_profile
-```
-
-### go
+### go installing
 ```
 sudo rm -rf /usr/local/go
 v="1.21.0"
