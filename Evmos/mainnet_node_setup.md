@@ -34,10 +34,10 @@ git checkout v14.1.0
 make install
 ```
 
-### Customizing with variables
+### Customizing with variables (moniker will be visible in blockchain, wallet name is not)
 ```
-moniker=xAlex
-wallet=wAlex
+moniker=
+wallet=
 chain=evmos_9001-2
 ```
 
