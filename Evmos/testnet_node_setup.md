@@ -1,6 +1,5 @@
-### 🚧🚧🚧 under construction
-#
-### installing evmos `testnet` node for the Lava Evmos RPC
+### `Installing evmos testnet node for the Lava Evmos ipRPC`
+##### https://www.lavanet.xyz/blog/providers-guide-to-evmos-iprpc
 ____
 
 
@@ -144,91 +143,23 @@ EOF
 
 ### Snapshot or state-sync start
 ```
+STATE_SYNC_RPC=https://evmos-testnet.rpc.kjnodes.com:443
+STATE_SYNC_PEER=d5519e378247dfb61dfe90652d1fe3e2b3005a5b@evmos-testnet.rpc.kjnodes.com:16756
+LATEST_HEIGHT=$(curl -s $STATE_SYNC_RPC/block | jq -r .result.block.header.height)
+SYNC_BLOCK_HEIGHT=$(($LATEST_HEIGHT - 1000))
+SYNC_BLOCK_HASH=$(curl -s "$STATE_SYNC_RPC/block?height=$SYNC_BLOCK_HEIGHT" | jq -r .result.block_id.hash)
 
+sed -i \
+  -e "s|^enable *=.*|enable = true|" \
+  -e "s|^rpc_servers *=.*|rpc_servers = \"$STATE_SYNC_RPC,$STATE_SYNC_RPC\"|" \
+  -e "s|^trust_height *=.*|trust_height = $SYNC_BLOCK_HEIGHT|" \
+  -e "s|^trust_hash *=.*|trust_hash = \"$SYNC_BLOCK_HASH\"|" \
+  -e "s|^persistent_peers *=.*|persistent_peers = \"$STATE_SYNC_PEER\"|" \
+  $HOME/.evmosdt/config/config.toml
 ```
 
-###
+### Service start
 ```
 systemctl daemon-reload
 systemctl enable --now evmosdt && journalctl -u evmosdt -f -o cat
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
 ```
