@@ -105,21 +105,22 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 ### Ports customizing
 ```
 sed -i.bak \
--e "s%^proxy_app = \"tcp://127.0.0.1:[0-9]\{2\}658\"%proxy_app = \"tcp://127.0.0.1:${EVMOST_PORT}658\"%;" \
--e "s%^laddr = \"tcp://127.0.0.1:[0-9]\{2\}657\"%laddr = \"tcp://127.0.0.1:${EVMOST_PORT}657\"%;" \
--e "s%^pprof_laddr = \"localhost:[0-9]\{2\}060\"%pprof_laddr = \"localhost:${EVMOST_PORT}060\"%;" \
--e "s%^laddr = \"tcp://0.0.0.0:[0-9]\{2\}656\"%laddr = \"tcp://0.0.0.0:${EVMOST_PORT}656\"%;" \
--e "s%^prometheus_listen_addr = \":[0-9]\{2\}660\"%prometheus_listen_addr = \":${EVMOST_PORT}660\"%" \
+sed -i.bak \
+-e "s%^proxy_app = \"tcp://127.0.0.1:[0-9]\{2\}658\"%proxy_app = \"tcp://127.0.0.1:${EVMOS_PORT}658\"%;" \
+-e "s%^laddr = \"tcp://127.0.0.1:[0-9]\{2\}657\"%laddr = \"tcp://127.0.0.1:${EVMOS_PORT}657\"%;" \
+-e "s%^pprof_laddr = \"localhost:[0-9]\{1\}060\"%pprof_laddr = \"localhost:${EVMOS_PORT}060\"%;" \
+-e "s%^laddr = \"tcp://0.0.0.0:[0-9]\{2\}656\"%laddr = \"tcp://0.0.0.0:${EVMOS_PORT}656\"%;" \
+-e "s%^prometheus_listen_addr = \":[0-9]\{2\}660\"%prometheus_listen_addr = \":${EVMOS_PORT}660\"%" \
 $HOME/.evmosdt/config/config.toml
 
 sed -i.bak \
--e "s%^address = \"tcp://localhost:[0-9]\{2\}317\"%address = \"tcp://localhost:${EVMOST_PORT}317\"%;" \
--e "s%^address = \":[0-9]\{2\}080\"%address = \":${EVMOST_PORT}080\"%;" \
--e "s%^address = \"localhost:[0-9]\{2\}090\"%address = \"localhost:${EVMOST_PORT}090\"%;" \
--e "s%^address = \"localhost:[0-9]\{2\}091\"%address = \"localhost:${EVMOST_PORT}091\"%;" \
--e "s%^address = \"127.0.0.1:[0-9]\{2\}45\"%address = \"127.0.0.1:${EVMOST_PORT}45\"%;" \
--e "s%^ws-address = \"127.0.0.1:[0-9]\{2\}46\"%ws-address = \"127.0.0.1:${EVMOST_PORT}46\"%;" \
--e "s%^metrics-address = \"127.0.0.1:[0-9]\{2\}65\"%metrics-address = \"127.0.0.1:${EVMOST_PORT}65\"%" \
+-e "s%^address = \"tcp://localhost:[0-9]\{1\}317\"%address = \"tcp://localhost:${EVMOS_PORT}317\"%;" \
+-e "s%^address = \":[0-9]\{1\}080\"%address = \":${EVMOS_PORT}080\"%;" \
+-e "s%^address = \"localhost:[0-9]\{1\}090\"%address = \"localhost:${EVMOS_PORT}090\"%;" \
+-e "s%^address = \"localhost:[0-9]\{1\}091\"%address = \"localhost:${EVMOS_PORT}091\"%;" \
+-e "s%^address = \"127.0.0.1:[0-9]\{2\}45\"%address = \"127.0.0.1:${EVMOS_PORT}45\"%;" \
+-e "s%^ws-address = \"127.0.0.1:[0-9]\{2\}46\"%ws-address = \"127.0.0.1:${EVMOS_PORT}46\"%;" \
+-e "s%^metrics-address = \"127.0.0.1:[0-9]\{2\}65\"%metrics-address = \"127.0.0.1:${EVMOS_PORT}65\"%" \
 $HOME/.evmosdt/config/app.toml
 ```
 
@@ -143,6 +144,7 @@ EOF
 ```
 
 ### Snapshot or state-sync start
+state-sync via [kjnode's](https://services.kjnodes.com/)
 ```
 STATE_SYNC_RPC=https://evmos-testnet.rpc.kjnodes.com:443
 STATE_SYNC_PEER=d5519e378247dfb61dfe90652d1fe3e2b3005a5b@evmos-testnet.rpc.kjnodes.com:16756
