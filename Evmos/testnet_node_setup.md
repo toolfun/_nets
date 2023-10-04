@@ -39,9 +39,12 @@ mv ~/go/bin/evmosd ~/go/bin/evmosdt
 ```
 
 ### Customizing with variables
-```
-moniker=xAlex
-wallet=wAlex
+```bash
+# choose displayed name aka validator name
+moniker=
+# choose wallet name
+wallet=
+# chain-id leave as is
 chain=evmos_9000-4
 ```
 
