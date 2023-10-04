@@ -163,6 +163,6 @@ sed -i \
 
 ### Service start
 ```
-systemctl daemon-reload
-systemctl enable --now evmosdt && journalctl -u evmosdt -f -o cat
+sudo systemctl daemon-reload
+sudo systemctl enable --now evmosdt && journalctl -u evmosdt -f -o cat
 ```
