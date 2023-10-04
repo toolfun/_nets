@@ -1,4 +1,5 @@
-### `Installing evmos testnet node for the Lava Evmos ipRPC`
+`# testnet`
+### Installing Evmos testnet node for the Lava Evmos ipRPC
 ##### https://www.lavanet.xyz/blog/providers-guide-to-evmos-iprpc
 ____
 
