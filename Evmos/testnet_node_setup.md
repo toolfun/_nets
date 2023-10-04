@@ -1,6 +1,6 @@
 ### 🚧🚧🚧 under construction
 #
-### installing evmos testnet node for the Lava Evmos RPC
+### installing evmos `testnet` node for the Lava Evmos RPC
 ____
 
 
@@ -48,7 +48,7 @@ chain=evmos_9000-4
 You can customize which ports will be used, or do nothing and leave as default.
 My custom port is
 ```
-port=12
+port=11
 ```
 
 ```
@@ -71,8 +71,13 @@ wget -O $HOME/.evmosdt/config/genesis.json "https://ss-t.evmos.nodestake.top/gen
 
 ### Addressbook
 ```
-curl -Ls https://snapshots.kjnodes.com/evmos-testnet/addrbook.json > $HOME/.evmosd/config/addrbook.json
+curl -Ls https://snapshots.kjnodes.com/evmos-testnet/addrbook.json > $HOME/.evmosdt/config/addrbook.json
 
+```
+
+### Reset state
+```
+evmosdt tendermint unsafe-reset-all --home $HOME/.evmosdt
 ```
 
 ### App config
@@ -100,42 +105,52 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 ### Ports customizing
 ```
 sed -i.bak \
--e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${EVMOST_PORT}658\"%;" \
--e "s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${EVMOST_PORT}657\"%;" \
--e "s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${EVMOST_PORT}060\"%;" \
--e "s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${EVMOST_PORT}656\"%;" \
--e "s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${EVMOST_PORT}660\"%" \
+-e "s%^proxy_app = \"tcp://127.0.0.1:[0-9]\{2\}658\"%proxy_app = \"tcp://127.0.0.1:${EVMOST_PORT}658\"%;" \
+-e "s%^laddr = \"tcp://127.0.0.1:[0-9]\{2\}657\"%laddr = \"tcp://127.0.0.1:${EVMOST_PORT}657\"%;" \
+-e "s%^pprof_laddr = \"localhost:[0-9]\{2\}060\"%pprof_laddr = \"localhost:${EVMOST_PORT}060\"%;" \
+-e "s%^laddr = \"tcp://0.0.0.0:[0-9]\{2\}656\"%laddr = \"tcp://0.0.0.0:${EVMOST_PORT}656\"%;" \
+-e "s%^prometheus_listen_addr = \":[0-9]\{2\}660\"%prometheus_listen_addr = \":${EVMOST_PORT}660\"%" \
 $HOME/.evmosdt/config/config.toml
 
 sed -i.bak \
--e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:${EVMOST_PORT}317\"%;" \
--e "s%^address = \":8080\"%address = \":${EVMOST_PORT}080\"%;" \
--e "s%^address = \"localhost:9090\"%address = \"localhost:${EVMOST_PORT}090\"%;" \
--e "s%^address = \"localhost:9091\"%address = \"localhost:${EVMOST_PORT}091\"%;" \
--e "s%^address = \"127.0.0.1:8545\"%address = \"127.0.0.1:${EVMOST_PORT}45\"%;" \
--e "s%^ws-address = \"127.0.0.1:8546\"%ws-address = \"127.0.0.1:${EVMOST_PORT}46\"%;" \
--e "s%^metrics-address = \"127.0.0.1:6065\"%metrics-address = \"127.0.0.1:${EVMOST_PORT}65\"%" \
+-e "s%^address = \"tcp://localhost:[0-9]\{2\}317\"%address = \"tcp://localhost:${EVMOST_PORT}317\"%;" \
+-e "s%^address = \":[0-9]\{2\}080\"%address = \":${EVMOST_PORT}080\"%;" \
+-e "s%^address = \"localhost:[0-9]\{2\}090\"%address = \"localhost:${EVMOST_PORT}090\"%;" \
+-e "s%^address = \"localhost:[0-9]\{2\}091\"%address = \"localhost:${EVMOST_PORT}091\"%;" \
+-e "s%^address = \"127.0.0.1:[0-9]\{2\}45\"%address = \"127.0.0.1:${EVMOST_PORT}45\"%;" \
+-e "s%^ws-address = \"127.0.0.1:[0-9]\{2\}46\"%ws-address = \"127.0.0.1:${EVMOST_PORT}46\"%;" \
+-e "s%^metrics-address = \"127.0.0.1:[0-9]\{2\}65\"%metrics-address = \"127.0.0.1:${EVMOST_PORT}65\"%" \
 $HOME/.evmosdt/config/app.toml
 ```
 
-###
+### Service file
+```
+sudo tee /etc/systemd/system/evmosdt.service > /dev/null <<EOF
+[Unit]
+Description=Evmos_TESTNET_node
+After=network-online.target
+
+[Service]
+User=$USER
+ExecStart=$(which evmosdt) start --home $HOME/.evmosdt
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+### Snapshot or state-sync start
 ```
 
 ```
 
 ###
 ```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
+systemctl daemon-reload
+systemctl enable --now evmosdt && journalctl -u evmosdt -f -o cat
 ```
 
 ###
