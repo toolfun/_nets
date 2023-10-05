@@ -1,8 +1,9 @@
 `# mainnet`
 ### Installing Evmos node for the Lava Evmos ipRPC
 ##### https://www.lavanet.xyz/blog/providers-guide-to-evmos-iprpc
-____
+> This manual is intended for installing an Evmos mainnet node on the same server as testnet, without using containers or else. Therefore, the `--home $HOME/.evmosdt` option is added for most binary commands
 
+____
 
 ### System update
 ```
