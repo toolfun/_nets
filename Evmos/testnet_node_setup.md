@@ -2,7 +2,7 @@
 ### Installing Evmos testnet node for the Lava Evmos ipRPC
 ##### https://www.lavanet.xyz/blog/providers-guide-to-evmos-iprpc
 ____
-
+I'm using `--home $HOME/.evmosdt`
 
 ### System update
 ```
@@ -86,8 +86,8 @@ evmosdt tendermint unsafe-reset-all --home $HOME/.evmosdt
 ### App config
 ```
 evmosdt config chain-id $EVMOST_CHAIN --home $HOME/.evmosdt
-evmosdt config node tcp://localhost:${EVMOST_PORT}657
-evmosdt config keyring-backend test
+evmosdt config node tcp://localhost:${EVMOST_PORT}657 --home $HOME/.evmosdt
+evmosdt config keyring-backend test --home $HOME/.evmosdt
 ```
 
 ### Minimum gas prices
@@ -168,4 +168,14 @@ sed -i \
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable --now evmosdt && journalctl -u evmosdt -f -o cat
+```
+
+____
+
+## Useful
+
+### With 2 evmos nodes on a one server use `--home` option
+For example
+```python
+evmosdt status --home $HOME/.evmosdt | jq .SyncInfo
 ```
