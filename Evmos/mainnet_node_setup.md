@@ -78,8 +78,8 @@ evmosd tendermint unsafe-reset-all --home $HOME/.evmosd
 ### App config
 ```
 evmosd config chain-id $EVMOS_CHAIN --home $HOME/.evmosd
-evmosd config node tcp://localhost:${EVMOS_PORT}657
-evmosd config keyring-backend file
+evmosd config node tcp://localhost:${EVMOS_PORT}657 --home $HOME/.evmosd
+evmosd config keyring-backend file --home $HOME/.evmosd
 ```
 
 ### Minimum gas prices
@@ -102,7 +102,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 sed -i.bak \
 -e "s%^proxy_app = \"tcp://127.0.0.1:[0-9]\{2\}658\"%proxy_app = \"tcp://127.0.0.1:${EVMOS_PORT}658\"%;" \
 -e "s%^laddr = \"tcp://127.0.0.1:[0-9]\{2\}657\"%laddr = \"tcp://127.0.0.1:${EVMOS_PORT}657\"%;" \
--e "s%^pprof_laddr = \"localhost:[0-9]\{2\}060\"%pprof_laddr = \"localhost:${EVMOS_PORT}060\"%;" \
+-e "s%^pprof_laddr = \"localhost:[0-9]\{1\}060\"%pprof_laddr = \"localhost:${EVMOS_PORT}060\"%;" \
 -e "s%^laddr = \"tcp://0.0.0.0:[0-9]\{2\}656\"%laddr = \"tcp://0.0.0.0:${EVMOS_PORT}656\"%;" \
 -e "s%^prometheus_listen_addr = \":[0-9]\{2\}660\"%prometheus_listen_addr = \":${EVMOS_PORT}660\"%" \
 $HOME/.evmosd/config/config.toml
