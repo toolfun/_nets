@@ -146,3 +146,12 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now evmosd && journalctl -u evmosd -f -o cat
 ```
 
+____
+
+## Useful
+
+### With 2 evmos nodes on a one server use `--home` option
+For example
+```
+evmosd status --home $HOME/.evmosd | jq .SyncInfo
+```
