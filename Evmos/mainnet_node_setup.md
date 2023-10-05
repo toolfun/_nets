@@ -152,6 +152,6 @@ ____
 
 ### With 2 evmos nodes on a one server use `--home` option
 For example
-```
+```javascript
 evmosd status --home $HOME/.evmosd | jq .SyncInfo
 ```
