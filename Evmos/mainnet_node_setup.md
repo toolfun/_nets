@@ -138,7 +138,7 @@ EOF
 ```
 
 ### Snapshot or state-sync start
-state-sync via [kjnode's](https://services.kjnodes.com/)
+https://polkachu.com/networks/evmos
 
 ### Service start
 ```
