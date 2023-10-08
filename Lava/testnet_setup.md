@@ -221,16 +221,14 @@ curl -L https://snapshots.kjnodes.com/lava-testnet/snapshot_latest.tar.lz4 | tar
 mv $HOME/.lava/priv_validator_state.json.backup $HOME/.lava/data/priv_validator_state.json 
 ```
 ```
-sudo systemctl daemon-reload
-sudo systemctl enable lavad
-sudo systemctl start lavad
+sudo systemctl daemon-reload && sudo systemctl enable --now lavad
 ```
 
 ################################################################### -->
 
+### Start
 ```
-sudo systemctl enable lavad
-sudo systemctl start lavad
+sudo systemctl daemon-reload && sudo systemctl enable --now lavad && sudo journalctl -u lavad -f -o cat
 ```
 
 ### Check logs
