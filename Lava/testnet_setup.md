@@ -1,6 +1,4 @@
-### 🚧🚧🚧 under construction
-#
-# Lava. p2p RPC network. Install a validator node guide 
+# Lava. p2p RPC network. Installing the validator 
 
 > ### 📌 How to rejoin for lava-testnet-1 nodes     
 > ##### https://github.com/toolfun/_nets/blob/main/Lava/testnet_setup.md#rejoin-to-lava-testnet-2
