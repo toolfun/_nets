@@ -4,7 +4,7 @@
 > ##### https://github.com/toolfun/_nets/blob/main/Lava/testnet_setup.md#rejoin-to-lava-testnet-2
 
   
-<!-- **upgrade block height: 266490** -->
+<!-- **v0.24.0 upgrade block height: [472 310](https://lava.explorers.guru/block/472310)** -->
 
 #### *Links*
 - Website: https://lavanet.xyz/
