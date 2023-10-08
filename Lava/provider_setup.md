@@ -154,7 +154,7 @@ curl -Ls https://snapshots.kjnodes.com/lava-testnet/addrbook.json > $HOME/.lava/
 sudo systemctl start lavad && sudo journalctl -u lavad -f --no-hostname -o cat
 ```
 
-###
+### add wallet
 ```
 
 ```
