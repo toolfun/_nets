@@ -1,1 +1,1 @@
-## Validators contest is over. Waiting for the announcements
+## Validators contest is over. Tokens ditsributed
