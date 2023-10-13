@@ -139,7 +139,7 @@ cardchaind keys add $CC_W --recover
 
 ### Create validator
 ```
-Cardchain tx staking create-validator \
+cardchaind tx staking create-validator \
   --from=$CC_W \
   --amount=1000000ubpf \
   --moniker=$CC_M \
