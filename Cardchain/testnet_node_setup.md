@@ -13,8 +13,7 @@ ____
 
 
 ### Go installation
-Off. docs: https://go.dev/doc/install    
-You can change version under the `v` variable:
+https://go.dev/doc/install    
 ```
 sudo rm -rf /usr/local/go
 v="1.21.0"
