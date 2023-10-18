@@ -38,7 +38,7 @@ Think up and write a `moniker` (nodename), name of the `wallet` and change `port
 moniker=
 wallet=
 port=11
-chain=cardtestnet-4
+chain=cardtestnet-5
 ```
 
 ### Write and load variables
@@ -52,7 +52,7 @@ source ~/.bash_profile
 
 ### Download CC binary
 ```
-sudo wget https://github.com/DecentralCardGame/Cardchain/releases/download/v0.9.1/Cardchaind -O $HOME/go/bin/cardchaind
+sudo wget https://github.com/DecentralCardGame/Cardchain/releases/download/v0.10.0/Cardchaind -O $HOME/go/bin/cardchaind
 sudo chmod 775 $HOME/go/bin/cardchaind
 ```
 
