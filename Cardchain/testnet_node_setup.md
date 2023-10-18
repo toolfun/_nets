@@ -1,9 +1,8 @@
 <!-- ### 🚧🚧🚧 under construction -->
-#
-
+`cardtestnet-5`
 
 ### DecentralCardGame - Crowd Control
-# Cardchain testnet node installation
+## Testnet node installation
 - Docs: https://github.com/DecentralCardGame/Testnet
 - Explorer: https://explorer.stavr.tech/cardchain
 - Explorer: https://explorer.kjnodes.com/cardchain-testnet
