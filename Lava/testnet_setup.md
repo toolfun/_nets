@@ -10,7 +10,7 @@
 
 #### *Current version*
 - Network Chain ID: `lava-testnet-2`    
-- version: v0.24.0   
+- version: v0.25.2   
 - commit:     
 
 #### *Address books (first install a node)*
@@ -71,7 +71,7 @@ cd $HOME
 rm -rf lava
 git clone https://github.com/lavanet/lava.git
 cd lava
-git checkout v0.23.5
+git checkout v0.25.2
 # The binary for a validator node
 export LAVA_BINARY=lavad
 make install
@@ -80,7 +80,7 @@ make install
 ```
 lavad version --long | head | grep -e version: -e commit
 ```
-> version: 0.24.0   
+> version: 0.25.2   
 > commit: 
 
 ### Configure
