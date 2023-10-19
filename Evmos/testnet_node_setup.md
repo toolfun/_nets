@@ -28,15 +28,17 @@ fi
 
 ### Binary installation
 ```
+cd
+sudo rm -r evmos
 git clone https://github.com/evmos/evmos
 cd evmos
-git checkout v14.0.0-rc5
-make install
+git checkout v15.0.0-rc1
+make build
 ```
 
-### Rename binary for the convenience
+### Rename binary for the convenience and replace
 ```
-mv ~/go/bin/evmosd ~/go/bin/evmosdt
+mv ~/evmos/build/evmosd ~/go/bin/evmosdt
 ```
 
 ### Customizing with variables
