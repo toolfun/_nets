@@ -29,9 +29,10 @@ fi
 ### Binary installation
 ```
 cd
+rm -r $HOME/evmos
 git clone https://github.com/evmos/evmos
 cd evmos
-git checkout v14.1.0
+git checkout v15.0.0
 make install
 ```
 
