@@ -9,9 +9,9 @@
 - Explorer https://lava.explorers.guru/
 
 #### *Current version*
-- Network Chain ID: `lava-testnet-2`    
-- version: v0.25.2   
-- commit:     
+- Chain ID: `lava-testnet-2`    
+- Version: v0.27.0   
+- Upgrade Height: 590 764
 
 #### *Address books (first install a node)*
 - xalex    
@@ -71,7 +71,7 @@ cd $HOME
 rm -rf lava
 git clone https://github.com/lavanet/lava.git
 cd lava
-git checkout v0.25.2
+git checkout v0.27.0
 # The binary for a validator node
 export LAVA_BINARY=lavad
 make install
