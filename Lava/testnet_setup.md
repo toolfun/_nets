@@ -45,20 +45,20 @@ if ! [ -x "$(command -v go)" ]; then
 fi
 ```
 
-### Set custom variables, e.g. `LAVA_NODENAME=JhonDoe`
+### Set custom variables, e.g. `LAVA_M=JhonDoe`
 ```bash
-LAVA_NODENAME=
-LAVA_WALLET=
+LAVA_M=
+LAVA_W=
 LAVA_PORT=
 ```
 ##### Set current chain ID 
 ```
-LAVA_CHAIN_ID=lava-testnet-2
+LAVA_CHAIN=lava-testnet-2
 ```
 ```
-echo "export LAVA_NODENAME=$LAVA_NODENAME" >> $HOME/.bash_profile
-echo "export LAVA_WALLET=$LAVA_WALLET" >> $HOME/.bash_profile
-echo "export LAVA_CHAIN_ID=$LAVA_CHAIN_ID" >> $HOME/.bash_profile
+echo "export LAVA_M=$LAVA_M" >> $HOME/.bash_profile
+echo "export LAVA_W=$LAVA_W" >> $HOME/.bash_profile
+echo "export LAVA_CHAIN=$LAVA_CHAIN" >> $HOME/.bash_profile
 echo "export LAVA_PORT=$LAVA_PORT" >> $HOME/.bash_profile
 ```
 ```
@@ -98,7 +98,7 @@ lavad config node tcp://localhost:${LAVA_PORT}657
 
 ### Init
 ```
-lavad init "$LAVA_NODENAME" --chain-id $LAVA_CHAIN_ID
+lavad init "$LAVA_M" --chain-id $LAVA_CHAIN
 ```
 
 ### Set Lava-specific params
@@ -241,18 +241,18 @@ sudo journalctl -u lavad -f -o cat
 ### Add `OR` recover wallet
 - Add    
 ```
-lavad keys add $LAVA_WALLET
+lavad keys add $LAVA_W
 ```
 - Recover    
 ```
-lavad keys add $LAVA_WALLET --recover
+lavad keys add $LAVA_W --recover
 ```
 
 ### Set variables with your wallet and valoper addresses
 ```
-LAVA_WALLET_ADDRESS=$(haqqd keys show $LAVA_WALLET -a)
-LAVA_VALOPER=$(haqqd keys show $LAVA_WALLET --bech val -a)
-echo 'export LAVA_WALLET_ADDRESS='${LAVA_WALLET_ADDRESS} >> $HOME/.bash_profile
+LAVA_W_ADDRESS=$(haqqd keys show $LAVA_W -a)
+LAVA_VALOPER=$(haqqd keys show $LAVA_W --bech val -a)
+echo 'export LAVA_W_ADDRESS='${LAVA_W_ADDRESS} >> $HOME/.bash_profile
 echo 'export LAVA_VALOPER_ADDRESS='${LAVA_VALOPER} >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
@@ -263,7 +263,7 @@ source $HOME/.bash_profile
 Curl faucet ❗ Not available at the moment
 > 1. Do
 ```
-echo $(lavad keys show $LAVA_WALLET -a)
+echo $(lavad keys show $LAVA_W -a)
 ```
 > 2. Copy and replace `WALLET ADRESS` with your copied address
 ```
@@ -279,7 +279,7 @@ curl -X POST -d '{"address": "WALLET ADDRESS", "coins": ["500000000ulava"]}' htt
 
 ### Query balance
 ```
-lavad q bank balances $(lavad keys show $LAVA_WALLET -a)
+lavad q bank balances $(lavad keys show $LAVA_W -a)
 ```
 > When you receive tokens, you can create validator
 
@@ -288,14 +288,14 @@ lavad q bank balances $(lavad keys show $LAVA_WALLET -a)
 lavad tx staking create-validator \
 --amount=80000ulava \
 --pubkey=$(lavad tendermint show-validator) \
---moniker="LAVA_NODENAME" \
+--moniker="LAVA_M" \
 --chain-id=lava-testnet-2 \
 --commission-rate=0.07 \
 --commission-max-rate=0.20 \
 --commission-max-change-rate=0.02 \
 --min-self-delegation=1 \
 --fees=5000ulava \
---from=$LAVA_WALLET\
+--from=$LAVA_W\
 -y
 ```
 
@@ -311,6 +311,8 @@ sudo rm -rf lava .lava $(which lavad) /etc/systemd/system/lavad.service
 
 ____
 
+
+<!-- ################################################################################################################ Rejoin (not relevant) ###############
 # Rejoin to Lava Testnet-2
 
 - Official docs fo setup & rejoin https://docs.lavanet.xyz/testnet    
@@ -373,5 +375,5 @@ sed -i \
 ```
 systemctl start lavad && journalctl -u lavad -f -o cat
 ```
-
+################################################################################################################ Rejoin (not relevant) ############### -->
 
