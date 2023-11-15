@@ -200,6 +200,9 @@ curl -s https://snapshots1-testnet.nodejumper.io/lava-testnet/addrbook.json > $H
 curl -s https://snapshots1-testnet.nodejumper.io/lava-testnet/addrbook.json > $HOME/.lava/config/addrbook.json
 ```
 
+### Syncing, use snapshot or state sync
+kjnodes, nodejumper ...
+
 <!-- ##############################################################
 
 ### Download snapshot and start. This part is correct even if already run a node. Thanks to [kjnodes](https://services.kjnodes.com/)
