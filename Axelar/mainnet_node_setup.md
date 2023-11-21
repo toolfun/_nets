@@ -26,11 +26,6 @@ if ! [ -x "$(command -v go)" ]; then
 fi
 ```
 
-###
-```
-
-```
-
 ### Binary installation
 ```
 cd
@@ -144,64 +139,11 @@ axelard tendermint unsafe-reset-all --home $HOME/.axelar --keep-addr-book
 ```
 
 ### Sync
-kjnodes
-polkachu
+**kjnodes**    
+**polkachu**    
+`...`    
 ```
 sudo systemctl daemon-reload
 sudo systemctl start axelard && sudo journalctl -u axelard -f --no-hostname -o cat
 ```
 
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
