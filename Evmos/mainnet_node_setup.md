@@ -74,11 +74,6 @@ wget -O $HOME/.evmosd/config/genesis.json https://archive.evmos.org/mainnet/gene
 wget -O $HOME/.evmosd/config/addrbook.json https://ss.evmos.nodestake.top/addrbook.json
 ```
 
-### Reset state
-```
-evmosd tendermint unsafe-reset-all --home $HOME/.evmosd
-```
-
 ### App config
 ```
 evmosd config chain-id $EVMOS_CHAIN --home $HOME/.evmosd
@@ -139,6 +134,11 @@ LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target
 EOF
+```
+
+### Reset state
+```
+evmosd tendermint unsafe-reset-all --home $HOME/.evmosd
 ```
 
 ### Snapshot or state-sync start
