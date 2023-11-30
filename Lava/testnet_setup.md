@@ -10,8 +10,8 @@
 
 #### *Current version*
 - Chain ID: `lava-testnet-2`    
-- Version: v0.27.0   
-- Upgrade Height: 590 764
+- Version: v0.30.2   
+- Upgrade Height: 636 0006
 
 #### *Address books (first install a node)*
 - xalex    
@@ -71,7 +71,7 @@ cd $HOME
 rm -rf lava
 git clone https://github.com/lavanet/lava.git
 cd lava
-git checkout v0.27.0
+git checkout v0.30.2
 ```
 installing the lava**d** binary
 ```
@@ -86,8 +86,8 @@ make install LAVA_BINARY=lavap
 ```
 lavad version --long | grep -e version: -e commit
 ```
-> commit: 7be36f71d72108553482bb7ab6896db2b61aaf57     
-> version: 0.27.0    
+> commit: 3ce34fe4b84e44b41f184e4124be22595c8b9197     
+> version: 0.30.2    
 
 ### Configure
 ```
