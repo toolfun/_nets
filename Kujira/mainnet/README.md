@@ -1,6 +1,4 @@
-### There are currently 3 Oracle Price Feeder versions you can use on the Kujira mainnet
-1. Umee's fork https://github.com/Team-Kujira/docs/blob/main/validators/run-a-node/oracle-price-feeder.md
-2. Umee's fork upgrated by mintthemoon https://github.com/mintthemoon/oracle-price-feeder
-3. Terra's fork https://github.com/Team-Kujira/oracle-feeder
-##
-Here are just some of my notes
+### Kujira Oracle Price Feeder Config Examples:
+https://gist.github.com/Golden-Ratio-Staking/f344c4fbda546976f09908708a3e5de0    
+https://github.com/polkachu/cosmos-validators/blob/main/roles/support_price_feeder/templates/kujira/mainnet.toml.j2    
+https://gist.github.com/starsquidnodes    
