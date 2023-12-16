@@ -1,4 +1,4 @@
-<!-- ### 🚧🚧🚧 under construction -->
+### 🚧🚧🚧 under construction
 `cardtestnet-5`
 
 ### DecentralCardGame - Crowd Control
