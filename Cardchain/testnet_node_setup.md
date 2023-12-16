@@ -1,11 +1,11 @@
-### 🚧🚧🚧 under construction
-`cardtestnet-5`
+<!--### 🚧🚧🚧 under construction -->
+`cardtestnet-6`
 
 ### DecentralCardGame - Crowd Control
 ## Testnet node installation
 - Docs: https://github.com/DecentralCardGame/Testnet
 - Explorer: https://explorer.stavr.tech/cardchain
-- Explorer: https://explorer.kjnodes.com/cardchain-testnet
+- Explorer: https://explorers.acloud.pp.ua/cardchain
 - Discord: https://discord.gg/xvuEfcaUd6
 
 ____
@@ -37,7 +37,7 @@ Think up and write a `moniker` (nodename), name of the `wallet` and change `port
 moniker=
 wallet=
 port=11
-chain=cardtestnet-5
+chain=cardtestnet-6
 ```
 
 ### Write and load variables
@@ -51,7 +51,7 @@ source ~/.bash_profile
 
 ### Download CC binary
 ```
-sudo wget https://github.com/DecentralCardGame/Cardchain/releases/download/v0.10.0/Cardchaind -O $HOME/go/bin/cardchaind
+sudo wget https://github.com/DecentralCardGame/Cardchain/releases/download/v0.11.0/Cardchaind -O $HOME/go/bin/cardchaind
 sudo chmod 775 $HOME/go/bin/cardchaind
 ```
 
@@ -97,6 +97,12 @@ sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every
 sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.Cardchain/config/app.toml
 ```
 
+### Add peer
+```
+PEERS="5ed5398d201c0d40400055beceb4a9a93506d26a@202.61.225.157:26656"
+sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.Cardchain/config/config.toml
+```
+
 ### Service file for cardchaind
 ```
 sudo tee /etc/systemd/system/cardchaind.service > /dev/null <<EOF
@@ -114,6 +120,11 @@ LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target
 EOF
+```
+
+### Reset
+```
+cardchaind tendermint unsafe-reset-all --home $HOME/.Cardchain
 ```
 
 ### Snapshot or state sync
@@ -165,4 +176,3 @@ sudo rm -r $HOME/.Cardchain/
 # Deleting binary
 sudo rm /usr/local/bin/cardchaind
 ```
-
