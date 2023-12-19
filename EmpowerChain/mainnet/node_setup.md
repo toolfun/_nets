@@ -1,6 +1,6 @@
 # Empower Chain node setup
 Chain: empowerchain-1    
-GitHub reference: https://github.com/EmpowerPlastic/empowerchain/tree/main/mainnet/empowerchain-1
+GitHub: https://github.com/EmpowerPlastic/empowerchain
 ____
 
 ### General updating
@@ -48,6 +48,8 @@ source $HOME/.bash_profile
 
 ### Install empowerd
 ```
+cd
+sudo rm -r empowerchain
 git clone https://github.com/EmpowerPlastic/empowerchain && \
 cd empowerchain && \
 git checkout v1.0.0 && \
