@@ -1,5 +1,5 @@
 <!--### 🚧🚧🚧 under construction -->
-`cardtestnet-6`
+`cardtestnet-7`
 
 ### DecentralCardGame - Crowd Control
 ## Testnet node installation
@@ -37,7 +37,7 @@ Think up and write a `moniker` (nodename), name of the `wallet` and change `port
 moniker=
 wallet=
 port=11
-chain=cardtestnet-6
+chain=cardtestnet-7
 ```
 
 ### Write and load variables
