@@ -99,7 +99,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 
 ### Add peer
 ```
-PEERS="5ed5398d201c0d40400055beceb4a9a93506d26a@202.61.225.157:26656"
+PEERS="6a41c6269637733220857a021c8454fa2204987e@202.61.225.157:26656"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.Cardchain/config/config.toml
 ```
 
