@@ -1,4 +1,4 @@
-`# testnet`
+`# testnet` `v16.0.0-rc5`
 ### Installing Evmos testnet node for the Lava Evmos ipRPC
 ##### https://www.lavanet.xyz/blog/providers-guide-to-evmos-iprpc
 > This manual is intended for installing an Evmos testnet node on the same server as mainnet, without using containers or else. Therefore, the `--home $HOME/.evmosdt` option is added for most binary commands
@@ -32,7 +32,7 @@ cd
 sudo rm -r evmos
 git clone https://github.com/evmos/evmos
 cd evmos
-git checkout v15.0.0-rc1
+git checkout v16.0.0-rc5
 make build
 ```
 
