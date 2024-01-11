@@ -3,7 +3,7 @@
 ### `the primary reason for this manual is installing Evmos node for the Lava Evmos ipRPC`
 https://www.lavanet.xyz/get-started/evmos
 #
-> This manual is intended for installing an Evmos testnet node on the same server as mainnet, without using containers or else. Therefore, the `--home $HOME/.evmosdt` option is added for most binary commands
+> This manual is intended for installing an Evmos testnet node on the same server as mainnet, without using containers or other virtualization methods. Therefore, the `--home $HOME/.evmosdt` option is added for most binary commands
 #
 
 
