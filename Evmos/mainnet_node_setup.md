@@ -1,5 +1,5 @@
 `# mainnet`
-`# evmosd v15.0.0`
+`# evmosd v16.0.0`
 
 ### Installing Evmos node for the Lava Evmos ipRPC
 ##### https://www.lavanet.xyz/blog/providers-guide-to-evmos-iprpc
@@ -34,7 +34,7 @@ cd
 rm -r $HOME/evmos
 git clone https://github.com/evmos/evmos
 cd evmos
-git checkout v15.0.0
+git checkout v16.0.0
 make install
 ```
 
