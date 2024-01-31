@@ -1,3 +1,5 @@
+`v0.34.0`
+
 # Lava. p2p RPC network. Installing the validator 
 
 <!-- **v0.24.0 upgrade block height: [472 310](https://lava.explorers.guru/block/472310)** -->
@@ -10,8 +12,8 @@
 
 #### *Current version*
 - Chain ID: `lava-testnet-2`    
-- Version: v0.30.2   
-- Upgrade Height: 636 0006
+- Version: v0.34.0   
+- Upgrade Height: 809 250
 
 #### *Address books (first install a node)*
 - xalex    
@@ -71,7 +73,7 @@ cd $HOME
 rm -rf lava
 git clone https://github.com/lavanet/lava.git
 cd lava
-git checkout v0.30.2
+git checkout v0.34.0
 ```
 installing the lava**d** binary
 ```
@@ -86,8 +88,8 @@ make install LAVA_BINARY=lavap
 ```
 lavad version --long | grep -e version: -e commit
 ```
-> commit: 3ce34fe4b84e44b41f184e4124be22595c8b9197     
-> version: 0.30.2    
+> commit: 5f2d89e5ca338b52024760e6edf7a6a18ddfe52f     
+> version: 0.34.0    
 
 ### Configure
 ```
