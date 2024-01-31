@@ -203,7 +203,7 @@ curl -s https://snapshots1-testnet.nodejumper.io/lava-testnet/addrbook.json > $H
 ```
 
 ### Syncing, use snapshot or state sync
-kjnodes, nodejumper ...
+[kjnodes](https://services.kjnodes.com/testnet/lava/) [nodejumper](https://app.nodejumper.io/lava-testnet)
 
 <!-- ##############################################################
 
