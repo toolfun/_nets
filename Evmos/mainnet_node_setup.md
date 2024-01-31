@@ -1,5 +1,5 @@
 `# mainnet`
-`# v16.0.0`
+`# v16.0.2`
 
 ### `the primary reason for this manual is installing Evmos node for the Lava Evmos ipRPC`
 https://www.lavanet.xyz/get-started/evmos
@@ -34,7 +34,7 @@ cd
 rm -r $HOME/evmos
 git clone https://github.com/evmos/evmos
 cd evmos
-git checkout v16.0.0
+git checkout v16.0.2
 make install
 ```
 
