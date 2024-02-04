@@ -152,7 +152,9 @@ EOF
 ```
 
 ### Snapshot or state-sync start
-state-sync via [kjnode's](https://services.kjnodes.com/)
+[polkachu](https://polkachu.com/testnets/evmos)    
+or
+state-sync via [kjnode's](https://services.kjnodes.com/):
 ```
 STATE_SYNC_RPC=https://evmos-testnet.rpc.kjnodes.com:443
 STATE_SYNC_PEER=d5519e378247dfb61dfe90652d1fe3e2b3005a5b@evmos-testnet.rpc.kjnodes.com:16756
@@ -175,11 +177,13 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now evmosdt && journalctl -u evmosdt -f -o cat
 ```
 
+> after full sync you may want to disable `state sync` in config.toml    
+> `sed -i -e "s|^enable *=.*|enable = false|" $HOME/.evmosdt/config/config.toml`
 ____
 
 ## Useful
 
-### With 2 evmos nodes on a one server use `--home` option
+### With 2 evmos nodes (mainnet and testnet) on a one server use `--home` option
 For example
 ```python
 evmosdt status --home $HOME/.evmosdt | jq .SyncInfo
