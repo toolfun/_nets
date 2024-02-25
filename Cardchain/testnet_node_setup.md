@@ -11,11 +11,18 @@
 ____
 
 
+### Updating
+```
+sudo apt update
+sudo apt install make gcc curl wget git jq lz4 build-essential screen nano ncdu -qy
+sudo apt upgrade
+```
+
 ### Go installation
 https://go.dev/doc/install    
 ```
 sudo rm -rf /usr/local/go
-v="1.21.0"
+v="1.21.5"
 wget "https://golang.org/dl/go$v.linux-amd64.tar.gz"
 sudo tar -C /usr/local -xzf "go$v.linux-amd64.tar.gz"
 rm "go$v.linux-amd64.tar.gz"
@@ -127,7 +134,7 @@ EOF
 cardchaind tendermint unsafe-reset-all --home $HOME/.Cardchain
 ```
 
-### Snapshot or state sync
+### Addressbook, sync
 Search in the Crowd Control Discord https://discord.gg/xvuEfcaUd6 or ask the community
 
 ### Start Cardchain
