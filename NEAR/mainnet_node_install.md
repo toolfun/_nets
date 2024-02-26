@@ -52,7 +52,8 @@ wget https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/m
 sudo pip3 install awscli
 ```
 
-### Download all the headers and blocks - chain snapshot
+### Download all the headers and blocks (snapshot)
+> 👉 it could take hours
 ```
 aws s3 --no-sign-request cp s3://near-protocol-public/backups/mainnet/rpc/latest .
 LATEST=$(cat latest)
@@ -76,7 +77,7 @@ WantedBy=multi-user.target
 EOF
 ```
 
-###
+### Run the node
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable --now neard && journalctl -u neard -f --no-hostname -o cat
@@ -87,77 +88,3 @@ sudo systemctl enable --now neard && journalctl -u neard -f --no-hostname -o cat
 
 ```
 
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
-
-###
-```
-
-```
