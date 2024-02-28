@@ -70,7 +70,7 @@ After=network-online.target
 User=$USER
 ExecStart=$(which neard) --home $HOME/.near run
 Restart=always
-RestartSec=3
+RestartSec=10
 LimitNOFILE=65535
 [Install]
 WantedBy=multi-user.target
