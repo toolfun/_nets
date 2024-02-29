@@ -1,5 +1,5 @@
 <!--### 🚧🚧🚧 under construction -->
-`cardtestnet-8`
+`cardtestnet-9`
 
 ### DecentralCardGame - Crowd Control
 ## Testnet node installation
@@ -58,7 +58,7 @@ source ~/.bash_profile
 
 ### Download CC binary
 ```
-sudo wget https://github.com/DecentralCardGame/Cardchain/releases/download/v0.13.0/Cardchaind -O $HOME/go/bin/cardchaind
+sudo wget https://github.com/DecentralCardGame/Cardchain/releases/download/v0.14.1/Cardchaind -O $HOME/go/bin/cardchaind
 sudo chmod 775 $HOME/go/bin/cardchaind
 ```
 
@@ -106,7 +106,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 
 ### Add peer
 ```
-PEERS="6a41c6269637733220857a021c8454fa2204987e@202.61.225.157:26656"
+PEERS="2aa407243c982ce2d9ee607b15418cf45b5002f7@202.61.225.157:20056"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.Cardchain/config/config.toml
 ```
 
