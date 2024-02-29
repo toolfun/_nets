@@ -44,7 +44,7 @@ Think up and write a `moniker` (nodename), name of the `wallet` and change `port
 moniker=
 wallet=
 port=11
-chain=cardtestnet-8
+chain=cardtestnet-9
 ```
 
 ### Write and load variables
