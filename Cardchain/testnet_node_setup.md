@@ -1,5 +1,5 @@
 <!--### 🚧🚧🚧 under construction -->
-`cardtestnet-9`
+`cardtestnet-10`
 
 ### DecentralCardGame - Crowd Control
 ## Testnet node installation
@@ -44,7 +44,7 @@ Think up and write a `moniker` (nodename), name of the `wallet` and change `port
 moniker=
 wallet=
 port=11
-chain=cardtestnet-9
+chain=cardtestnet-10
 ```
 
 ### Write and load variables
@@ -58,7 +58,7 @@ source ~/.bash_profile
 
 ### Download CC binary
 ```
-sudo wget https://github.com/DecentralCardGame/Cardchain/releases/download/v0.14.1/Cardchaind -O $HOME/go/bin/cardchaind
+sudo wget https://github.com/DecentralCardGame/Cardchain/releases/download/v0.14.2/Cardchaind -O $HOME/go/bin/cardchaind
 sudo chmod 775 $HOME/go/bin/cardchaind
 ```
 
@@ -72,24 +72,24 @@ cardchaind init $CC_M --chain-id $CC_CHAIN
 
 ### Download genesis
 ```
-wget http://45.136.28.158:3000/genesis.json -O ~/.Cardchain/config/genesis.json
+wget http://45.136.28.158:3000/genesis.json -O ~/.cardchaind/config/genesis.json
 ```
 
 ### Config indexer (off) *optional*
 ```
 indexer="null"
-sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/.Cardchain/config/config.toml
+sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/.cardchaind/config/config.toml
 ```
 
 ### Gas-prices
 ```
-sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0ubpf\"/;" ~/.Cardchain/config/app.toml
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0ubpf\"/;" ~/.cardchaind/config/app.toml
 ```
 
 ### Changing custom ports *optional*
 ```
-sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${CC_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${CC_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${CC_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${CC_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${CC_PORT}660\"%" $HOME/.Cardchain/config/config.toml
-sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${CC_PORT}317\"%; s%^address = \":8080\"%address = \":${CC_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${CC_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${CC_PORT}091\"%" $HOME/.Cardchain/config/app.toml
+sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${CC_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${CC_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${CC_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${CC_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${CC_PORT}660\"%" $HOME/.cardchaind/config/config.toml
+sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${CC_PORT}317\"%; s%^address = \":8080\"%address = \":${CC_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${CC_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${CC_PORT}091\"%" $HOME/.cardchaind/config/app.toml
 ```
 
 ### Config prunings *optional*
@@ -98,16 +98,16 @@ pruning="custom"
 pruning_keep_recent="100"
 pruning_keep_every="0"
 pruning_interval="19"
-sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/.Cardchain/config/app.toml
-sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/.Cardchain/config/app.toml
-sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.Cardchain/config/app.toml
-sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.Cardchain/config/app.toml
+sed -i -e "s/^pruning *=.*/pruning = \"$pruning\"/" $HOME/.cardchaind/config/app.toml
+sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$pruning_keep_recent\"/" $HOME/.cardchaind/config/app.toml
+sed -i -e "s/^pruning-keep-every *=.*/pruning-keep-every = \"$pruning_keep_every\"/" $HOME/.cardchaind/config/app.toml
+sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $HOME/.cardchaind/config/app.toml
 ```
 
 ### Add peer
 ```
-PEERS="2aa407243c982ce2d9ee607b15418cf45b5002f7@202.61.225.157:20056"
-sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.Cardchain/config/config.toml
+PEERS="ab88b326851e26cf96d1e4634d08ca0b8d812032@202.61.225.157:20056"
+sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.cardchaind/config/config.toml
 ```
 
 ### Service file for cardchaind
@@ -131,7 +131,7 @@ EOF
 
 ### Reset
 ```
-cardchaind tendermint unsafe-reset-all --home $HOME/.Cardchain
+cardchaind tendermint unsafe-reset-all --home $HOME/.cardchaind
 ```
 
 ### Addressbook, sync
@@ -178,7 +178,7 @@ sudo systemctl stop cardchaind
 sudo rm /etc/systemd/system/cardchaind.service
 
 # Deleting work folder folder
-sudo rm -r $HOME/.Cardchain/
+sudo rm -r $HOME/.cardchaind/
 
 # Deleting binary
 sudo rm /usr/local/bin/cardchaind
