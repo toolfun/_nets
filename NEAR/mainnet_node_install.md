@@ -53,11 +53,44 @@ sudo pip3 install awscli
 ```
 
 ### Download all the headers and blocks (snapshot)
-> 👉 it could take hours
+> 👉 it could take many hours, use screen or tmux
 ```
 aws s3 --no-sign-request cp s3://near-protocol-public/backups/mainnet/rpc/latest .
 LATEST=$(cat latest)
 aws s3 --no-sign-request cp --no-sign-request --recursive s3://near-protocol-public/backups/mainnet/rpc/$LATEST ~/.near/data
+```
+
+### An alternative method of downloading a snapshot. Using `rclone`
+```
+sudo apt install rclone
+```
+
+#### Prepare the rclone configuration
+```
+mkdir -p ~/.config/rclone
+touch ~/.config/rclone/rclone.conf
+```
+
+#### Add the following configuration in `~/.config/rclone/rclone.conf`
+```
+[near_s3]
+type = s3
+provider = AWS
+location_constraint = EU
+acl = public-read
+server_side_encryption = AES256
+region = ca-central-1
+```
+
+#### Download the latest snapshot
+> 👉 it could take many hours, use screen or tmux
+```
+chain="mainnet" # or "testnet"
+kind="rpc" # or "archive" for Archive nodes
+rclone copy --no-check-certificate near_s3://near-protocol-public/backups/${chain}/${kind}/latest ./
+latest=$(cat latest)
+rclone copy --no-check-certificate --progress --transfers=6 \
+  near_s3://near-protocol-public/backups/${chain}/${kind}/${latest} ~/.near/data
 ```
 
 ### Create service
