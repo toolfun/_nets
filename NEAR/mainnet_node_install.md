@@ -41,7 +41,7 @@ sudo mv $HOME/nearcore/target/release/neard /usr/local/bin/neard
 neard --home ~/.near init --chain-id mainnet --download-genesis --download-config
 ```
 
-### Replacing the config.json with added parameters
+### Replacing the `config.json` with added parameters
 ```
 rm ~/.near/config.json
 wget https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/mainnet/config.json -P ~/.near/
@@ -52,7 +52,7 @@ wget https://s3-us-west-1.amazonaws.com/build.nearprotocol.com/nearcore-deploy/m
 sudo pip3 install awscli
 ```
 
-### Download all the headers and blocks (snapshot)
+### Download a snapshot - all the headers and blocks
 > 👉 it could take many hours, use screen or tmux
 ```
 aws s3 --no-sign-request cp s3://near-protocol-public/backups/mainnet/rpc/latest .
@@ -61,17 +61,18 @@ aws s3 --no-sign-request cp --no-sign-request --recursive s3://near-protocol-pub
 ```
 
 ### An alternative method of downloading a snapshot. Using `rclone`
+- #### Install rclone
 ```
 sudo apt install rclone
 ```
 
-#### Prepare the rclone configuration
+- #### Prepare the rclone configuration
 ```
 mkdir -p ~/.config/rclone
 touch ~/.config/rclone/rclone.conf
 ```
-
-#### Add the following configuration in `~/.config/rclone/rclone.conf`
+ 
+- #### Add the following configuration in `~/.config/rclone/rclone.conf`
 ```
 [near_s3]
 type = s3
@@ -82,7 +83,7 @@ server_side_encryption = AES256
 region = ca-central-1
 ```
 
-#### Download the latest snapshot
+- #### Download the latest snapshot
 > 👉 it could take many hours, use screen or tmux
 ```
 chain="mainnet" # or "testnet"
