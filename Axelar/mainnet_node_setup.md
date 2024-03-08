@@ -14,25 +14,23 @@ sudo apt upgrade
 
 ### Go installation
 ```
-if ! [ -x "$(command -v go)" ]; then
-  ver="1.20.5"
-  cd $HOME
-  wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
-  sudo rm -rf /usr/local/go
-  sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
-  sudo rm "go$ver.linux-amd64.tar.gz"
-  echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
-  source ~/.bash_profile
-fi
+ver="1.21.5"
+cd $HOME
+wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
+sudo rm "go$ver.linux-amd64.tar.gz"
+echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
+source ~/.bash_profile
 ```
 
 ### Binary installation
 ```
 cd
-rm -r axelar-core
+sudo rm -r axelar-core
 git clone https://github.com/axelarnetwork/axelar-core.git
 cd axelar-core
-git checkout v0.34.1
+git checkout v0.34.1 # v0.35.5 on block 11795700 
 make build
 ```
 ```
