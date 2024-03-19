@@ -1,4 +1,4 @@
-`# mainnet` `# 1.36.5`
+`# mainnet` `# 1.38.0`
 # NEAR
 
 
@@ -26,6 +26,7 @@ rustup update
 ### Clone and compile binary
 ```
 cd
+sudo rm -r $HOME/nearcore
 git clone https://github.com/near/nearcore
 cd nearcore
 git fetch origin --tags
