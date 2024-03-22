@@ -50,6 +50,15 @@ My custom port is
 port=23
 ```
 
+### Save and load variables
+```
+echo "export AXELAR_M=$moniker" >> $HOME/.bash_profile
+echo "export AXELAR_W=$wallet" >> $HOME/.bash_profile
+echo "export AXELAR_CHAIN=$chain" >> $HOME/.bash_profile
+echo "export AXELAR_PORT=$port" >> $HOME/.bash_profile
+source ~/.bash_profile
+```
+
 ### Init
 ```
 axelard init $AXELAR_M --chain-id $AXELAR_CHAIN --home $HOME/.axelar
