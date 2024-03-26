@@ -86,24 +86,39 @@ sed -i.bak \
 $HOME/.side/config/app.toml
 ```
 
-### 
+### Service file
+```
+sudo tee /etc/systemd/system/sided.service > /dev/null <<EOF
+[Unit]
+Description=Sided_#T_node
+After=network-online.target
+
+[Service]
+User=$USER
+ExecStart=$(which sided) start --home $HOME/.side
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
+EOF
 ```
 
+### Add seed node
+```
+sed -i 's/seeds = ""/seeds = "00170c0c23c3e97c740680a7f881511faf68289a@202.182.119.24:26656"/' ~/.side/config/config.toml
 ```
 
 ###
 ```
-
+sided tendermint unsafe-reset-all --home $HOME/.side --keep-addr-book
 ```
 
-###
+### Start the node
 ```
-
-```
-
-###
-```
-
+sudo systemctl daemon-reload && \
+sudo systemctl enable --now sided && sudo journalctl -u sided -f --no-hostname -o cat
 ```
 
 ###
