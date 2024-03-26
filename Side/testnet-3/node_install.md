@@ -56,7 +56,10 @@ sided init $SIDE_M --chain-id $SIDE_CHAIN --home $HOME/.side
 ```
 curl https://raw.githubusercontent.com/sideprotocol/testnet/main/side-testnet-3/genesis.json > $HOME/.side/config/genesis.json
 ```
+> check     
+> `f5ca2aea92a89449f96b9837a027667409378583d7ca8a5bf6e49e4211b93184`
 
+<!-- ################################################################
 ### Address book
 ```
 
@@ -65,6 +68,13 @@ curl https://raw.githubusercontent.com/sideprotocol/testnet/main/side-testnet-3/
 ### Minimum gas prices 
 ```
 
+```
+################################################################# -->
+
+### Indexer off (optional)
+```
+indexer="null" && \
+sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/.side/config/config.toml
 ```
 
 ### Pruning settings
@@ -119,7 +129,7 @@ EOF
 sed -i 's/seeds = ""/seeds = "00170c0c23c3e97c740680a7f881511faf68289a@202.182.119.24:26656"/' ~/.side/config/config.toml
 ```
 
-###
+### Reset
 ```
 sided tendermint unsafe-reset-all --home $HOME/.side --keep-addr-book
 ```
