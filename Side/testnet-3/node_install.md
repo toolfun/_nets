@@ -1,14 +1,23 @@
 `side-testnet-3` `v0.7.0`
-# Side
+# Side testnet 3
 
 ### System update
 ```
-
+sudo apt update
+sudo apt install make gcc curl wget git jq lz4 build-essential screen nano ncdu -qy
+sudo apt upgrade
 ```
 
 ### Go installation
 ```
-
+ver="1.21.5"
+cd $HOME
+wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
+sudo rm -rf /usr/local/go
+sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
+sudo rm "go$ver.linux-amd64.tar.gz"
+echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
+source ~/.bash_profile
 ```
 
 ### Binary installation
