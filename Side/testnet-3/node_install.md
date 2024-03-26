@@ -30,6 +30,13 @@ git checkout v0.7.0
 make install
 ```
 
+### Config app
+```
+sided config keyring-backend test
+sided config chain-id side-testnet-3
+sided config node tcp://localhost:${SIDE_PORT}657
+```
+
 ### Variables
 ```
 moniker=xAlex
@@ -59,17 +66,19 @@ curl https://raw.githubusercontent.com/sideprotocol/testnet/main/side-testnet-3/
 > check     
 > `f5ca2aea92a89449f96b9837a027667409378583d7ca8a5bf6e49e4211b93184`
 
+
 <!-- ################################################################
 ### Address book
 ```
 
 ```
+################################################################# -->
+
 
 ### Minimum gas prices 
 ```
-
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.005uside\"/;" ~/.side/config/app.toml
 ```
-################################################################# -->
 
 ### Indexer off (optional)
 ```
