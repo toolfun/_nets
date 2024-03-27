@@ -177,6 +177,36 @@ sided tx staking create-validator \
 
 <!-- ###################### TASKS ########################
 
+## Create Bitcoin Addresses
 
+### Create SegWit Address *already supported in v0.7.0.*
+```
+sided keys add segwit --key-type=segwit
+```
+
+### Create Taproot Address *will be supported in v0.7.1.*
+not IBC incompatible
+```
+sided keys add taproot --key-type=taproot
+```
+
+###
+```
+
+```
+###
+```
+
+```
+
+###
+```
+
+```
+
+###
+```
+
+```
 
 ###################### TASKS ######################## -->
