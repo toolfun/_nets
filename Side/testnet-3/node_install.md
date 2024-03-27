@@ -1,5 +1,5 @@
 `side-testnet-3` `v0.7.0`
-# Side testnet 3 genesis node installation
+# Side testnet 3 node installation
 
 ### System update
 ```
