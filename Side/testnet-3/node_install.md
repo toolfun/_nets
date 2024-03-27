@@ -37,10 +37,10 @@ sided config chain-id side-testnet-3
 sided config node tcp://localhost:${SIDE_PORT}657
 ```
 
-### Variables
+### Variables. Set your preffered name for the validator and wallet names
 ```
-moniker=xAlex
-wallet=wAlex
+moniker=
+wallet=
 chain=side-testnet-3
 port=19
 ```
@@ -154,3 +154,29 @@ sudo systemctl enable --now sided && sudo journalctl -u sided -f --no-hostname -
 
 ```
 
+<!-- ###################### Create validator tx ########################
+```
+sided tx staking create-validator \
+--commission-rate 0.1 \
+--commission-max-rate 0.2 \
+--commission-max-change-rate 0.02 \
+--min-self-delegation "1" \
+--amount 1000000uside \
+--pubkey $(sided tendermint show-validator) \
+--from $SIDE_W> \
+--moniker=$SIDE_M \
+--gas auto \
+--identity="" \
+--website="" \
+-y
+```
+###################### Create validator tx ######################## -->
+
+
+
+
+<!-- ###################### TASKS ########################
+
+
+
+###################### TASKS ######################## -->
