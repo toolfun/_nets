@@ -1,8 +1,7 @@
-`v0.34.0`
+`v1.2.0`
 
 # Lava. p2p RPC network. Installing the validator 
 
-<!-- **v0.24.0 upgrade block height: [472 310](https://lava.explorers.guru/block/472310)** -->
 
 #### *Links*
 - Website: https://lavanet.xyz/
@@ -12,16 +11,7 @@
 
 #### *Current version*
 - Chain ID: `lava-testnet-2`    
-- Version: v0.34.0   
-- Upgrade Height: 809 250
-
-#### *Address books (first install a node)*
-- xalex    
-`wget -O $HOME/.lava/config/addrbook.json "https://raw.githubusercontent.com/toolfun/_nets/main/Lava/addrbook.json"`    
-- lesnik    
-`wget -O $HOME/.lava/config/addrbook.json "https://share2.utsa.tech/lava/addrbook.json"`    
-- nodejumper    
-`curl -s https://snapshots1-testnet.nodejumper.io/lava-testnet/addrbook.json > $HOME/.lava/config/addrbook.json`
+- Version: v1.2.0   
 
 #
 
@@ -36,7 +26,7 @@ sudo apt install curl tar wget clang pkg-config libssl-dev build-essential bsdma
 ### Install Go
 ```
 if ! [ -x "$(command -v go)" ]; then
-  ver="1.20.5"
+  ver="1.21.5"
   cd $HOME
   wget "https://golang.org/dl/go$ver.linux-amd64.tar.gz"
   sudo rm -rf /usr/local/go
@@ -73,7 +63,7 @@ cd $HOME
 rm -rf lava
 git clone https://github.com/lavanet/lava.git
 cd lava
-git checkout v0.34.0
+git checkout v1.2.0
 ```
 installing the lava**d** binary
 ```
@@ -88,9 +78,7 @@ make install LAVA_BINARY=lavap
 ```
 lavad version --long | grep -e version: -e commit
 ```
-> commit: 5f2d89e5ca338b52024760e6edf7a6a18ddfe52f     
-> version: 0.34.0    
-
+  
 ### Configure
 ```
 lavad config keyring-backend test
@@ -104,27 +92,20 @@ lavad init "$LAVA_M" --chain-id $LAVA_CHAIN
 ```
 
 ### Set Lava-specific params
-
-> timeout_commit = "30s"
-> timeout_propose = "1s"
-> timeout_precommit = "1s"
-> timeout_precommit_delta = "500ms"
-> timeout_prevote = "1s"
-> timeout_prevote_delta = "500ms"
-> timeout_propose_delta = "500ms"
-> skip_timeout_commit = false    
-
 ```
 sed -i \
-  -e 's/timeout_commit = ".*"/timeout_commit = "30s"/g' \
-  -e 's/timeout_propose = ".*"/timeout_propose = "1s"/g' \
-  -e 's/timeout_precommit = ".*"/timeout_precommit = "1s"/g' \
-  -e 's/timeout_precommit_delta = ".*"/timeout_precommit_delta = "500ms"/g' \
-  -e 's/timeout_prevote = ".*"/timeout_prevote = "1s"/g' \
-  -e 's/timeout_prevote_delta = ".*"/timeout_prevote_delta = "500ms"/g' \
-  -e 's/timeout_propose_delta = ".*"/timeout_propose_delta = "500ms"/g' \
-  -e 's/skip_timeout_commit = ".*"/skip_timeout_commit = false/g' \
-  $HOME/.lava/config/config.toml
+-e 's/timeout_propose = .*/timeout_propose = "1s"/' \
+-e 's/timeout_propose_delta = .*/timeout_propose_delta = "500ms"/' \
+-e 's/timeout_prevote = .*/timeout_prevote = "1s"/' \
+-e 's/timeout_prevote_delta = .*/timeout_prevote_delta = "500ms"/' \
+-e 's/timeout_precommit = .*/timeout_precommit = "500ms"/' \
+-e 's/timeout_precommit_delta = .*/timeout_precommit_delta = "1s"/' \
+-e 's/timeout_commit = .*/timeout_commit = "15s"/' \
+-e 's/^create_empty_blocks = .*/create_empty_blocks = true/' \
+-e 's/^create_empty_blocks_interval = .*/create_empty_blocks_interval = "15s"/' \
+-e 's/^timeout_broadcast_tx_commit = .*/timeout_broadcast_tx_commit = "151s"/' \
+-e 's/skip_timeout_commit = .*/skip_timeout_commit = false/' \
+$HOME/.lava/config/config.toml
 ```
 
 ### Download genesis
