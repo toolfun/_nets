@@ -1,4 +1,4 @@
-`# mainnet` `# 1.38.0`
+`# mainnet` `# 1.39.0`
 # NEAR
 
 
@@ -30,7 +30,7 @@ sudo rm -r $HOME/nearcore
 git clone https://github.com/near/nearcore
 cd nearcore
 git fetch origin --tags
-git checkout tags/1.38.0 -b mynode
+git checkout tags/1.39.0 -b mynode
 make release
 ```
 ```
