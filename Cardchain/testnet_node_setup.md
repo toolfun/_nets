@@ -1,5 +1,5 @@
 <!--### 🚧🚧🚧 under construction -->
-`cardtestnet-10`
+`cardtestnet-11`
 
 ### DecentralCardGame - Crowd Control
 ## Testnet node installation
@@ -14,7 +14,7 @@ ____
 ### Updating
 ```
 sudo apt update
-sudo apt install make gcc curl wget git jq lz4 build-essential screen nano ncdu -qy
+sudo apt install make gcc curl wget git jq lz4 build-essential ncdu -qy
 sudo apt upgrade
 ```
 
@@ -44,7 +44,7 @@ Think up and write a `moniker` (nodename), name of the `wallet` and change `port
 moniker=
 wallet=
 port=11
-chain=cardtestnet-10
+chain=cardtestnet-11
 ```
 
 ### Write and load variables
@@ -58,7 +58,7 @@ source ~/.bash_profile
 
 ### Download CC binary
 ```
-sudo wget https://github.com/DecentralCardGame/Cardchain/releases/download/v0.14.2/Cardchaind -O $HOME/go/bin/cardchaind
+sudo wget https://github.com/DecentralCardGame/Cardchain/releases/download/v0.16.0/cardchaind -O $HOME/go/bin/cardchaind
 sudo chmod 775 $HOME/go/bin/cardchaind
 ```
 
@@ -72,7 +72,7 @@ cardchaind init $CC_M --chain-id $CC_CHAIN
 
 ### Download genesis
 ```
-wget http://45.136.28.158:3000/genesis.json -O ~/.cardchaind/config/genesis.json
+wget https://cardchain.crowdcontrol.network/files/genesis.json -O ~/.cardchaind/config/genesis.json
 ```
 
 ### Config indexer (off) *optional*
