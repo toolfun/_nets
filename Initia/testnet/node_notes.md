@@ -1,13 +1,8 @@
 # Initia testnet
 
 chain-id `initiation-1`    
-binarie `v0.2.23-stage-2`    
+binary `v0.2.23-stage-2`    
 
-#### Prerequisites https://github.com/initia-labs/networks/tree/main/initiation-1#prerequisites
-> Go v1.22+ or higher    
-> Git    
-> curl    
-> jq
 ____
 
 ### Updating
@@ -32,6 +27,13 @@ source $HOME/.bash_profile && \
 go version
 ```
 
+### Build binary
+```
+git clone https://github.com/initia-labs/initia
+cd initia
+git checkout v0.2.23-stage-2
+make install
+```
 
 ### Variables, set names
 ```
@@ -48,24 +50,22 @@ echo "export INI_CHAIN=$chain" >> $HOME/.bash_profile
 source ~/.bash_profile
 ```
 
-
+### Genesis
+```
 wget -O $HOME/.initia/config/genesis.json https://initia.s3.ap-southeast-1.amazonaws.com/initiation-1/genesis.json    
+```
+
+### Init
+```
 initiad init $INI_M --chain-id initiation-1     
+```
+
 
 pruning    
 ports    
 minimum-gas-prices
 
 
-
-
-### Build
-```
-git clone https://github.com/initia-labs/initia
-cd initia
-git checkout v0.2.23-stage-2
-make install
-```
 
 ### Seeds
 2eaa272622d1ba6796100ab39f58c75d458b9dbc@34.142.181.82:26656    
