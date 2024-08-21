@@ -1,5 +1,5 @@
 <!--### 🚧🚧🚧 under construction -->
-`cardtestnet-11`
+`cardtestnet-12`
 
 ### DecentralCardGame - Crowd Control
 ## Testnet node installation
@@ -44,7 +44,7 @@ Think up and write a `moniker` (nodename), name of the `wallet` and change `port
 moniker=
 wallet=
 port=11
-chain=cardtestnet-11
+chain=cardtestnet-12
 ```
 
 ### Write and load variables
@@ -106,7 +106,7 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 
 ### Add peer
 ```
-PEERS="ab88b326851e26cf96d1e4634d08ca0b8d812032@202.61.225.157:20056"
+PEERS="86fe149f801ac75213179be5b56fbd1a1e545c43@202.61.225.157:20056"
 sed -i 's|^persistent_peers *=.*|persistent_peers = "'$PEERS'"|' $HOME/.cardchaind/config/config.toml
 ```
 
