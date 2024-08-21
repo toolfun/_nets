@@ -1,4 +1,4 @@
-# Initia testnet
+# Initia testnet ended
 
 chain-id `initiation-1`    
 binary `v0.2.23-stage-2`    
