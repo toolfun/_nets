@@ -49,10 +49,10 @@ source $HOME/.bash_profile
 ### Install empowerd
 ```
 cd
-sudo rm -r empowerchain
+rm -rf empowerchain
 git clone https://github.com/EmpowerPlastic/empowerchain && \
 cd empowerchain && \
-git checkout v1.0.0 && \
+git checkout v2.0.0 && \
 cd chain && \
 make install
 ```
@@ -61,8 +61,8 @@ make install
 ```bash
 empowerd version --long | grep -e version -e commit
 ```
-version: 1.0.0    
-commit: 5d80d3c26256d9809cbd0b4dacfd0a8dbcaacc95
+version: 2.0.0    
+commit: 70ad47fc878d1854fe279ebf99e3a9260b78099c
 
 ### Init
 ```
