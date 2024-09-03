@@ -150,7 +150,7 @@ sed -i -e 's|^seeds *=.*|seeds = "'$seeds'"|' $HOME/.empowerchain/config/config.
 ```
 sudo systemctl daemon-reload
 sudo systemctl enable empowerd
-sudo systemctl restart kujirad && sudo journalctl -u empowerd -f -o cat
+sudo systemctl restart empowerd && sudo journalctl -u empowerd -f -o cat
 ```
 
 ### Snapshot
