@@ -146,6 +146,13 @@ seeds="a1427b456513ab70967a2a5c618d347bc89e8848@seed.empowerchain.io:26656,6740f
 sed -i -e 's|^seeds *=.*|seeds = "'$seeds'"|' $HOME/.empowerchain/config/config.toml
 ```
 
+###
+```
+sudo systemctl daemon-reload
+sudo systemctl enable empowerd
+sudo systemctl restart kujirad && sudo journalctl -u empowerd -f -o cat
+```
+
 ### Snapshot
 https://polkachu.com/tendermint_snapshots/empower
 
