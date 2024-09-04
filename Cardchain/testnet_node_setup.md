@@ -64,7 +64,7 @@ sudo wget https://github.com/DecentralCardGame/Cardchain/releases/download/v0.16
 sudo chmod 775 $HOME/go/bin/cardchaind
 ```
 
-### Config client
+### Set config and init
 ```
 cardchaind config chain-id $CC_CHAIN
 cardchaind config keyring-backend test
