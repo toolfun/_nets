@@ -131,13 +131,13 @@ WantedBy=multi-user.target
 EOF
 ```
 
+### Addressbook, sync
+Look for in the Crowd Control Discord https://discord.gg/xvuEfcaUd6 or ask the community
+
 ### Reset
 ```
-cardchaind tendermint unsafe-reset-all --home $HOME/.cardchaind
+cardchaind tendermint unsafe-reset-all --home $HOME/.cardchaind --keep-addr-book
 ```
-
-### Addressbook, sync
-Search in the Crowd Control Discord https://discord.gg/xvuEfcaUd6 or ask the community
 
 ### Start Cardchain
 ```
