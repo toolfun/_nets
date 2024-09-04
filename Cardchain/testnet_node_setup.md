@@ -26,6 +26,8 @@ v="1.21.5"
 wget "https://golang.org/dl/go$v.linux-amd64.tar.gz"
 sudo tar -C /usr/local -xzf "go$v.linux-amd64.tar.gz"
 rm "go$v.linux-amd64.tar.gz"
+echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> ~/.bash_profile
+source ~/.bash_profile
 ```
 
 <!-- ##############################################
