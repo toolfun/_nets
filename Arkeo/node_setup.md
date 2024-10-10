@@ -1,16 +1,16 @@
 # Arkeo
 
 ### updating
-```
+```bash
 sudo apt update
 sudo apt install make gcc curl wget git jq lz4 build-essential screen nano ncdu -qy
 sudo apt upgrade
 ```
 
 ### go installing
-```
+```bash
 sudo rm -rf /usr/local/go
-v="1.21.0"
+v="1.21.13"
 wget "https://golang.org/dl/go$v.linux-amd64.tar.gz"
 sudo tar -C /usr/local -xzf "go$v.linux-amd64.tar.gz"
 rm "go$v.linux-amd64.tar.gz"
@@ -18,19 +18,19 @@ rm "go$v.linux-amd64.tar.gz"
 
 ### customizing with variables
 Set variables: `moniker` for your validator node, `wallet` for wallet name. The `chain` leave as is.
-```
+```bash
 moniker=
 wallet=
-chain=arkeo
+chain=arkeo-testnet-3
 ```
 You can customize which ports will be used, or do nothing and leave as default.    
-I configure as follows
+For example set
 ```
 port=18
 ```
 
 ### load variables
-```
+```bash
 echo "export ARKEO_M=$moniker" >> $HOME/.bash_profile
 echo "export ARKEO_W=$wallet" >> $HOME/.bash_profile
 echo "export ARKEO_CHAIN=$chain" >> $HOME/.bash_profile
@@ -39,45 +39,45 @@ source ~/.bash_profile
 ```
 
 ### installing Arkeo
-```
+```bash
 cd
 git clone https://github.com/arkeonetwork/arkeo
 cd arkeo
-git checkout ab05b124336ace257baa2cac07f7d1bfeed9ac02
-make proto-gen install
+git checkout master
+TAG=testnet make install
 arkeod version
 ```
 
 ### config
-```
+```bash
 arkeod config chain-id $ARKEO_CHAIN
 arkeod config node tcp://localhost:${ARKEO_PORT}657
-arkeod config keyring-backend file
+arkeod config keyring-backend test
 ```
 
 ### init
-```
+```bash
 arkeod init ARKEO_M --chain-id $ARKEO_CHAIN
 ```
 
 ### genesis
-```
-curl -s http://seed.arkeo.network:26657/genesis | jq '.result.genesis' > ~/.arkeo/config/genesis.json
+```bash
+curl -s http://seed31.innovationtheory.com:26657/genesis | jq '.result.genesis' > $HOME/.arkeo/config/genesis.json
 ```
 
 ### config
-```
+```bash
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.001uarkeo\"/;" ~/.arkeo/config/app.toml
 ```
 
 ### ports (optional)
-```
+```bash
 sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${ARKEO_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${ARKEO_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${ARKEO_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${ARKEO_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${ARKEO_PORT}660\"%" $HOME/.arkeo/config/config.toml
 sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${ARKEO_PORT}317\"%; s%^address = \":8080\"%address = \":${ARKEO_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${ARKEO_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${ARKEO_PORT}091\"%" $HOME/.arkeo/config/app.toml
 ```
 
 ### customize pruning (optional)
-```
+```bash
 pruning="custom"
 pruning_keep_recent="100"
 pruning_keep_every="0"
@@ -89,15 +89,17 @@ sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$pruning_interval\"/" $
 ```
 
 ### indexer off (optional)
-```
+```bash
 indexer="null"
 sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $HOME/.arkeo/config/config.toml
 ```
 
 ### add seed
-```
-seeds="20e1000e88125698264454a884812746c2eb4807@seeds.lavenderfive.com:22856"
+```bash
+seeds="9dfa5f2d19c1174baf5e597965394269e654f9b7@seed31.innovationtheory.com:26656"
 sed -i 's|^seeds *=.*|seeds = "'$seeds'"|' $HOME/.arkeo/config/config.toml
+peers="bb761c984bd990f3055f412917396754cd22af7a@validator31.innovationtheory.com:26656,81e36f94351d47803b8e1e0d0ad2d2e8e14ed36b@validator32.innovationtheory.com:26656"
+sed -i -e "/^\[p2p\]/,/^\[/{s/^[[:space:]]*persistent_peers *=.*/persistent_peers = \"$PEERS\"/}" $HOME/.arkeo/config/config.toml
 ```
 
 ### addrbook
@@ -111,7 +113,7 @@ arkeod tendermint unsafe-reset-all --home $HOME/.arkeo --keep-addr-book
 ```
 
 ### service arkeod
-```
+```bash
 sudo tee /etc/systemd/system/arkeod.service > /dev/null <<EOF
 [Unit]
 Description=Arkeo_node
@@ -130,7 +132,7 @@ EOF
 ```
 
 ### start
-```
+```bash
 sudo systemctl restart systemd-journald
 sudo systemctl daemon-reload
 sudo systemctl enable --now arkeod
@@ -138,7 +140,7 @@ journalctl -u arkeod -f -o cat
 ```
 
 ### add account
-```
+```bash
 arkeod keys add $ARKEO_W
 ```
 
@@ -147,21 +149,41 @@ arkeod keys add $ARKEO_W
 > [form](https://docs.google.com/forms/d/e/1FAIpQLSeBNEWdmTRGG_UWMj5HxUeQB141rhW9T6teOTnzMP_6mXAzMA/viewform)
 
 ### create validator
-```
-arkeod tx staking create-validator \
---commission-rate 0.05 \
---commission-max-rate 0.2 \
---commission-max-change-rate 0.1 \
---min-self-delegation "1" \
---amount 1000000uarkeo \
---pubkey $(arkeod tendermint show-validator) \
---moniker "$ARKEO_M" \
---from "$ARKEO_W" \
---fees="5000uarkeo" \
--y
+1. Load a pubkey into variable
+```bash
+PUBKEY=$(arkeod comet show-validator)
 ```
 
-### edit validator
+2. Create a json file with all the specifications of your validator
+```bash
+nano $HOME/.arkeo/validator.json
+```
+Ready-to-go example. Check if it fits your needs
+```bash
+{
+        "pubkey": $PUBKEY,
+        "amount": "100000000uarkeo", 
+        "moniker": "$ARKEO_M",
+        "identity": "", # optional. put your keybase key
+        "website": "", # optional.
+        "details": "", # optional.
+        "commission-rate": "0.1", # replace with your value or leave as is. 
+        "commission-max-rate": "0.2", # replace with your value or leave as is. can't be changed after it was set
+        "commission-max-change-rate": "0.01", # replace with your value or leave as is. can't be changed after it was set
+        "min-self-delegation": "1"
+}
+```
+
+2. Кun the create validator command
+```
+arkeod tx staking create-validator $HOME/.arkeo/validator.json \
+--from=$ARKEO_W \
+--chain-id=arkeo-testnet-3 \
+--fees=200uarkeo \
+--yes
+```
+
+### Optional. How to edit validator parameters
 > to add or remove description on your validator, for example adding website and your logo
 ```bash
 arkeod tx staking edit-validator \
