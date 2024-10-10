@@ -174,7 +174,7 @@ Ready-to-go example. Check if it fits your needs
 }
 ```
 
-2. Кun the create validator command
+2. Run the create validator command
 ```
 arkeod tx staking create-validator $HOME/.arkeo/validator.json \
 --from=$ARKEO_W \
