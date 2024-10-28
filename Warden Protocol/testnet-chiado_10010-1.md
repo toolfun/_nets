@@ -143,6 +143,11 @@ wardend tendermint unsafe-reset-all --home $HOME/.warden
 ### Download snapshot
 You can find a snapshot or ask for it, to reduce time for syncing, in Warden Protocol Discord https://discord.gg/wardenprotocol
 
+#### In case we will run warden price oracle, update the `Oracle` section of the app.toml file with the settings
+```bash
+sed -i.bak -e 's/price_ttl = "0s"/price_ttl = "10s"/' -e 's/interval = "0s"/interval = "5s"/' $HOME/.warden/config/app-test.toml
+```
+
 ### Enable and start service
 ```bash
 sudo systemctl daemon-reload
@@ -172,18 +177,23 @@ source $HOME/.bash_profile
 ```
 
 ### Create validator
-> ### You can create a validator only after full synchronization
+> #### You can create a validator only after full synchronization
+> #### Check status
+```bash
+wardend status 2>&1 | jq .sync_info
+```
+
+> If `"catching_up": false`, you can now create a validator    
 Load the pubkey into the variable
 ```bash
 PUBKEY=$(wardend tendermint show-validator)
 ```
 
-### Create validator
-**Create validator specs file**
+#### Create validator specs file
 ```bash
 nano $HOME/.warden/validator.json
 ```
-**Paste/edit to it your validator specs**
+#### Paste/edit to it your validator specs
 ```bash
 {
   "pubkey": "$PUBKEY",
@@ -209,38 +219,36 @@ wardend tx staking create-validator $HOME/.warden/validator.json \
  -y
 ```
 
+## Warden Oracle setup
 
-###
+### Install slinky
 ```bash
+cd
+git clone https://github.com/skip-mev/connect.git
+cd connect
+git checkout v1.0.5
+make install
 ```
 
-
-###
+### Create service
 ```bash
+sudo tee /etc/systemd/system/slinky.service > /dev/null <<EOF
+[Unit]
+Description=Warden_price_oracle
+After=network-online.target
+[Service]
+User=$USER
+WorkingDirectory=$HOME/connect
+ExecStart=$(which slinky) --market-map-endpoint 0.0.0.0:9090
+Restart=on-failure
+RestartSec=5
+LimitNOFILE=65535
+[Install]
+WantedBy=multi-user.target
+EOF
 ```
 
-
-###
+### Enable autostart and run oracle service
 ```bash
+sudo systemctl enable --now slinky && sudo journalctl -u slinky -f -o cat
 ```
-
-
-###
-```bash
-```
-
-
-###
-```bash
-```
-
-
-###
-```bash
-```
-
-
-###
-```bash
-```
-
