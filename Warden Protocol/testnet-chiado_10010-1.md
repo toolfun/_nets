@@ -176,34 +176,29 @@ echo "export WARDEN_VALOPER="$VALOPER >> $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
 
-### Create validator
-> #### You can create a validator only after full synchronization
+### Create the validator
+> #### You can create the validator only after full synchronization
 > #### Check status
 ```bash
 wardend status 2>&1 | jq .sync_info
 ```
+> If `"catching_up": false`, you can now create the validator    
 
-> If `"catching_up": false`, you can now create a validator    
-
-### Display your validator public key
+#### Retrieve the validator public key
 ```bash
-wardend tendermint show-validator)
+PUBKEY=$(wardend tendermint show-validator)
 ```
-Output of this command paste into the validator.json in the `pubkey` line
 
-#### Create validator specs file
+#### Create the validator specs file. Optional - add `identity`, `website`, `details`
 ```bash
-nano $HOME/.warden/validator.json
-```
-#### Paste/edit it as your validator specs
-```bash
+cat <<EOF > $HOME/.warden/validator.json
 {
-  "pubkey": "actual_public_key_value_here",
+  "pubkey": "$PUBKEY",
   "amount": "1000000000000000000award",
   "moniker": "WARDEN_MONIKER",
   "identity": "",
   "website": "",
-    "details": "",
+  "details": "",
   "commission-rate": "0.07",
   "commission-max-rate": "0.2",
   "commission-max-change-rate": "0.01",
