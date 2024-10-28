@@ -184,19 +184,21 @@ wardend status 2>&1 | jq .sync_info
 ```
 
 > If `"catching_up": false`, you can now create a validator    
-Load the pubkey into the variable
+
+### Display your validator public key
 ```bash
-PUBKEY=$(wardend tendermint show-validator)
+wardend tendermint show-validator)
 ```
+Output of this command paste into the validator.json in the `pubkey` line
 
 #### Create validator specs file
 ```bash
 nano $HOME/.warden/validator.json
 ```
-#### Paste/edit to it your validator specs
+#### Paste/edit it as your validator specs
 ```bash
 {
-  "pubkey": "$PUBKEY",
+  "pubkey": "actual_public_key_value_here",
   "amount": "1000000000000000000award",
   "moniker": "WARDEN_MONIKER",
   "identity": "",
@@ -252,3 +254,8 @@ EOF
 ```bash
 sudo systemctl enable --now slinky && sudo journalctl -u slinky -f -o cat
 ```
+
+> #### Checking prices provided by your oracle
+> ```
+> curl http://localhost:8080/slinky/oracle/v1/prices | jq
+> ```
