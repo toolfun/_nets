@@ -204,6 +204,7 @@ cat <<EOF > $HOME/.warden/validator.json
   "commission-max-change-rate": "0.01",
   "min-self-delegation": "1"
 }
+EOF
 ```
 
 #### Creating validator command
