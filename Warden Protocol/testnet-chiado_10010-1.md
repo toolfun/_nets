@@ -290,4 +290,3 @@ Do rollback
 wardend rollback --hard
 sudo systemctl restart wardend
 ```
-
