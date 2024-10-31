@@ -2,7 +2,7 @@
 
 #### `node setup` `validator setup` `oracle setup`
 
-[If you need to upgrade from v0.5.2 to v0.5.3](https://github.com/toolfun/_nets/edit/main/Warden%20Protocol/testnet-chiado_10010-1.md#upgrade-from-v052-to-v053)
+[If you need to upgrade from v0.5.2 to v0.5.3](https://github.com/toolfun/_nets/blob/main/Warden%20Protocol/testnet-chiado_10010-1.md#upgrade-from-v052-to-v053)
 
 #
 # Warden Protocol
