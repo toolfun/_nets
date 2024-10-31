@@ -2,6 +2,9 @@
 
 #### `node setup` `validator setup` `oracle setup`
 
+[If you need to upgrade from v0.5.2 to v0.5.3](https://github.com/toolfun/_nets/edit/main/Warden%20Protocol/testnet-chiado_10010-1.md#upgrade-from-v052-to-v053)
+
+#
 # Warden Protocol
 
 ### Installing tools
@@ -33,6 +36,7 @@ For example set
 port=15
 ```
 
+### 
 ### Load variables
 ```bash
 echo "export WARDEN_MONIKER=$moniker" >> $HOME/.bash_profile
@@ -45,7 +49,7 @@ source ~/.bash_profile
 ### Getting Warden binary
 ```bash
 mkdir -p ~/wardenprotocol && cd ~/wardenprotocol
-wget https://github.com/warden-protocol/wardenprotocol/releases/download/v0.5.2/wardend_Linux_x86_64.zip
+wget https://github.com/warden-protocol/wardenprotocol/releases/download/v0.5.3/wardend_Linux_x86_64.zip
 unzip wardend_Linux_x86_64.zip
 chmod +x wardend
 mv $HOME/wardenprotocol/wardend $HOME/go/bin
@@ -255,3 +259,35 @@ sudo systemctl enable --now slinky && sudo journalctl -u slinky -f -o cat
 > ```
 > curl http://localhost:8080/slinky/oracle/v1/prices | jq
 > ```
+
+#
+
+# Upgrade from v0.5.2 to v0.5.3
+
+- If your node okay (didn't get stuck on an error "Block.Header.AppHash")
+### Download and replace binary
+```bash
+sudo systemctl stop wardend
+cd
+wget https://github.com/warden-protocol/wardenprotocol/releases/download/v0.5.3/wardend_Linux_x86_64.zip
+unzip wardend_Linux_x86_64.zip
+chmod +x wardend
+mv wardend $HOME/go/bin
+sudo systemctl restart wardend
+```
+
+- If your node stucked on "Block.Header.AppHash" error:
+```bash
+sudo systemctl stop wardend
+cd
+wget https://github.com/warden-protocol/wardenprotocol/releases/download/v0.5.3/wardend_Linux_x86_64.zip
+unzip wardend_Linux_x86_64.zip
+chmod +x wardend
+mv wardend $HOME/go/bin
+```
+Do rollback
+```
+wardend rollback --hard
+sudo systemctl restart wardend
+```
+
