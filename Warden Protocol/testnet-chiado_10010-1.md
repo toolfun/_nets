@@ -6,6 +6,8 @@
 
 #
 # Warden Protocol
+> https://docs.wardenprotocol.org/category/chiado-testnet    
+> https://wardenprotocol.org
 
 ### Installing tools
 ```bash
