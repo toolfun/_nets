@@ -201,7 +201,7 @@ cat <<EOF > $HOME/.warden/validator.json
 {
   "pubkey": "$PUBKEY",
   "amount": "1000000000000000000award",
-  "moniker": "WARDEN_MONIKER",
+  "moniker": ${WARDEN_MONIKER},
   "identity": "",
   "website": "",
   "details": "",
