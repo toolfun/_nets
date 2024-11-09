@@ -164,18 +164,19 @@ PUBKEY=$(arkeod comet show-validator)
 nano $HOME/.arkeo/validator.json
 ```
 Ready-to-go example. Check if it fits your needs
+> commission-max-rate and commission-max-change-rate can't be changed after setup     
 ```bash
 cat <<EOF > $HOME/.arkeo/validator.json
 {
         "pubkey": $PUBKEY,
         "amount": "100000000uarkeo", 
-        "moniker": "$ARKEO_M",
-        "identity": "", # optional. put your keybase key
-        "website": "", # optional.
-        "details": "", # optional.
-        "commission-rate": "0.1", # replace with your value or leave as is. 
-        "commission-max-rate": "0.2", # replace with your value or leave as is. can't be changed after it was set
-        "commission-max-change-rate": "0.01", # replace with your value or leave as is. can't be changed after it was set
+        "moniker": $ARKEO_M,
+        "identity": "",
+        "website": "",
+        "details": "",
+        "commission-rate": "0.1",
+        "commission-max-rate": "0.2",
+        "commission-max-change-rate": "0.01",
         "min-self-delegation": "1"
 }
 EOF
