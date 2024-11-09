@@ -55,9 +55,9 @@ arkeod version
 
 ### config
 ```bash
-arkeod config chain-id $ARKEO_CHAIN
-arkeod config node tcp://localhost:${ARKEO_PORT}657
-arkeod config keyring-backend test
+arkeod config set client chain-id $ARKEO_CHAIN
+arkeod config set client keyring-backend test
+arkeod config set client node tcp://localhost:${ARKEO_PORT}657
 ```
 
 ### init
@@ -70,7 +70,7 @@ arkeod init ARKEO_M --chain-id $ARKEO_CHAIN
 curl -s http://seed31.innovationtheory.com:26657/genesis | jq '.result.genesis' > $HOME/.arkeo/config/genesis.json
 ```
 
-### config
+### config minimum gas prices
 ```bash
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.001uarkeo\"/;" ~/.arkeo/config/app.toml
 ```
@@ -78,7 +78,7 @@ sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.001uarkeo\"/;
 ### ports (optional)
 ```bash
 sed -i.bak -e "s%^proxy_app = \"tcp://127.0.0.1:26658\"%proxy_app = \"tcp://127.0.0.1:${ARKEO_PORT}658\"%; s%^laddr = \"tcp://127.0.0.1:26657\"%laddr = \"tcp://127.0.0.1:${ARKEO_PORT}657\"%; s%^pprof_laddr = \"localhost:6060\"%pprof_laddr = \"localhost:${ARKEO_PORT}060\"%; s%^laddr = \"tcp://0.0.0.0:26656\"%laddr = \"tcp://0.0.0.0:${ARKEO_PORT}656\"%; s%^prometheus_listen_addr = \":26660\"%prometheus_listen_addr = \":${ARKEO_PORT}660\"%" $HOME/.arkeo/config/config.toml
-sed -i.bak -e "s%^address = \"tcp://0.0.0.0:1317\"%address = \"tcp://0.0.0.0:${ARKEO_PORT}317\"%; s%^address = \":8080\"%address = \":${ARKEO_PORT}080\"%; s%^address = \"0.0.0.0:9090\"%address = \"0.0.0.0:${ARKEO_PORT}090\"%; s%^address = \"0.0.0.0:9091\"%address = \"0.0.0.0:${ARKEO_PORT}091\"%" $HOME/.arkeo/config/app.toml
+sed -i.bak -e "s%^address = \"tcp://localhost:1317\"%address = \"tcp://localhost:${ARKEO_PORT}317\"%; s%^address = \"localhost:9090\"%address = \"localhost:${ARKEO_PORT}090\"%" $HOME/.arkeo/config/app.toml
 ```
 
 ### customize pruning (optional)
