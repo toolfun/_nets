@@ -165,6 +165,7 @@ nano $HOME/.arkeo/validator.json
 ```
 Ready-to-go example. Check if it fits your needs
 ```bash
+cat <<EOF > $HOME/.arkeo/validator.json
 {
         "pubkey": $PUBKEY,
         "amount": "100000000uarkeo", 
@@ -177,6 +178,7 @@ Ready-to-go example. Check if it fits your needs
         "commission-max-change-rate": "0.01", # replace with your value or leave as is. can't be changed after it was set
         "min-self-delegation": "1"
 }
+EOF
 ```
 
 2. Run the create validator command
