@@ -1,5 +1,5 @@
 <!--### 🚧🚧🚧 under construction -->
-`cardtestnet-12`
+`cardtestnet-13`
 
 ### DecentralCardGame - Crowd Control
 ## Testnet node installation
@@ -46,7 +46,7 @@ Think up and write a `moniker` (nodename), name of the `wallet` and change `port
 moniker=
 wallet=
 port=11
-chain=cardtestnet-12
+chain=cardtestnet-13
 ```
 
 ### Write and load variables
@@ -60,7 +60,8 @@ source ~/.bash_profile
 
 ### Download CC binary
 ```
-sudo wget https://github.com/DecentralCardGame/Cardchain/releases/download/v0.16.0/cardchaind -O $HOME/go/bin/cardchaind
+ccver='v0.17.0'
+sudo wget https://github.com/DecentralCardGame/Cardchain/releases/download/$ccver/cardchaind -O $HOME/go/bin/cardchaind
 sudo chmod 775 $HOME/go/bin/cardchaind
 ```
 
